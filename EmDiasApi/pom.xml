@@ -3,11 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <artifactId>emdias-application</artifactId>
+        <groupId>com.eschantal.emdias</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+
     <groupId>com.eschantal.emdias</groupId>
-    <artifactId>emdias</artifactId>
+    <artifactId>emdiasapi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Emdias</name>
+    <name>emdiasapi</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->

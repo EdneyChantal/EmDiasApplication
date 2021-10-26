@@ -5,7 +5,14 @@
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.praticasolucoes.emdias.gateway</groupId>
+    <parent>
+        <artifactId>emdias-application</artifactId>
+        <groupId>com.eschantal.emdias</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+
+    <groupId>com.eschantal.emdias</groupId>
     <artifactId>emdiasgateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>

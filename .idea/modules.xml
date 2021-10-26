@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/EmDiasApplication.iml" filepath="$PROJECT_DIR$/.idea/EmDiasApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EmDiasApi/emdiasapi.iml" filepath="$PROJECT_DIR$/EmDiasApi/emdiasapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EmDiasGateway/emdiasgateway.iml" filepath="$PROJECT_DIR$/EmDiasGateway/emdiasgateway.iml" />
     </modules>
   </component>
 </project>
