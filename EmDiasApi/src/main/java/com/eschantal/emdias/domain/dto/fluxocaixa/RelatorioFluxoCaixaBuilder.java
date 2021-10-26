@@ -1,6 +1,7 @@
 package com.eschantal.emdias.domain.dto.fluxocaixa;
 
-import javafx.util.Builder;
+
+import com.eschantal.emdias.util.Builder;
 
 public class RelatorioFluxoCaixaBuilder  implements Builder<RelatorioFluxoCaixa> {
     private RelatorioFluxoCaixa relatorioFluxoCaixa;

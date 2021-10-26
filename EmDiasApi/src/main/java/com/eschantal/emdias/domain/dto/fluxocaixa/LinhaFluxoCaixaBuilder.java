@@ -1,6 +1,8 @@
 package com.eschantal.emdias.domain.dto.fluxocaixa;
 
-import javafx.util.Builder;
+
+
+import com.eschantal.emdias.util.Builder;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
