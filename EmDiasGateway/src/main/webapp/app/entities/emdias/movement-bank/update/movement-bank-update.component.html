@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-movement-bank-heading"
+        data-cy="MovementBankCreateUpdateHeading"
+        jhiTranslate="emdiasgatewayApp.emdiasMovementBank.home.createOrEditLabel"
+      >
+        Create or edit a Movement Bank
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementDate" for="field_movementDate"
+            >Movement Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_movementDate"
+              data-cy="movementDate"
+              type="datetime-local"
+              class="form-control"
+              name="movementDate"
+              formControlName="movementDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementValue" for="field_movementValue"
+            >Movement Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="movementValue"
+            id="field_movementValue"
+            data-cy="movementValue"
+            formControlName="movementValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.history" for="field_history">History</label>
+          <input type="text" class="form-control" name="history" id="field_history" data-cy="history" formControlName="history" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.numberDoc" for="field_numberDoc"
+            >Number Doc</label
+          >
+          <input type="text" class="form-control" name="numberDoc" id="field_numberDoc" data-cy="numberDoc" formControlName="numberDoc" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accid" for="field_accid">Accid</label>
+          <input type="text" class="form-control" name="accid" id="field_accid" data-cy="accid" formControlName="accid" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accountBank" for="field_accountBank"
+            >Account Bank</label
+          >
+          <select class="form-control" id="field_accountBank" data-cy="accountBank" name="accountBank" formControlName="accountBank">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                accountBankOption.id === editForm.get('accountBank')!.value?.id ? editForm.get('accountBank')!.value : accountBankOption
+              "
+              *ngFor="let accountBankOption of accountBanksSharedCollection; trackBy: trackAccountBankById"
+            >
+              {{ accountBankOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasMovementBank.naturePlan" for="field_naturePlan"
+            >Nature Plan</label
+          >
+          <select class="form-control" id="field_naturePlan" data-cy="naturePlan" name="naturePlan" formControlName="naturePlan">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                naturePlanOption.id === editForm.get('naturePlan')!.value?.id ? editForm.get('naturePlan')!.value : naturePlanOption
+              "
+              *ngFor="let naturePlanOption of naturePlansSharedCollection; trackBy: trackNaturePlanById"
+            >
+              {{ naturePlanOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="427CA053-EC7B-BAA2-EC0A-7A1A52C02DCF" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbuser">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbuser</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="login" id="EF4BCB64-3E6A-A009-EA15-5F8927534720">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbuser</sourceObjSchema>
+<sourceObjName>login</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="DCA5CB5D-2E9F-19A6-1363-4EB3C645F7C5">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbuser</sourceObjSchema>
+<sourceObjName>password</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="3542E0A2-2304-B4C5-81E8-8EA2453FF855">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbuser</sourceObjSchema>
+<sourceObjName>email</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DDA36203-4310-C8FE-CCB1-EA698F4424D7" name="tbuser_pkey">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbuser_pkey</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EF4BCB64-3E6A-A009-EA15-5F8927534720"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

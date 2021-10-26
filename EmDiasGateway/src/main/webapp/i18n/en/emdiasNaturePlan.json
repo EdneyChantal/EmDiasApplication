@@ -1,0 +1,30 @@
+{
+  "emdiasgatewayApp": {
+    "emdiasNaturePlan": {
+      "home": {
+        "title": "Nature Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nature Plan",
+        "createOrEditLabel": "Create or edit a Nature Plan",
+        "notFound": "No Nature Plans found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Nature Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Nature Plan"
+      },
+      "id": "ID",
+      "descNaturePlan": "Desc Nature Plan",
+      "typeNaturePlan": "Type Nature Plan",
+      "workSpace": "Work Space"
+    }
+  },
+  "emdiasApp": {
+    "emdiasNaturePlan": {
+      "created": "A new Nature Plan is created with identifier {{ param }}",
+      "updated": "A Nature Plan is updated with identifier {{ param }}",
+      "deleted": "A Nature Plan is deleted with identifier {{ param }}"
+    }
+  }
+}

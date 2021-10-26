@@ -1,0 +1,32 @@
+{
+  "emdiasgatewayApp": {
+    "emdiasAccountBank": {
+      "home": {
+        "title": "Account Banks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Account Bank",
+        "createOrEditLabel": "Create or edit a Account Bank",
+        "notFound": "No Account Banks found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Account Bank {{ id }}?"
+      },
+      "detail": {
+        "title": "Account Bank"
+      },
+      "id": "ID",
+      "nomeDaContaBancaria": "Nome Da Conta Bancaria",
+      "valorInicial": "Valor Inicial",
+      "codContaExtrato": "Cod Conta Extrato",
+      "digito": "Digito",
+      "workSpace": "Work Space"
+    }
+  },
+  "emdiasApp": {
+    "emdiasAccountBank": {
+      "created": "A new Account Bank is created with identifier {{ param }}",
+      "updated": "A Account Bank is updated with identifier {{ param }}",
+      "deleted": "A Account Bank is deleted with identifier {{ param }}"
+    }
+  }
+}

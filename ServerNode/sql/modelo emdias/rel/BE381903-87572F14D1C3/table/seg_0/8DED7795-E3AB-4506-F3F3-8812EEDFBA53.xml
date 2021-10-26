@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8DED7795-E3AB-4506-F3F3-8812EEDFBA53" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbworkspace">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbworkspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_workspace" id="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbworkspace</sourceObjSchema>
+<sourceObjName>id_workspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<defaultValue>nextval(&apos;tbworkspace_id_workspace_seq&apos;::regclass)</defaultValue>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ds_workspace" id="BEC061F1-FDD6-0344-D347-DCCFC23F84A0">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbworkspace</sourceObjSchema>
+<sourceObjName>ds_workspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C48E2C5C-DC5A-DF92-6573-7E8443334ED0" name="tbworkspace_pkey">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbworkspace_pkey</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="MovementBankHeading">
+    <span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.home.title">Movement Banks</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-movement-bank"
+        [routerLink]="['/movement-bank/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.home.createLabel"> Create a new Movement Bank </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="movementBanks?.length === 0">
+    <span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.home.notFound">No movementBanks found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="movementBanks && movementBanks.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementDate">Movement Date</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementValue">Movement Value</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.history">History</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.numberDoc">Number Doc</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accid">Accid</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accountBank">Account Bank</span></th>
+          <th scope="col"><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.naturePlan">Nature Plan</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movementBank of movementBanks; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/movement-bank', movementBank.id, 'view']">{{ movementBank.id }}</a>
+          </td>
+          <td>{{ movementBank.movementDate | formatMediumDatetime }}</td>
+          <td>{{ movementBank.movementValue }}</td>
+          <td>{{ movementBank.history }}</td>
+          <td>{{ movementBank.numberDoc }}</td>
+          <td>{{ movementBank.accid }}</td>
+          <td>
+            <div *ngIf="movementBank.accountBank">
+              <a [routerLink]="['/account-bank', movementBank.accountBank?.id, 'view']">{{ movementBank.accountBank?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="movementBank.naturePlan">
+              <a [routerLink]="['/nature-plan', movementBank.naturePlan?.id, 'view']">{{ movementBank.naturePlan?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/movement-bank', movementBank.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/movement-bank', movementBank.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(movementBank)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

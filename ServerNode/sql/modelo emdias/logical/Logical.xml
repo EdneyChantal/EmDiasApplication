@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="84B22440-1094-6648-53F6-1A31754B8300" mainViewID="8C3FC5DB-F8CA-C696-A9E2-8F183AEBED05">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:20:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

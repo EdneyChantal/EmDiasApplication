@@ -1,0 +1,41 @@
+{
+  "name": "ProjetoNatureza",
+  "fields": [
+    {
+      "fieldName": "valorPrevisto",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "valorRealizado",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "naturePlan",
+      "otherEntityRelationshipName": "naturePlanId",
+      "relationshipName": "naturePlan",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "projeto",
+      "otherEntityRelationshipName": "projetoId",
+      "relationshipName": "projeto",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201208130439",
+  "entityTableName": "projeto_natureza",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias"
+}

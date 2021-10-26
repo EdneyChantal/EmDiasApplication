@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="656C1824-DCA3-4E86-A445-9E0549B5213C" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbnatureplan">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbnatureplan</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_natureplan" id="C25759B9-208A-BCC2-3465-76A87CA216BA">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbnatureplan</sourceObjSchema>
+<sourceObjName>id_natureplan</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<defaultValue>nextval(&apos;tbnatureplan_id_natureplan_seq&apos;::regclass)</defaultValue>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_workspace" id="59BAE2B8-E941-F8AB-B0F3-DA35F18A5E48">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbnatureplan</sourceObjSchema>
+<sourceObjName>id_workspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C8E5B5F2-7FBE-6E4A-08EB-C238C7E875CE" referredColumn="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6"/>
+</associations>
+</Column>
+<Column name="ds_natureplan" id="D9861A21-55D7-BA22-46B7-7CCB5E8C5425">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbnatureplan</sourceObjSchema>
+<sourceObjName>ds_natureplan</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_natureplan_father" id="AD6A84FD-850C-DF3A-C156-FB373A2F7B8C">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbnatureplan</sourceObjSchema>
+<sourceObjName>id_natureplan_father</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="38D465C7-BDC0-2E36-0D61-EE62F60D2E7D" referredColumn="C25759B9-208A-BCC2-3465-76A87CA216BA"/>
+</associations>
+</Column>
+<Column name="ind_type" id="D2B03AE7-924D-2A18-45A8-0783E254F6B3">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbnatureplan</sourceObjSchema>
+<sourceObjName>ind_type</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7B169748-289E-40D7-876F-B3A215DC70F9" name="tbnatureplan_pkey">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbnatureplan_pkey</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:42 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C25759B9-208A-BCC2-3465-76A87CA216BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3A3198C9-CC70-B0B9-DA52-723B6D2AC9CE" name="fktbnatureplan01">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AD6A84FD-850C-DF3A-C156-FB373A2F7B8C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2F9A4FAD-73A9-57BD-E23D-F63D62E19D54" name="fktbnatureplan02">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59BAE2B8-E941-F8AB-B0F3-DA35F18A5E48"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

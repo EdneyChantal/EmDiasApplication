@@ -1,0 +1,42 @@
+{
+  "name": "AccountBank",
+  "fields": [
+    {
+      "fieldName": "nomeDaContaBancaria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorInicial",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "codContaExtrato",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "digito",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workSpace",
+      "otherEntityRelationshipName": "accountBank",
+      "relationshipName": "workSpace",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201128002957",
+  "entityTableName": "account_bank",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias"
+}

@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.eschantal.emdias",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "microservice",
+    "baseName": "emdias",
+    "packageName": "com.eschantal.emdias",
+    "packageFolder": "com/eschantal/emdias",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "Y2RjNDQxMzAzNzFkMzcyNTk1YTk2NGZjNDUzMmI3YzNkN2Y5N2ViYzUyOWZkOTM0NTAzODQ1YzQyMzJkNmExODdiOTlkODlhNmFkZmRjM2E3OTViNzhjNDY1NzVkM2Y2ZWQ2MmM2Y2ZhN2ZlMGJjMTA2MjExMjYxZGI0ZmFiOWE=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1604855290684,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br"],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true,
+    "lastLiquibaseTimestamp": 1611944856000
+  }
+}

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="81E413D6-DFB6-C090-42C1-B0DF724D90F5" containerWithKeyObject="3D23D96A-16A2-F0DB-E8D6-BF608A62C65D" localFKIndex="80E1547B-A908-A4CA-4CDF-23A533164CA1" name="fkconfigextrato01">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>fkconfigextrato01</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<referredTableLongName>public.tbworkspace</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8DED7795-E3AB-4506-F3F3-8812EEDFBA53</referredTableID>
+<keyObject>C48E2C5C-DC5A-DF92-6573-7E8443334ED0</keyObject>
+<referredKeyID>C48E2C5C-DC5A-DF92-6573-7E8443334ED0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_workspace</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

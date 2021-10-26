@@ -1,0 +1,37 @@
+{
+  "microservicePath": "../app/",
+  "name": "NaturePlan",
+  "fields": [
+    {
+      "fieldName": "descNaturePlan",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeNaturePlan",
+      "fieldType": "TypeNaturePlan",
+      "fieldValues": "R,D"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workSpace",
+      "otherEntityRelationshipName": "naturePlan",
+      "relationshipName": "workSpace",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201128002857",
+  "entityTableName": "nature_plan",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias",
+  "databaseType": "sql"
+}

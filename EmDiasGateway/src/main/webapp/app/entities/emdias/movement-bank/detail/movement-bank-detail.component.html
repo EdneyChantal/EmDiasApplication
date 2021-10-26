@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="movementBank">
+      <h2 data-cy="movementBankDetailsHeading">
+        <span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.detail.title">Movement Bank</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ movementBank.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementDate">Movement Date</span></dt>
+        <dd>
+          <span>{{ movementBank.movementDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.movementValue">Movement Value</span></dt>
+        <dd>
+          <span>{{ movementBank.movementValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.history">History</span></dt>
+        <dd>
+          <span>{{ movementBank.history }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.numberDoc">Number Doc</span></dt>
+        <dd>
+          <span>{{ movementBank.numberDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accid">Accid</span></dt>
+        <dd>
+          <span>{{ movementBank.accid }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.accountBank">Account Bank</span></dt>
+        <dd>
+          <div *ngIf="movementBank.accountBank">
+            <a [routerLink]="['/account-bank', movementBank.accountBank?.id, 'view']">{{ movementBank.accountBank?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasMovementBank.naturePlan">Nature Plan</span></dt>
+        <dd>
+          <div *ngIf="movementBank.naturePlan">
+            <a [routerLink]="['/nature-plan', movementBank.naturePlan?.id, 'view']">{{ movementBank.naturePlan?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/movement-bank', movementBank.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

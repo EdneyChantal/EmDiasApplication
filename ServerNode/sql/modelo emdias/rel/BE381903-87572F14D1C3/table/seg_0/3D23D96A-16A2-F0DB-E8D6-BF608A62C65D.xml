@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3D23D96A-16A2-F0DB-E8D6-BF608A62C65D" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbconfigextrato">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbconfigextrato</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idworkspace" id="22AA3781-0FED-49C2-81A7-4FAE4EA79092">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbconfigextrato</sourceObjSchema>
+<sourceObjName>idworkspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="81E413D6-DFB6-C090-42C1-B0DF724D90F5" referredColumn="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6"/>
+</associations>
+</Column>
+<Column name="tokenextrato" id="60466333-F683-D2A0-6CBD-B143C1B4EB9F">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbconfigextrato</sourceObjSchema>
+<sourceObjName>tokenextrato</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="idnatureplan" id="0BA1FC54-0F63-9714-3F59-51DA250D4E9E">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbconfigextrato</sourceObjSchema>
+<sourceObjName>idnatureplan</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="16A74E80-2799-D0F0-A03B-C3F1172FD079" referredColumn="C25759B9-208A-BCC2-3465-76A87CA216BA"/>
+</associations>
+</Column>
+<Column name="idconfigextrato" id="699ED44E-1837-E67E-573B-0A7E1CC8607C">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbconfigextrato</sourceObjSchema>
+<sourceObjName>idconfigextrato</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<defaultValue>nextval(&apos;tbconfigextrato_idconfigextrato_seq&apos;::regclass)</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AE716FBB-CEF4-F2E5-0D10-2AF5C5043AC4" name="pkconfigextrato">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:31:02 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="699ED44E-1837-E67E-573B-0A7E1CC8607C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AE66CC87-18D3-76D2-6DA9-2B2E802EB03E" name="fkconfigextrato02">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0BA1FC54-0F63-9714-3F59-51DA250D4E9E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="80E1547B-A908-A4CA-4CDF-23A533164CA1" name="fkconfigextrato01">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22AA3781-0FED-49C2-81A7-4FAE4EA79092"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity MovementBank.
+    -->
+    <changeSet id="20201128003057-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="id_accountbank"
+                                 baseTableName="tbmovementbank"
+                                 constraintName="fk_movement_bank_account_bank_id"
+                                 referencedColumnNames="id_accountbank"
+                                 referencedTableName="tbaccountbank"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_natureplan"
+                                 baseTableName="tbmovementbank"
+                                 constraintName="fk_movement_bank_nature_plan_id"
+                                 referencedColumnNames="id_natureplan"
+                                 referencedTableName="tbnatureplan"/>
+
+    </changeSet>
+</databaseChangeLog>

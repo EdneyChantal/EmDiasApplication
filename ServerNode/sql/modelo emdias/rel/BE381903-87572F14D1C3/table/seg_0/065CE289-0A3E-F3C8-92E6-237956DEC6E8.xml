@@ -1,0 +1,135 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="065CE289-0A3E-F3C8-92E6-237956DEC6E8" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbaccountbank">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbaccountbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_accountbank" id="5AB2D257-D40B-55BF-C14F-B12C59057AED">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>id_accountbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<defaultValue>nextval(&apos;tbaccountbank_id_accountbank_seq&apos;::regclass)</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_workspace" id="9BDB089A-94FC-ED15-87F9-B5F94B74FB0C">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>id_workspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7C451851-E43C-00C6-676F-A53C33DF5E32" referredColumn="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6"/>
+</associations>
+</Column>
+<Column name="ds_accountbank" id="B0EE0F67-97B5-35D6-29DB-A9890E5A1975">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>ds_accountbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="initial_value" id="092D3F84-1340-E5A0-C0F7-1FCF2A69DC64">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>initial_value</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,30,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cod_conta" id="829897BC-0B46-65A9-AC7F-08ABA2F7146F">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>cod_conta</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="digito" id="271ACC54-D7F1-8A19-1DA4-79193B2CDF0B">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbaccountbank</sourceObjSchema>
+<sourceObjName>digito</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="43EAB65A-F681-9CBA-1517-89143CC81821" name="tbaccountbank_pkey">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbaccountbank_pkey</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:40 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5AB2D257-D40B-55BF-C14F-B12C59057AED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F42D8025-1EE9-FA2C-01AD-28219EF78583" name="fktbaccountbank_work">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9BDB089A-94FC-ED15-87F9-B5F94B74FB0C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelo emdias" id="68487AB8-804E-8CAD-0641-7CC150B432A2" version="3.5">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:20:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>68487AB8-804E-8CAD-0641-7CC150B432A2</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="A774209A-78B0-34E3-16F2-121BF25A3D7C">
+<designStoragePath>C:\Users\edney\emdiasprojserver\sql</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="396FC1AD-DA11-4BAE-FE3B-E54A92B411B2">
+<designStoragePath>C:\Users\edney\emdiasprojserver\sql</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

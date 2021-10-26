@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-nature-plan-heading"
+        data-cy="NaturePlanCreateUpdateHeading"
+        jhiTranslate="emdiasgatewayApp.emdiasNaturePlan.home.createOrEditLabel"
+      >
+        Create or edit a Nature Plan
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasNaturePlan.descNaturePlan" for="field_descNaturePlan"
+            >Desc Nature Plan</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descNaturePlan"
+            id="field_descNaturePlan"
+            data-cy="descNaturePlan"
+            formControlName="descNaturePlan"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasNaturePlan.typeNaturePlan" for="field_typeNaturePlan"
+            >Type Nature Plan</label
+          >
+          <select
+            class="form-control"
+            name="typeNaturePlan"
+            formControlName="typeNaturePlan"
+            id="field_typeNaturePlan"
+            data-cy="typeNaturePlan"
+          >
+            <option [ngValue]="null">{{ 'emdiasgatewayApp.TypeNaturePlan.null' | translate }}</option>
+            <option value="R">{{ 'emdiasgatewayApp.TypeNaturePlan.R' | translate }}</option>
+            <option value="D">{{ 'emdiasgatewayApp.TypeNaturePlan.D' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="emdiasgatewayApp.emdiasNaturePlan.workSpace" for="field_workSpace"
+            >Work Space</label
+          >
+          <select class="form-control" id="field_workSpace" data-cy="workSpace" name="workSpace" formControlName="workSpace">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="workSpaceOption.id === editForm.get('workSpace')!.value?.id ? editForm.get('workSpace')!.value : workSpaceOption"
+              *ngFor="let workSpaceOption of workSpacesSharedCollection; trackBy: trackWorkSpaceById"
+            >
+              {{ workSpaceOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

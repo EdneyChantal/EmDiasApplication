@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7C451851-E43C-00C6-676F-A53C33DF5E32" containerWithKeyObject="065CE289-0A3E-F3C8-92E6-237956DEC6E8" localFKIndex="F42D8025-1EE9-FA2C-01AD-28219EF78583" name="fktbaccountbank_work">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>fktbaccountbank_work</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<referredTableLongName>public.tbworkspace</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8DED7795-E3AB-4506-F3F3-8812EEDFBA53</referredTableID>
+<keyObject>C48E2C5C-DC5A-DF92-6573-7E8443334ED0</keyObject>
+<referredKeyID>C48E2C5C-DC5A-DF92-6573-7E8443334ED0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_workspace</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,27 @@
+version: '2'
+services:
+    pgadmin-emdias:
+            network_mode: host
+            container_name: pgadim-emdias
+            image: dpage/pgadmin4
+            environment:
+                - PGADMIN_DEFAULT_EMAIL=edney.chantal@gmail.com
+                - PGADMIN_DEFAULT_PASSWORD=123
+                - JAVA_OPTS=-Xms128m -Xmx256m
+            ports:
+                - 15432:80
+
+    postgres-emdias:
+            network_mode: host
+            container_name: postgres-emdias
+            image: postgres
+            volumes:
+                - /home/eschantal/desenvolvimento/scripts-sefaz-al/meu-fluxo-caixa/filedatabase:/filedatabase
+            environment:
+                - DB_NAME=emdias
+                - POSTGRES_USER=emdias
+                - POSTGRES_PASSWORD=emdias
+                - JAVA_OPTS=-Xms128m -Xmx256m
+                - POSTGRES_HOST_AUTH_METHOD=trust
+            ports:
+                - 5432:5432

@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BD7BBC4B-B067-41B3-6172-938BD5225A8E" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbloginworkspace">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbloginworkspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idworklogin" id="EBBCB604-0795-CB0A-BEA4-A3A198A3B106">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbloginworkspace</sourceObjSchema>
+<sourceObjName>idworklogin</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="login" id="7206E4C8-D945-C808-00AC-A3205D6E4614">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbloginworkspace</sourceObjSchema>
+<sourceObjName>login</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="idworkspace" id="72293CDA-0385-49FE-C798-BB80A8D302DA">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbloginworkspace</sourceObjSchema>
+<sourceObjName>idworkspace</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="75225047-2FDB-AE7B-9108-7E92F5A1D180" referredColumn="3E73135A-EC6B-FDBB-6DC1-8E72B3EC8DA6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="52C0DD8E-7504-F0A1-98B2-8C59DCC00C7B" name="pkworklogin">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>pkworklogin</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EBBCB604-0795-CB0A-BEA4-A3A198A3B106"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9DFB4314-0CB0-7048-78EA-E250ED5E17EC" name="fkloginwork">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="72293CDA-0385-49FE-C798-BB80A8D302DA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

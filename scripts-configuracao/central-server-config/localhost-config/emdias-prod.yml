@@ -1,0 +1,35 @@
+# Common configuration shared between all applications
+configserver:
+  name: Docker JHipster Registry - EmDias
+  status: Connected to the JHipster Registry -Profile EmdiasProd
+
+jhipster:
+  security:
+    authentication:
+      jwt:
+        base64-secret: Y2UxODk5MzY1ZDU4ZmI0NmM2ZWI5OWVhNzdiMzY2ODE2ZTg1ZmNhMGE2Y2M3OTAxYmJhYjA4MWVmNTYwNzdhN2Q2NDU2ZWYwNTI0MDE4Zjk3N2JhYjIxYTMwMWM1NTlkMjQ1M2I0OWI4ZDZjNmM0ZTc5YTJiMmNhMzg2NjMzZTQ=
+
+
+liquibase:
+    enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+spring:
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/emdias
+    username: emdias
+    password: emdias
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  jpa:
+    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL10Dialect
+    show-sql: true

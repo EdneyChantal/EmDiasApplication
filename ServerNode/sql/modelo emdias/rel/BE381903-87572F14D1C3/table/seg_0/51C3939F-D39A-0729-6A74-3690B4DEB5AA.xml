@@ -1,0 +1,163 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="51C3939F-D39A-0729-6A74-3690B4DEB5AA" schemaObject="EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB" name="tbmovementbank">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbmovementbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idmovementbank" id="CB8300F3-181F-2D6F-01C9-8A5BD7C69AF1">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>idmovementbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<defaultValue>nextval(&apos;tbmovementbank_idmovementbank_seq&apos;::regclass)</defaultValue>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_accountbank" id="E2CEBA5A-A43E-579D-ABB7-5E4EEA255CFB">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>id_accountbank</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6FBD7723-6696-5EB6-98AF-92B958073BA9" referredColumn="5AB2D257-D40B-55BF-C14F-B12C59057AED"/>
+</associations>
+</Column>
+<Column name="id_natureplan" id="281CF173-31BD-F816-4F81-AA1E4768E424">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>id_natureplan</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="848D2115-E44D-25D5-7797-556F9A233D74" referredColumn="C25759B9-208A-BCC2-3465-76A87CA216BA"/>
+</associations>
+</Column>
+<Column name="movementdate" id="6BD2DF6A-8045-7AC7-B575-121B69D2CEB8">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>movementdate</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="movementvalue" id="7A68B993-FF7E-8D69-C6BE-996194E96917">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>movementvalue</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,30,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="history" id="A16FB095-2D43-852C-1FB8-009092583E55">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>history</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="number_doc" id="3A82506C-2660-AA9D-67B7-51BE640AB92B">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>tbmovementbank</sourceObjSchema>
+<sourceObjName>number_doc</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:52 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<importedID>1480451D-154F-1E60-84CC-9E9A3E829542</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CF2D164F-C900-D29F-1CFB-1844122B65C2" name="tbmovementbank_pkey">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>tbmovementbank_pkey</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:41 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB8300F3-181F-2D6F-01C9-8A5BD7C69AF1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="608C7D0E-4031-6904-6ACF-ACA334506DFF" name="fkmovementbank01">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2CEBA5A-A43E-579D-ABB7-5E4EEA255CFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CF86C815-BB2D-DD9C-629C-FD487A89F108" name="fkmovementbank02">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="281CF173-31BD-F816-4F81-AA1E4768E424"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="tbaccountbank" directorySegmentName="seg_0" id="065CE289-0A3E-F3C8-92E6-237956DEC6E8">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<schemaObject>EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="initial_value" id="092D3F84-1340-E5A0-C0F7-1FCF2A69DC64">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="digito" id="271ACC54-D7F1-8A19-1DA4-79193B2CDF0B">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_accountbank" id="5AB2D257-D40B-55BF-C14F-B12C59057AED">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<defaultValue>nextval(&apos;tbaccountbank_id_accountbank_seq&apos;::regclass)</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="cod_conta" id="829897BC-0B46-65A9-AC7F-08ABA2F7146F">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_workspace" id="9BDB089A-94FC-ED15-87F9-B5F94B74FB0C">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ds_accountbank" id="B0EE0F67-97B5-35D6-29DB-A9890E5A1975">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fktbaccountbank_work" id="F42D8025-1EE9-FA2C-01AD-28219EF78583">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="tbaccountbank_pkey" id="43EAB65A-F681-9CBA-1517-89143CC81821">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:03:33 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

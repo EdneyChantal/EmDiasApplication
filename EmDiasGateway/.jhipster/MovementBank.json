@@ -1,0 +1,55 @@
+{
+  "microservicePath": "../app/",
+  "name": "MovementBank",
+  "fields": [
+    {
+      "fieldName": "movementDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "movementValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "history",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numberDoc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accid",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "accountBank",
+      "otherEntityRelationshipName": "movementBank",
+      "relationshipName": "accountBank",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "naturePlan",
+      "otherEntityRelationshipName": "movementBank",
+      "relationshipName": "naturePlan",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201128003057",
+  "entityTableName": "movement_bank",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias",
+  "databaseType": "sql"
+}

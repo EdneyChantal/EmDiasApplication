@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="accountBank">
+      <h2 data-cy="accountBankDetailsHeading"><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.detail.title">Account Bank</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ accountBank.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.nomeDaContaBancaria">Nome Da Conta Bancaria</span></dt>
+        <dd>
+          <span>{{ accountBank.nomeDaContaBancaria }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.valorInicial">Valor Inicial</span></dt>
+        <dd>
+          <span>{{ accountBank.valorInicial }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.codContaExtrato">Cod Conta Extrato</span></dt>
+        <dd>
+          <span>{{ accountBank.codContaExtrato }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.digito">Digito</span></dt>
+        <dd>
+          <span>{{ accountBank.digito }}</span>
+        </dd>
+        <dt><span jhiTranslate="emdiasgatewayApp.emdiasAccountBank.workSpace">Work Space</span></dt>
+        <dd>
+          <div *ngIf="accountBank.workSpace">
+            <a [routerLink]="['/work-space', accountBank.workSpace?.id, 'view']">{{ accountBank.workSpace?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/account-bank', accountBank.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

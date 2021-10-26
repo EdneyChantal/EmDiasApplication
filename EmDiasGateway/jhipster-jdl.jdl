@@ -1,0 +1,59 @@
+
+
+entity WorkSpace {
+   nome String
+}
+entity NaturePlan {
+   descNaturePlan String ,
+   typeNaturePlan TypeNaturePlan,
+
+}
+
+entity AccountBank {
+   nomeDaContaBancaria String ,
+   valorInicial Double,
+   codContaExtrato String ,
+   digito String
+}
+
+entity MovementBank {
+   movementDate ZonedDateTime,
+   movementValue Double,
+   history String ,
+   numberDoc String,
+   accid String
+}
+
+enum TypeNaturePlan {
+   R,D
+}
+
+
+entity Projeto
+{ nomeProjeto String ,
+  dataInicial ZonedDateTime,
+  dataFinal   ZonedDateTime,
+}
+
+entity ProjetoNatureza
+{ valorPrevisto  Double,
+  valorRealizado Double,
+  dia            ZonedDatetime,
+}
+
+entity UserWorkSpace
+{ idUser Number }
+
+relationship ManyToOne {
+	NaturePlan {IdWorkSpace} to WorkSpace,
+    AccountBank {IdWorkSpace}  to WorkSpace,
+    MovementBank {IdAccountBank} to AccountBank,
+    MovementBank {IdNaturePlan} to NaturePlan,
+    Projeto  {IdWorkSpace}   to WorkSpace,
+    ProjetoNatureza {IdNaturePlan} to NaturePlan,
+    ProjetoNatureza {IdProjeto} to Projeto
+    UserWorkSpace {IdWorkSpace} to WorkSpace
+}
+
+service all with serviceImpl
+dto all with mapstruct

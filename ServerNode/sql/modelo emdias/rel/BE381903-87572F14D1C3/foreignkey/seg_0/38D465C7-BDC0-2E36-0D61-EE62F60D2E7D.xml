@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="38D465C7-BDC0-2E36-0D61-EE62F60D2E7D" containerWithKeyObject="656C1824-DCA3-4E86-A445-9E0549B5213C" localFKIndex="3A3198C9-CC70-B0B9-DA52-723B6D2AC9CE" name="fktbnatureplan01">
+<sourceConnName>Postgresl</sourceConnName>
+<sourceObjSchema>public</sourceObjSchema>
+<sourceObjName>fktbnatureplan01</sourceObjName>
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:43 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<referredTableLongName>public.tbnatureplan</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>656C1824-DCA3-4E86-A445-9E0549B5213C</referredTableID>
+<keyObject>7B169748-289E-40D7-876F-B3A215DC70F9</keyObject>
+<referredKeyID>7B169748-289E-40D7-876F-B3A215DC70F9</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id_natureplan</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

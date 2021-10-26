@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="tbuser" directorySegmentName="seg_0" id="427CA053-EC7B-BAA2-EC0A-7A1A52C02DCF">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<schemaObject>EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="email" id="3542E0A2-2304-B4C5-81E8-8EA2453FF855">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="password" id="DCA5CB5D-2E9F-19A6-1363-4EB3C645F7C5">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="login" id="EF4BCB64-3E6A-A009-EA15-5F8927534720">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="tbuser_pkey" id="DDA36203-4310-C8FE-CCB1-EA698F4424D7">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

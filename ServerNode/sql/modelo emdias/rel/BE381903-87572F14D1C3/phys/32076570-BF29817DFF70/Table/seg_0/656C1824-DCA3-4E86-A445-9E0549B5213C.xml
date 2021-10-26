@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="tbnatureplan" directorySegmentName="seg_0" id="656C1824-DCA3-4E86-A445-9E0549B5213C">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<schemaObject>EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id_workspace" id="59BAE2B8-E941-F8AB-B0F3-DA35F18A5E48">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_natureplan_father" id="AD6A84FD-850C-DF3A-C156-FB373A2F7B8C">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_natureplan" id="C25759B9-208A-BCC2-3465-76A87CA216BA">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<defaultValue>nextval(&apos;tbnatureplan_id_natureplan_seq&apos;::regclass)</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ind_type" id="D2B03AE7-924D-2A18-45A8-0783E254F6B3">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ds_natureplan" id="D9861A21-55D7-BA22-46B7-7CCB5E8C5425">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fktbnatureplan02" id="2F9A4FAD-73A9-57BD-E23D-F63D62E19D54">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fktbnatureplan01" id="3A3198C9-CC70-B0B9-DA52-723B6D2AC9CE">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="tbnatureplan_pkey" id="7B169748-289E-40D7-876F-B3A215DC70F9">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 09:29:44 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

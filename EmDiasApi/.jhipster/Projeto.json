@@ -1,0 +1,38 @@
+{
+  "name": "Projeto",
+  "fields": [
+    {
+      "fieldName": "nomeProjeto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataInicial",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dataFinal",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workSpace",
+      "otherEntityRelationshipName": "workspaceid",
+      "relationshipName": "workSpace",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201208130339",
+  "entityTableName": "projeto",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias"
+}

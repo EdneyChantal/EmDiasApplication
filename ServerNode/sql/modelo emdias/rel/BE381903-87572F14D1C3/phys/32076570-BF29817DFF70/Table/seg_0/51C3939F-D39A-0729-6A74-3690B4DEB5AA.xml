@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="tbmovementbank" directorySegmentName="seg_0" id="51C3939F-D39A-0729-6A74-3690B4DEB5AA">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<schemaObject>EE8BD51C-50EF-4F4B-E690-F8A26DC20FFB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id_natureplan" id="281CF173-31BD-F816-4F81-AA1E4768E424">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="number_doc" id="3A82506C-2660-AA9D-67B7-51BE640AB92B">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="movementdate" id="6BD2DF6A-8045-7AC7-B575-121B69D2CEB8">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="movementvalue" id="7A68B993-FF7E-8D69-C6BE-996194E96917">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="history" id="A16FB095-2D43-852C-1FB8-009092583E55">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="idmovementbank" id="CB8300F3-181F-2D6F-01C9-8A5BD7C69AF1">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<defaultValue>nextval(&apos;tbmovementbank_idmovementbank_seq&apos;::regclass)</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="id_accountbank" id="E2CEBA5A-A43E-579D-ABB7-5E4EEA255CFB">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fkmovementbank01" id="608C7D0E-4031-6904-6ACF-ACA334506DFF">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fkmovementbank02" id="CF86C815-BB2D-DD9C-629C-FD487A89F108">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="tbmovementbank_pkey" id="CF2D164F-C900-D29F-1CFB-1844122B65C2">
+<createdBy>edney</createdBy>
+<createdTime>2020-07-10 10:22:50 UTC</createdTime>
+<ownerDesignName>modelo emdias</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

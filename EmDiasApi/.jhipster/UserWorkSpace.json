@@ -1,0 +1,31 @@
+{
+  "name": "UserWorkSpace",
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workSpace",
+      "otherEntityRelationshipName": "idWorkSpace",
+      "relationshipName": "workSpace",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "jhiUser",
+      "otherEntityRelationshipName": "login",
+      "relationshipName": "User",
+      "otherEntityField": "login"
+    }
+  ],
+  "changelogDate": "20201128002757",
+  "entityTableName": "tbuserworkspace",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "emdias",
+  "applications": "*",
+  "microserviceName": "emdias"
+}
