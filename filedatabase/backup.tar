@@ -1,0 +1,3178 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.1 (Debian 13.1-1.pgdg100+1)
+-- Dumped by pg_dump version 13.1 (Debian 13.1-1.pgdg100+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: btree_gin; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gin WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION btree_gin; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION btree_gin IS 'support for indexing common datatypes in GIN';
+
+
+--
+-- Name: btree_gist; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
+
+--
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
+
+
+--
+-- Name: cube; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS cube WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION cube; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION cube IS 'data type for multidimensional cubes';
+
+
+--
+-- Name: dblink; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION dblink; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION dblink IS 'connect to other PostgreSQL databases from within a database';
+
+
+--
+-- Name: dict_int; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dict_int WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION dict_int; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION dict_int IS 'text search dictionary template for integers';
+
+
+--
+-- Name: dict_xsyn; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dict_xsyn WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION dict_xsyn; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION dict_xsyn IS 'text search dictionary template for extended synonym processing';
+
+
+--
+-- Name: earthdistance; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS earthdistance WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION earthdistance; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION earthdistance IS 'calculate great-circle distances on the surface of the Earth';
+
+
+--
+-- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
+
+
+--
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
+--
+-- Name: intarray; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS intarray WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION intarray; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION intarray IS 'functions, operators, and index support for 1-D arrays of integers';
+
+
+--
+-- Name: ltree; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS ltree WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION ltree; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION ltree IS 'data type for hierarchical tree-like structures';
+
+
+--
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
+
+
+--
+-- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_trgm; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pg_trgm IS 'text similarity measurement and index searching based on trigrams';
+
+
+--
+-- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
+
+
+--
+-- Name: pgrowlocks; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgrowlocks WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pgrowlocks; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pgrowlocks IS 'show row-level locking information';
+
+
+--
+-- Name: pgstattuple; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgstattuple WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pgstattuple; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pgstattuple IS 'show tuple-level statistics';
+
+
+--
+-- Name: tablefunc; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS tablefunc WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION tablefunc; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION tablefunc IS 'functions that manipulate whole tables, including crosstab';
+
+
+--
+-- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION unaccent; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+
+
+--
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+--
+-- Name: xml2; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS xml2 WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION xml2; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION xml2 IS 'XPath querying and XSLT';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: databasechangelog; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.databasechangelog (
+    id character varying(255) NOT NULL,
+    author character varying(255) NOT NULL,
+    filename character varying(255) NOT NULL,
+    dateexecuted timestamp without time zone NOT NULL,
+    orderexecuted integer NOT NULL,
+    exectype character varying(10) NOT NULL,
+    md5sum character varying(35),
+    description character varying(255),
+    comments character varying(255),
+    tag character varying(255),
+    liquibase character varying(20),
+    contexts character varying(255),
+    labels character varying(255),
+    deployment_id character varying(10)
+);
+
+
+ALTER TABLE public.databasechangelog OWNER TO emdias;
+
+--
+-- Name: databasechangeloglock; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.databasechangeloglock (
+    id integer NOT NULL,
+    locked boolean NOT NULL,
+    lockgranted timestamp without time zone,
+    lockedby character varying(255)
+);
+
+
+ALTER TABLE public.databasechangeloglock OWNER TO emdias;
+
+--
+-- Name: jhi_authority; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_authority (
+    name character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.jhi_authority OWNER TO emdias;
+
+--
+-- Name: jhi_persistent_audit_event; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_persistent_audit_event (
+    event_id bigint NOT NULL,
+    event_date timestamp without time zone,
+    event_type character varying(255),
+    principal character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.jhi_persistent_audit_event OWNER TO emdias;
+
+--
+-- Name: jhi_persistent_audit_evt_data; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_persistent_audit_evt_data (
+    event_id bigint NOT NULL,
+    value character varying(255),
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.jhi_persistent_audit_evt_data OWNER TO emdias;
+
+--
+-- Name: jhi_user; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_user (
+    id bigint NOT NULL,
+    created_by character varying(50) NOT NULL,
+    created_date timestamp without time zone,
+    last_modified_by character varying(50),
+    last_modified_date timestamp without time zone,
+    activated boolean NOT NULL,
+    activation_key character varying(20),
+    email character varying(254),
+    first_name character varying(50),
+    image_url character varying(256),
+    lang_key character varying(10),
+    last_name character varying(50),
+    login character varying(50) NOT NULL,
+    password_hash character varying(60) NOT NULL,
+    reset_date timestamp without time zone,
+    reset_key character varying(20)
+);
+
+
+ALTER TABLE public.jhi_user OWNER TO emdias;
+
+--
+-- Name: jhi_user_authority; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_user_authority (
+    user_id bigint NOT NULL,
+    authority_name character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.jhi_user_authority OWNER TO emdias;
+
+--
+-- Name: jhi_user_work_spaces; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.jhi_user_work_spaces (
+    user_id bigint NOT NULL,
+    work_spaces_id_workspace bigint NOT NULL
+);
+
+
+ALTER TABLE public.jhi_user_work_spaces OWNER TO emdias;
+
+--
+-- Name: sequence_generator; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.sequence_generator
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sequence_generator OWNER TO emdias;
+
+--
+-- Name: tbaccountbank; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbaccountbank (
+    id_accountbank integer NOT NULL,
+    id_workspace integer,
+    ds_accountbank character varying(50),
+    initial_value numeric(30,2),
+    cod_conta character varying(30),
+    digito character varying(10),
+    tipo character varying(10) NOT NULL
+);
+
+
+ALTER TABLE public.tbaccountbank OWNER TO emdias;
+
+--
+-- Name: tbaccountbank_id_accountbank_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.tbaccountbank_id_accountbank_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbaccountbank_id_accountbank_seq OWNER TO emdias;
+
+--
+-- Name: tbaccountbank_id_accountbank_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: emdias
+--
+
+ALTER SEQUENCE public.tbaccountbank_id_accountbank_seq OWNED BY public.tbaccountbank.id_accountbank;
+
+
+--
+-- Name: tbconfigextrato; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbconfigextrato (
+    idworkspace integer NOT NULL,
+    tokenextrato character varying(100) NOT NULL,
+    idnatureplan integer,
+    idconfigextrato integer NOT NULL,
+    id_accountank integer,
+    ind_not_imp character varying,
+    CONSTRAINT fck_configext_ind CHECK (((ind_not_imp)::text = 'S'::text))
+);
+
+
+ALTER TABLE public.tbconfigextrato OWNER TO emdias;
+
+--
+-- Name: tbconfigextrato_idconfigextrato_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.tbconfigextrato_idconfigextrato_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbconfigextrato_idconfigextrato_seq OWNER TO emdias;
+
+--
+-- Name: tbconfigextrato_idconfigextrato_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: emdias
+--
+
+ALTER SEQUENCE public.tbconfigextrato_idconfigextrato_seq OWNED BY public.tbconfigextrato.idconfigextrato;
+
+
+--
+-- Name: tbloginworkspace; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbloginworkspace (
+    idworklogin integer NOT NULL,
+    login character varying(100),
+    idworkspace integer
+);
+
+
+ALTER TABLE public.tbloginworkspace OWNER TO emdias;
+
+--
+-- Name: tbloginworkspace_idworklogin_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+ALTER TABLE public.tbloginworkspace ALTER COLUMN idworklogin ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tbloginworkspace_idworklogin_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: tbmovementbank; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbmovementbank (
+    idmovementbank integer NOT NULL,
+    id_accountbank integer,
+    id_natureplan integer,
+    movementdate date NOT NULL,
+    movementvalue numeric(30,2),
+    history character varying(200),
+    number_doc character varying(100),
+    accid character varying(100)
+);
+
+
+ALTER TABLE public.tbmovementbank OWNER TO emdias;
+
+--
+-- Name: tbmovementbank_idmovementbank_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.tbmovementbank_idmovementbank_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbmovementbank_idmovementbank_seq OWNER TO emdias;
+
+--
+-- Name: tbmovementbank_idmovementbank_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: emdias
+--
+
+ALTER SEQUENCE public.tbmovementbank_idmovementbank_seq OWNED BY public.tbmovementbank.idmovementbank;
+
+
+--
+-- Name: tbnatureplan; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbnatureplan (
+    id_natureplan integer NOT NULL,
+    id_workspace integer NOT NULL,
+    ds_natureplan character varying(50),
+    id_natureplan_father integer,
+    ind_type character varying(1) NOT NULL,
+    ind_control_orcamento character varying(2)
+);
+
+
+ALTER TABLE public.tbnatureplan OWNER TO emdias;
+
+--
+-- Name: tbnatureplan_id_natureplan_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.tbnatureplan_id_natureplan_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbnatureplan_id_natureplan_seq OWNER TO emdias;
+
+--
+-- Name: tbnatureplan_id_natureplan_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: emdias
+--
+
+ALTER SEQUENCE public.tbnatureplan_id_natureplan_seq OWNED BY public.tbnatureplan.id_natureplan;
+
+
+--
+-- Name: tbprojeto; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbprojeto (
+    id bigint NOT NULL,
+    data_final date,
+    data_inicial date,
+    nome_projeto character varying(255),
+    id_workspace bigint
+);
+
+
+ALTER TABLE public.tbprojeto OWNER TO emdias;
+
+--
+-- Name: tbprojetonatureza; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbprojetonatureza (
+    id bigint NOT NULL,
+    valor_previsto double precision,
+    valor_realizado double precision,
+    id_natureplan bigint,
+    id_projeto bigint NOT NULL,
+    dia date NOT NULL
+);
+
+
+ALTER TABLE public.tbprojetonatureza OWNER TO emdias;
+
+--
+-- Name: tbuser; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbuser (
+    login character varying(100) NOT NULL,
+    password character varying(10),
+    email character varying(50)
+);
+
+
+ALTER TABLE public.tbuser OWNER TO emdias;
+
+--
+-- Name: tbuserworkspace; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbuserworkspace (
+    login bigint NOT NULL,
+    idworkspace bigint NOT NULL
+);
+
+
+ALTER TABLE public.tbuserworkspace OWNER TO emdias;
+
+--
+-- Name: tbworkspace; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.tbworkspace (
+    id_workspace integer NOT NULL,
+    ds_workspace character varying(50)
+);
+
+
+ALTER TABLE public.tbworkspace OWNER TO emdias;
+
+--
+-- Name: tbworkspace_id_workspace_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.tbworkspace_id_workspace_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbworkspace_id_workspace_seq OWNER TO emdias;
+
+--
+-- Name: tbworkspace_id_workspace_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: emdias
+--
+
+ALTER SEQUENCE public.tbworkspace_id_workspace_seq OWNED BY public.tbworkspace.id_workspace;
+
+
+--
+-- Name: user_work_space; Type: TABLE; Schema: public; Owner: emdias
+--
+
+CREATE TABLE public.user_work_space (
+    id bigint NOT NULL,
+    login bigint,
+    idworkspace bigint
+);
+
+
+ALTER TABLE public.user_work_space OWNER TO emdias;
+
+--
+-- Name: vw_alimentacao_curva_s; Type: VIEW; Schema: public; Owner: emdias
+--
+
+CREATE VIEW public.vw_alimentacao_curva_s AS
+ SELECT ger.mes,
+    ger.movementdate,
+    sum(
+        CASE
+            WHEN (ger.tipo = 'Previsto'::text) THEN ger.valor
+            ELSE (0)::numeric
+        END) AS valor_previsto,
+    sum(
+        CASE
+            WHEN (ger.tipo = 'Realizado'::text) THEN ger.valor
+            ELSE (0)::numeric
+        END) AS valor_realizado,
+    sum(
+        CASE
+            WHEN (ger.tipo = 'Realizado'::text) THEN ger.valor
+            ELSE (ger.valor * ('-1'::integer)::numeric)
+        END) AS diferenca
+   FROM ( SELECT date_trunc('month'::text, (tbmovementbank.movementdate)::timestamp with time zone) AS mes,
+            'Realizado'::text AS tipo,
+            tbmovementbank.movementdate,
+            (( SELECT sum(mk.movementvalue) AS sum
+                   FROM public.tbmovementbank mk
+                  WHERE ((mk.id_natureplan = 6) AND (mk.movementdate >= date_trunc('month'::text, (tbmovementbank.movementdate)::timestamp with time zone)) AND (mk.movementdate <= tbmovementbank.movementdate))) * ('-1'::integer)::numeric) AS valor
+           FROM ((public.tbmovementbank tbmovementbank
+             LEFT JOIN public.tbnatureplan tbnatureplan ON ((tbmovementbank.id_natureplan = tbnatureplan.id_natureplan)))
+             JOIN public.tbaccountbank tbaccountbank ON ((tbmovementbank.id_accountbank = tbaccountbank.id_accountbank)))
+          WHERE (tbnatureplan.id_natureplan = 6)
+          GROUP BY tbmovementbank.movementdate
+        UNION
+         SELECT date_trunc('month'::text, (tbmovementbank.movementdate)::timestamp with time zone) AS mes,
+            'Previsto'::text AS tipo,
+            tbmovementbank.movementdate,
+            (to_number(to_char((date_trunc('hour'::text, (tbmovementbank.movementdate)::timestamp with time zone) - date_trunc('month'::text, (tbmovementbank.movementdate)::timestamp with time zone)), 'DD'::text), '999'::text) * ((2500 / 30))::numeric) AS valor
+           FROM (public.tbmovementbank tbmovementbank
+             LEFT JOIN public.tbnatureplan tbnatureplan ON ((tbmovementbank.id_natureplan = tbnatureplan.id_natureplan))),
+            public.tbaccountbank tbaccountbank
+          WHERE ((tbmovementbank.id_accountbank = tbaccountbank.id_accountbank) AND (tbnatureplan.id_natureplan = 6))
+          GROUP BY tbmovementbank.movementdate) ger
+  GROUP BY ger.mes, ger.movementdate
+  ORDER BY ger.mes, ger.movementdate;
+
+
+ALTER TABLE public.vw_alimentacao_curva_s OWNER TO emdias;
+
+--
+-- Name: vw_saldo_total; Type: VIEW; Schema: public; Owner: emdias
+--
+
+CREATE VIEW public.vw_saldo_total AS
+ SELECT sum((x.movim + x.inicial)) AS total
+   FROM ( SELECT tbmovementbank.id_accountbank,
+            sum(tbmovementbank.movementvalue) AS movim,
+            COALESCE(tbaccountbank.initial_value, (0)::numeric) AS inicial
+           FROM public.tbmovementbank tbmovementbank,
+            public.tbaccountbank tbaccountbank
+          WHERE (tbmovementbank.id_accountbank = tbaccountbank.id_accountbank)
+          GROUP BY tbmovementbank.id_accountbank, COALESCE(tbaccountbank.initial_value, (0)::numeric)) x;
+
+
+ALTER TABLE public.vw_saldo_total OWNER TO emdias;
+
+--
+-- Name: vw_supermarket_outubro; Type: VIEW; Schema: public; Owner: emdias
+--
+
+CREATE VIEW public.vw_supermarket_outubro AS
+ SELECT 'Realizado'::text AS tipo,
+    tbmovementbank.movementdate,
+    (( SELECT sum(mk.movementvalue) AS sum
+           FROM public.tbmovementbank mk
+          WHERE ((mk.id_natureplan = 6) AND (mk.movementdate >= to_date('24-09-20'::text, 'dd-mm-yy'::text)) AND (mk.movementdate <= tbmovementbank.movementdate))) * ('-1'::integer)::numeric) AS valor
+   FROM ((public.tbmovementbank tbmovementbank
+     LEFT JOIN public.tbnatureplan tbnatureplan ON ((tbmovementbank.id_natureplan = tbnatureplan.id_natureplan)))
+     JOIN public.tbaccountbank tbaccountbank ON ((tbmovementbank.id_accountbank = tbaccountbank.id_accountbank)))
+  WHERE ((tbnatureplan.id_natureplan = 6) AND (tbmovementbank.movementdate >= to_date('24-09-20'::text, 'dd-mm-yy'::text)))
+  GROUP BY tbmovementbank.movementdate
+UNION
+ SELECT 'Previsto'::text AS tipo,
+    (tbmovementbank.movementdate)::date AS movementdate,
+    ((to_number(to_char((date_trunc('hour'::text, (tbmovementbank.movementdate)::timestamp with time zone) - (to_date('24-09-20'::text, 'dd-mm-yy'::text))::timestamp with time zone), 'DD'::text), '999'::text) + (1)::numeric) * ((2000 / 30))::numeric) AS valor
+   FROM ( SELECT generate_series('2020-09-24 00:00:00'::timestamp without time zone, '2020-10-24 00:00:00'::timestamp without time zone, '1 day'::interval) AS movementdate) tbmovementbank
+  GROUP BY tbmovementbank.movementdate
+  ORDER BY 1, 2;
+
+
+ALTER TABLE public.vw_supermarket_outubro OWNER TO emdias;
+
+--
+-- Name: workspace_seq; Type: SEQUENCE; Schema: public; Owner: emdias
+--
+
+CREATE SEQUENCE public.workspace_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.workspace_seq OWNER TO emdias;
+
+--
+-- Name: tbaccountbank id_accountbank; Type: DEFAULT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbaccountbank ALTER COLUMN id_accountbank SET DEFAULT nextval('public.tbaccountbank_id_accountbank_seq'::regclass);
+
+
+--
+-- Name: tbconfigextrato idconfigextrato; Type: DEFAULT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbconfigextrato ALTER COLUMN idconfigextrato SET DEFAULT nextval('public.tbconfigextrato_idconfigextrato_seq'::regclass);
+
+
+--
+-- Name: tbmovementbank idmovementbank; Type: DEFAULT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbmovementbank ALTER COLUMN idmovementbank SET DEFAULT nextval('public.tbmovementbank_idmovementbank_seq'::regclass);
+
+
+--
+-- Name: tbnatureplan id_natureplan; Type: DEFAULT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbnatureplan ALTER COLUMN id_natureplan SET DEFAULT nextval('public.tbnatureplan_id_natureplan_seq'::regclass);
+
+
+--
+-- Name: tbworkspace id_workspace; Type: DEFAULT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbworkspace ALTER COLUMN id_workspace SET DEFAULT nextval('public.tbworkspace_id_workspace_seq'::regclass);
+
+
+--
+-- Data for Name: databasechangelog; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.databasechangelog (id, author, filename, dateexecuted, orderexecuted, exectype, md5sum, description, comments, tag, liquibase, contexts, labels, deployment_id) FROM stdin;
+00000000000000	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:19.752976	1	EXECUTED	8:b8c27d9dc8db18b5de87cdb8c38a416b	createSequence sequenceName=sequence_generator		\N	3.9.0	\N	\N	5415579515
+00000000000001	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:20.526862	2	EXECUTED	8:3c2fb2f2606417392082d55679e608bd	createTable tableName=jhi_persistent_audit_event; createTable tableName=jhi_persistent_audit_evt_data; addPrimaryKey tableName=jhi_persistent_audit_evt_data; createIndex indexName=idx_persistent_audit_event, tableName=jhi_persistent_audit_event; c...		\N	3.9.0	\N	\N	5415579515
+00000000000000	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:19.752976	1	EXECUTED	8:b8c27d9dc8db18b5de87cdb8c38a416b	createSequence sequenceName=sequence_generator		\N	3.9.0	\N	\N	5415579515
+00000000000001	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:20.526862	2	EXECUTED	8:3c2fb2f2606417392082d55679e608bd	createTable tableName=jhi_persistent_audit_event; createTable tableName=jhi_persistent_audit_evt_data; addPrimaryKey tableName=jhi_persistent_audit_evt_data; createIndex indexName=idx_persistent_audit_event, tableName=jhi_persistent_audit_event; c...		\N	3.9.0	\N	\N	5415579515
+00000000000000	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:19.752976	1	EXECUTED	8:b8c27d9dc8db18b5de87cdb8c38a416b	createSequence sequenceName=sequence_generator		\N	3.9.0	\N	\N	5415579515
+00000000000001	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:20.526862	2	EXECUTED	8:3c2fb2f2606417392082d55679e608bd	createTable tableName=jhi_persistent_audit_event; createTable tableName=jhi_persistent_audit_evt_data; addPrimaryKey tableName=jhi_persistent_audit_evt_data; createIndex indexName=idx_persistent_audit_event, tableName=jhi_persistent_audit_event; c...		\N	3.9.0	\N	\N	5415579515
+00000000000000	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:19.752976	1	EXECUTED	8:b8c27d9dc8db18b5de87cdb8c38a416b	createSequence sequenceName=sequence_generator		\N	3.9.0	\N	\N	5415579515
+00000000000001	jhipster	config/liquibase/changelog/00000000000000_initial_schema.xml	2020-11-15 01:46:20.526862	2	EXECUTED	8:3c2fb2f2606417392082d55679e608bd	createTable tableName=jhi_persistent_audit_event; createTable tableName=jhi_persistent_audit_evt_data; addPrimaryKey tableName=jhi_persistent_audit_evt_data; createIndex indexName=idx_persistent_audit_event, tableName=jhi_persistent_audit_event; c...		\N	3.9.0	\N	\N	5415579515
+\.
+
+
+--
+-- Data for Name: databasechangeloglock; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.databasechangeloglock (id, locked, lockgranted, lockedby) FROM stdin;
+1	f	\N	\N
+\.
+
+
+--
+-- Data for Name: jhi_authority; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_authority (name) FROM stdin;
+ROLE_USER
+ROLE_ADMIN
+\.
+
+
+--
+-- Data for Name: jhi_persistent_audit_event; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_persistent_audit_event (event_id, event_date, event_type, principal) FROM stdin;
+1055	2021-01-29 19:57:59.587	AUTHENTICATION_SUCCESS	edney
+1101	2021-01-30 16:27:10.259	AUTHENTICATION_SUCCESS	edney
+1102	2021-01-30 17:23:03.511	AUTHENTICATION_SUCCESS	edney
+1103	2021-01-30 18:29:41.832	AUTHENTICATION_SUCCESS	edney
+1104	2021-01-30 18:41:28.95	AUTHENTICATION_FAILURE	edney
+1105	2021-01-30 18:41:37.356	AUTHENTICATION_SUCCESS	edney
+1106	2021-01-30 18:42:19.891	AUTHENTICATION_SUCCESS	edney
+1107	2021-01-30 18:55:35.452	AUTHENTICATION_SUCCESS	edney
+1108	2021-01-30 18:57:03.322	AUTHENTICATION_SUCCESS	edney
+1109	2021-01-30 19:01:17.584	AUTHENTICATION_SUCCESS	edney
+1301	2021-01-30 19:14:38.377	AUTHENTICATION_SUCCESS	edney
+1351	2021-01-30 19:15:50.468	AUTHENTICATION_SUCCESS	edney
+1401	2021-01-30 19:27:15.331	AUTHENTICATION_SUCCESS	edney
+1451	2021-01-30 19:28:39.414	AUTHENTICATION_SUCCESS	edney
+1501	2021-01-30 19:32:19.298	AUTHENTICATION_SUCCESS	edney
+1551	2021-01-30 19:39:19.156	AUTHENTICATION_SUCCESS	edney
+1601	2021-01-30 20:01:47.883	AUTHENTICATION_SUCCESS	edney
+1651	2021-02-01 23:42:07.303	AUTHENTICATION_SUCCESS	edney
+1652	2021-02-01 23:42:08.867	AUTHENTICATION_SUCCESS	edney
+1653	2021-02-01 23:42:18.369	AUTHENTICATION_SUCCESS	edney
+1701	2021-02-02 00:49:25.173	AUTHENTICATION_SUCCESS	edney
+1751	2021-02-02 00:56:47.606	AUTHENTICATION_SUCCESS	edney
+1801	2021-02-02 01:01:10.486	AUTHENTICATION_SUCCESS	edney
+1851	2021-02-02 01:05:16.379	AUTHENTICATION_SUCCESS	edney
+1901	2021-02-02 01:09:04.529	AUTHENTICATION_SUCCESS	edney
+1951	2021-02-02 01:11:50.301	AUTHENTICATION_SUCCESS	edney
+2001	2021-02-03 13:39:06.712	AUTHENTICATION_SUCCESS	edney
+2002	2021-02-03 13:39:08.174	AUTHENTICATION_SUCCESS	edney
+2003	2021-02-03 13:39:24.395	AUTHENTICATION_SUCCESS	edney
+2051	2021-02-03 13:48:43.418	AUTHENTICATION_SUCCESS	edney
+2052	2021-02-03 13:51:26.482	AUTHENTICATION_SUCCESS	edney
+2101	2021-02-03 13:52:58.335	AUTHENTICATION_SUCCESS	edney
+2151	2021-02-03 17:08:32.048	AUTHENTICATION_SUCCESS	edney
+2201	2021-02-03 17:09:53.336	AUTHENTICATION_SUCCESS	edney
+2251	2021-02-03 18:08:53.824	AUTHENTICATION_SUCCESS	edney
+2301	2021-02-08 00:33:32.289	AUTHENTICATION_FAILURE	edney
+2302	2021-02-08 00:33:39.083	AUTHENTICATION_SUCCESS	edney
+2303	2021-02-08 01:09:07.773	AUTHENTICATION_SUCCESS	edney
+2304	2021-02-08 01:19:37.475	AUTHENTICATION_FAILURE	edney
+2305	2021-02-08 01:19:43.555	AUTHENTICATION_SUCCESS	edney
+2306	2021-02-08 02:31:47.952	AUTHENTICATION_FAILURE	edney
+2307	2021-02-08 02:31:55.477	AUTHENTICATION_SUCCESS	edney
+2308	2021-02-08 02:48:34.002	AUTHENTICATION_SUCCESS	edney
+2309	2021-02-08 02:52:12.561	AUTHENTICATION_SUCCESS	edney
+19701	2021-10-15 10:43:31.025	AUTHENTICATION_FAILURE	edney
+19702	2021-10-15 10:43:41.669	AUTHENTICATION_FAILURE	edney
+19703	2021-10-15 10:43:58.051	AUTHENTICATION_FAILURE	edney
+19704	2021-10-15 10:44:04.264	AUTHENTICATION_FAILURE	EDNEY
+19751	2021-10-15 10:47:09.58	AUTHENTICATION_FAILURE	EDNEY
+19801	2021-10-15 10:54:53.95	AUTHENTICATION_FAILURE	EDNEY
+19851	2021-10-15 11:05:40.029	AUTHENTICATION_SUCCESS	EDNEY
+19901	2021-10-15 11:54:56.956	AUTHENTICATION_FAILURE	edney
+19902	2021-10-15 11:55:15.223	AUTHENTICATION_FAILURE	edney
+19903	2021-10-15 11:55:44.11	AUTHENTICATION_SUCCESS	edney
+19951	2021-10-15 13:44:10.968	AUTHENTICATION_SUCCESS	edney
+\.
+
+
+--
+-- Data for Name: jhi_persistent_audit_evt_data; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_persistent_audit_evt_data (event_id, value, name) FROM stdin;
+1104	org.springframework.security.authentication.BadCredentialsException	type
+1104	Usuário inexistente ou senha inválida	message
+2301	org.springframework.security.authentication.BadCredentialsException	type
+2301	Usuário inexistente ou senha inválida	message
+2304	org.springframework.security.authentication.BadCredentialsException	type
+2304	Usuário inexistente ou senha inválida	message
+2306	org.springframework.security.authentication.BadCredentialsException	type
+2306	Usuário inexistente ou senha inválida	message
+19701	org.springframework.security.authentication.BadCredentialsException	type
+19701	Usuário inexistente ou senha inválida	message
+19702	org.springframework.security.authentication.BadCredentialsException	type
+19702	Usuário inexistente ou senha inválida	message
+19703	org.springframework.security.authentication.BadCredentialsException	type
+19703	Usuário inexistente ou senha inválida	message
+19704	org.springframework.security.authentication.BadCredentialsException	type
+19704	Usuário inexistente ou senha inválida	message
+19751	org.springframework.security.authentication.BadCredentialsException	type
+19751	Usuário inexistente ou senha inválida	message
+19801	org.springframework.security.authentication.BadCredentialsException	type
+19801	Usuário inexistente ou senha inválida	message
+19901	org.springframework.security.authentication.BadCredentialsException	type
+19901	Usuário inexistente ou senha inválida	message
+19902	org.springframework.security.authentication.BadCredentialsException	type
+19902	Usuário inexistente ou senha inválida	message
+\.
+
+
+--
+-- Data for Name: jhi_user; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_user (id, created_by, created_date, last_modified_by, last_modified_date, activated, activation_key, email, first_name, image_url, lang_key, last_name, login, password_hash, reset_date, reset_key) FROM stdin;
+1251	anonymousUser	2020-12-27 12:35:29.168	edney	2020-12-27 18:41:59.351	t	iYWFKmZTiBdwIvYZBaEl	edney.chantal@gmail.com		\N	pt-br		edney	$2a$10$/wMS7zwQ/F2ExS33.ueTtuf/p8hTKYumjXoyhwtuA/xjmfExb02sq	\N	\N
+\.
+
+
+--
+-- Data for Name: jhi_user_authority; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_user_authority (user_id, authority_name) FROM stdin;
+1251	ROLE_ADMIN
+\.
+
+
+--
+-- Data for Name: jhi_user_work_spaces; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.jhi_user_work_spaces (user_id, work_spaces_id_workspace) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tbaccountbank; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbaccountbank (id_accountbank, id_workspace, ds_accountbank, initial_value, cod_conta, digito, tipo) FROM stdin;
+8	1	Cartão Celete	\N	\N	\N	Passivo
+9	1	Cartão Itau	\N	\N	\N	Passivo
+10	1	Nilda	\N	\N	\N	Passivo
+7	1	Cartão Alimentacao	0.00	\N	\N	Ativo
+6	1	Conta Itau	0.00	1598455028	\N	Ativo
+5	1	Fisica Bradesco	124.85	\N	0	Ativo
+4	1	Carteira	350.00	\N	\N	Ativo
+1	1	Jurídica Santander	447.00	4538130039651	0	Ativo
+3	1	Fisica santander	5984.30	000010047224	\N	Ativo
+43	1	Cartão Extra	\N	\N	\N	Passivo
+\.
+
+
+--
+-- Data for Name: tbconfigextrato; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbconfigextrato (idworkspace, tokenextrato, idnatureplan, idconfigextrato, id_accountank, ind_not_imp) FROM stdin;
+1	TARIFA MANUTENCAO	13	2	\N	\N
+1	RECUPERACAO CREDITO	7	3	\N	\N
+1	RESGATE AUT CONTAMAX EMPRESARIAL	\N	4	1	S
+1	TAR REG TIT COB RAPIDA SIMP-ELETR	13	6	\N	\N
+1	TARIFA MANUTENCAO TIT VENCIDO	13	7	\N	\N
+1	OMENA ALIMENTOS	6	9	\N	\N
+1	FARMACIA	14	10	\N	\N
+1	BOMPRECO	6	11	\N	\N
+1	TARIFA SAQUE 	13	12	\N	\N
+1	RESTAURANTE	6	13	\N	\N
+1	CONTA DE TELEFONE	15	14	\N	\N
+1	TARIFA MENSALIDADE	13	15	\N	\N
+1	LEROY MACEIO	9	16	\N	\N
+1	PREST. DE EMPREST. FINANCIAMENTO	7	17	\N	\N
+1	F.T. BOA VISTA	14	18	\N	\N
+1	ATACADAO	6	19	\N	\N
+1	EMPORIO MERCADI	6	21	\N	\N
+1	BEATRIZ CONCEIC	6	22	\N	\N
+1	PAGAMENTO DE TITULOS - BCE	7	23	\N	\N
+1	ESCOLA GERACAO KIDS	16	26	\N	\N
+1	POSTO SARANDI	8	24	\N	\N
+1	JOSELIA DE ANDR	6	27	\N	\N
+1	FARMACIA PERMAN	14	28	\N	\N
+1	GALETO SAO LUIZ	6	29	\N	\N
+1	AndersonCle	6	31	\N	\N
+1	CASA VIEIRA	9	33	\N	\N
+1	BISTEKAS CASA	6	34	\N	\N
+1	MERCADOPAGO .MA	6	35	\N	\N
+1	APLICACAO AUT CONTAMAX EMPRESARIAL	\N	36	1	S
+1	MERCADINHO AKI	6	37	\N	\N
+1	MENSALIDADE DE SEGURO	13	38	\N	\N
+1	MariaDoCarm	6	39	\N	\N
+1	RECARGA TELEFONE CELULAR	12	40	\N	\N
+1	CENTER CARNES	6	41	\N	\N
+1	MARIA ISABELE	6	42	\N	\N
+1	ITAUCARD VISA	7	43	\N	\N
+1	REND PAGO APLIC AUT MAIS	41	44	6	\N
+1	MAXI POSTO	8	45	\N	\N
+1	ELECTRONCARAJAS	9	47	6	\N
+1	ELECTRONCENTER CARN	6	48	6	\N
+1	ELECTRONOMENA ALIME	6	49	6	\N
+1	ELECTRONMARIA ISABE	36	50	6	\N
+1	ELECTRONESTAPAR HSC	25	51	6	\N
+1	ELECTRONREIS ALIMEN	6	52	6	\N
+\.
+
+
+--
+-- Data for Name: tbloginworkspace; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbloginworkspace (idworklogin, login, idworkspace) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tbmovementbank; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbmovementbank (idmovementbank, id_accountbank, id_natureplan, movementdate, movementvalue, history, number_doc, accid) FROM stdin;
+662	1	6	2020-08-03	-37.00	COMPRA CARTAO MAESTRO              01/08 KOMMO	70879	\N
+692	3	7	2020-08-07	-540.61	PREST. DE EMPREST. FINANCIAMENTO   PARC 002/060 320000193710	193710	\N
+693	3	7	2020-08-10	-152.42	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	0	\N
+697	3	6	2020-08-10	-23.00	COMPRA CARTAO MAESTRO              08/08 PAG.MariaDoCarm	45575	\N
+698	3	6	2020-08-10	-7.00	COMPRA CARTAO MAESTRO              08/08 EMPORIO MERCADI	121675	\N
+471	3	15	2020-07-02	-179.43	PGTO CONTA DE TELEFONE EM CANAIS   INTERNET VIVO FIXO NAC	0	\N
+472	3	13	2020-07-03	-47.70	TARIFA MENSALIDADE PACOTE SERVICOS  JUNHO / 2020	0	\N
+473	3	9	2020-07-06	-718.21	COMPRA CARTAO MAESTRO              05/07 LEROY MACEIO	400275	\N
+474	3	6	2020-07-06	-139.44	COMPRA CARTAO MAESTRO              05/07 BOMPRECO HIPER	202975	\N
+475	3	7	2020-07-07	-540.61	PREST. DE EMPREST. FINANCIAMENTO   PARC 001/060 320000193710	193710	\N
+476	3	6	2020-07-07	-12.00	COMPRA CARTAO MAESTRO              07/07 OMENA ALIMENTOS	244375	\N
+477	3	14	2020-07-07	-11.00	COMPRA CARTAO MAESTRO              07/07 F.T. BOA VISTA	71975	\N
+478	3	6	2020-07-07	-18.50	COMPRA CARTAO MAESTRO              07/07 MERCADOPAGO .MA	474875	\N
+479	3	6	2020-07-07	-479.34	COMPRA CARTAO MAESTRO              07/07 ATACADAO 217 AS	360075	\N
+480	3	6	2020-07-07	-492.16	COMPRA CARTAO MAESTRO              07/07 ATACADAO 217 AS	403375	\N
+481	3	6	2020-07-07	-265.56	COMPRA CARTAO MAESTRO              07/07 ATACADAO 217 AS	434275	\N
+482	3	6	2020-07-08	-5.50	COMPRA CARTAO MAESTRO              08/07 OMENA ALIMENTOS	30175	\N
+483	3	6	2020-07-08	-2.50	COMPRA CARTAO MAESTRO              08/07 OMENA ALIMENTOS	85275	\N
+484	3	6	2020-07-09	-8.50	COMPRA CARTAO MAESTRO              09/07 OMENA ALIMENTOS	284275	\N
+485	3	6	2020-07-09	-8.25	COMPRA CARTAO MAESTRO              09/07 EMPORIO MERCADI	352575	\N
+487	3	6	2020-07-10	-14.99	COMPRA CARTAO MAESTRO              10/07 BOMPRECO B21 PA	495675	\N
+489	3	6	2020-07-10	-6.15	COMPRA CARTAO MAESTRO              10/07 BEATRIZ CONCEIC	75775	\N
+490	3	7	2020-07-10	-160.77	PAGAMENTO DE TITULOS - BCE         14.792.379/0001-24	0	\N
+491	3	6	2020-07-10	-8.75	COMPRA CARTAO MAESTRO              10/07 JOSELIA DE ANDR	335875	\N
+492	3	6	2020-07-10	-6.00	COMPRA CARTAO MAESTRO              10/07 JOSELIA DE ANDR	343475	\N
+493	3	8	2020-07-15	-100.00	COMPRA CARTAO MAESTRO              15/07 POSTO SARANDI	141475	\N
+494	3	16	2020-07-15	-623.00	PGTO TITULO OUTRO BCO - INTERNET   ESCOLA GERACAO KIDS	0	\N
+495	3	14	2020-07-15	-26.82	COMPRA CARTAO MAESTRO              15/07 FARMACIA PERMAN	394975	\N
+488	3	6	2020-07-10	-160.00	COMPRA CARTAO MAESTRO              10/07 MERCADOPAGO .ES	421975	\N
+694	3	9	2020-08-10	-73.55	COMPRA CARTAO MAESTRO              08/08 LOJAS IMPERADOR	190175	\N
+695	3	9	2020-08-10	-340.00	COMPRA CARTAO MAESTRO              08/08 PAG.AdmirMenese	460375	\N
+696	3	6	2020-08-10	-71.42	COMPRA CARTAO MAESTRO              08/08 CENTER CARNES	191575	\N
+699	3	6	2020-08-10	-28.00	COMPRA CARTAO MAESTRO              09/08 CHURRASCARIA DO	272875	\N
+486	3	36	2020-07-10	-15.50	COMPRA CARTAO MAESTRO              10/07 MARIA ISABELE C	353275	\N
+497	3	6	2020-07-17	-22.00	COMPRA CARTAO MAESTRO              17/07 GALETO SAO LUIZ	591275	\N
+498	3	6	2020-07-17	-3.00	COMPRA CARTAO MAESTRO              17/07 EMPORIO MERCADI	434875	\N
+500	3	6	2020-07-17	-15.00	COMPRA CARTAO MAESTRO              17/07 BEATRIZ CONCEIC	502575	\N
+501	3	6	2020-07-17	-18.00	COMPRA CARTAO MAESTRO              17/07 PAG.AndersonCle	373975	\N
+504	3	6	2020-07-20	-56.00	COMPRA CARTAO MAESTRO              18/07 GALETO SAO LUIZ	445675	\N
+505	3	9	2020-07-20	-92.99	COMPRA CARTAO MAESTRO              18/07 CASA VIEIRA CEN	384952	\N
+506	3	6	2020-07-20	-10.00	COMPRA CARTAO MAESTRO              19/07 OMENA ALIMENTOS	511275	\N
+507	3	6	2020-07-20	-56.00	COMPRA CARTAO MAESTRO              19/07 GALETO SAO LUIZ	143875	\N
+509	3	6	2020-07-20	-9.00	COMPRA CARTAO MAESTRO              19/07 EMPORIO MERCADI	442175	\N
+510	3	6	2020-07-20	-22.00	COMPRA CARTAO MAESTRO              20/07 GALETO SAO LUIZ	334275	\N
+511	3	14	2020-07-20	-14.00	COMPRA CARTAO MAESTRO              20/07 FARMACIA PERMAN	354675	\N
+512	3	6	2020-07-20	-18.50	COMPRA CARTAO MAESTRO              20/07 MERCADOPAGO .MA	50275	\N
+513	3	6	2020-07-21	-25.64	COMPRA CARTAO MAESTRO              21/07 BISTEKAS CASA D	502075	\N
+514	3	6	2020-07-22	-16.73	COMPRA CARTAO MAESTRO              22/07 BISTEKAS CASA D	220475	\N
+516	3	6	2020-07-22	-21.00	COMPRA CARTAO MAESTRO              22/07 JOSELIA DE ANDR	425875	\N
+518	1	6	2020-07-13	-7.00	COMPRA CARTAO MAESTRO              11/07 BEATRIZ CONCEIC	505979	\N
+519	1	9	2020-07-13	-185.66	COMPRA CARTAO MAESTRO              11/07 LEROY MACEIO	82679	\N
+520	1	6	2020-07-13	-9.25	COMPRA CARTAO MAESTRO              11/07 OMENA ALIMENTOS	360879	\N
+521	1	6	2020-07-13	-7.25	COMPRA CARTAO MAESTRO              11/07 JOSELIA DE ANDR	470379	\N
+522	1	6	2020-07-13	-7.00	COMPRA CARTAO MAESTRO              12/07 BEATRIZ CONCEIC	115279	\N
+523	1	14	2020-07-13	-27.73	COMPRA CARTAO MAESTRO              13/07 FARMACIA PERMAN	190579	\N
+524	1	6	2020-07-13	-3.00	COMPRA CARTAO MAESTRO              13/07 BEATRIZ CONCEIC	83779	\N
+525	1	6	2020-07-14	-21.00	COMPRA CARTAO MAESTRO              14/07 GALETO SAO LUIZ	14979	\N
+526	1	6	2020-07-14	-13.00	COMPRA CARTAO MAESTRO              14/07 OMENA ALIMENTOS	321379	\N
+527	1	14	2020-07-14	-14.00	COMPRA CARTAO MAESTRO              14/07 F.T. BOA VISTA	430979	\N
+528	1	6	2020-07-14	-3.00	COMPRA CARTAO MAESTRO              14/07 BEATRIZ CONCEIC	591979	\N
+529	1	13	2020-07-14	-5.94	TARIFA MANUTENCAO TIT VENCIDO	194631	\N
+530	1	13	2020-07-14	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+531	1	6	2020-07-15	-20.28	COMPRA CARTAO MAESTRO              15/07 OMENA ALIMENTOS	392179	\N
+532	1	6	2020-07-15	-6.50	COMPRA CARTAO MAESTRO              15/07 BEATRIZ CONCEIC	495479	\N
+533	1	14	2020-07-15	-22.92	COMPRA CARTAO MAESTRO              15/07 FARMACIA PERMAN	270279	\N
+534	1	6	2020-07-16	-21.00	COMPRA CARTAO MAESTRO              16/07 GALETO SAO LUIZ	360479	\N
+535	1	13	2020-07-16	-5.94	TARIFA MANUTENCAO TIT VENCIDO	194631	\N
+661	1	6	2020-08-03	-14.23	COMPRA CARTAO MAESTRO              01/08 BOMPRECO B21 PA	474279	\N
+539	1	9	2020-07-27	-59.36	COMPRA CARTAO MAESTRO              25/07 CASA VIEIRA PAT	303279	\N
+544	3	6	2020-07-23	-13.20	COMPRA CARTAO MAESTRO              23/07 BISTEKAS CASA D	80475	\N
+545	3	6	2020-07-23	-1.75	COMPRA CARTAO MAESTRO              23/07 BEATRIZ CONCEIC	545875	\N
+546	3	6	2020-07-24	-15.94	COMPRA CARTAO MAESTRO              24/07 BISTEKAS CASA D	155675	\N
+550	3	6	2020-07-24	-7.50	COMPRA CARTAO MAESTRO              24/07 BEATRIZ CONCEIC	284575	\N
+551	3	6	2020-07-24	-17.50	COMPRA CARTAO MAESTRO              24/07 EMPORIO MERCADI	272875	\N
+553	3	6	2020-07-27	-7.00	COMPRA CARTAO MAESTRO              25/07 JOSELIA DE ANDR	570075	\N
+554	3	6	2020-07-27	-42.00	COMPRA CARTAO MAESTRO              26/07 GALETO SAO LUIZ	33575	\N
+555	3	6	2020-07-27	-29.23	COMPRA CARTAO MAESTRO              26/07 BOMPRECO B21 PA	183475	\N
+556	3	6	2020-07-27	-6.00	COMPRA CARTAO MAESTRO              27/07 BEATRIZ CONCEIC	395775	\N
+557	3	6	2020-07-27	-18.50	COMPRA CARTAO MAESTRO              27/07 MERCADOPAGO .MA	285475	\N
+559	3	6	2020-07-27	-18.75	COMPRA CARTAO MAESTRO              27/07 EMPORIO MERCADI	331175	\N
+560	3	6	2020-07-28	-15.00	COMPRA CARTAO MAESTRO              28/07 BISTEKAS CASA D	400575	\N
+561	3	6	2020-07-28	-2.00	COMPRA CARTAO MAESTRO              28/07 EMPORIO MERCADI	594475	\N
+663	1	6	2020-08-03	-10.00	COMPRA CARTAO MAESTRO              01/08 JOSELIA DE ANDR	90179	\N
+664	1	6	2020-08-03	-26.30	COMPRA CARTAO MAESTRO              01/08 BEATRIZ CONCEIC	172379	\N
+567	1	6	2020-07-29	-24.89	COMPRA CARTAO MAESTRO              29/07 BISTEKAS CASA D	490879	\N
+566	1	9	2020-07-28	-74.46	COMPRA CARTAO MAESTRO              28/07 CENTRAL DOS PAR	180579	\N
+565	1	9	2020-07-28	-80.00	COMPRA CARTAO MAESTRO              28/07 MERCADOPAGO .ES	455479	\N
+558	3	6	2020-07-27	-11.50	COMPRA CARTAO MAESTRO              27/07 MERCADINHO AKI	593375	\N
+552	3	6	2020-07-27	-29.00	COMPRA CARTAO MAESTRO              25/07 PAG.MariaDoCarm	503775	\N
+549	3	7	2020-07-24	-550.00	SAQUE BANCO 24HS	117110	\N
+548	3	6	2020-07-24	-3.00	COMPRA CARTAO MAESTRO              24/07 ZP .GERIVALDO T	215975	\N
+547	3	6	2020-07-24	-8.90	COMPRA CARTAO MAESTRO              24/07 MARIA ISABELE C	523575	\N
+543	1	7	2020-07-27	-571.53	DEBITO DE DIVIDA/ACORDO EM ATRASO	322707	\N
+542	1	6	2020-07-27	-7.00	COMPRA CARTAO MAESTRO              25/07 P S ADMINISTRAD	23079	\N
+541	1	8	2020-07-27	-100.00	COMPRA CARTAO MAESTRO              25/07 AUTO POSTO MANG	253979	\N
+540	1	6	2020-07-27	-8.00	COMPRA CARTAO MAESTRO              25/07 PB ADMINISTRADO	411279	\N
+537	1	9	2020-07-27	-499.00	COMPRA CARTAO MAESTRO              25/07 CITY BOX	400479	\N
+496	3	6	2020-07-16	-20.00	COMPRA CARTAO MAESTRO              16/07 PAG.EditeSoares	571975	\N
+499	3	6	2020-07-17	-10.00	COMPRA CARTAO MAESTRO              17/07 PAG.MariaGedalv	485775	\N
+502	3	6	2020-07-20	-150.00	SAQUE BANCO 24HS	536124	\N
+503	3	6	2020-07-20	-80.00	COMPRA CARTAO MAESTRO              18/07 MERCADOPAGO .ES	344152	\N
+508	3	6	2020-07-20	-26.00	COMPRA CARTAO MAESTRO              19/07 PAG.MariaDoCarm	370075	\N
+515	3	6	2020-07-22	-13.00	COMPRA CARTAO MAESTRO              22/07 GERIVALDO TENOR	441275	\N
+517	1	6	2020-07-13	-60.00	COMPRA CARTAO MAESTRO              11/07 SAO MIGUEL GAS	323479	\N
+568	1	6	2020-07-29	-7.60	COMPRA CARTAO MAESTRO              29/07 BEATRIZ CONCEIC	404579	\N
+569	1	6	2020-07-29	-16.00	COMPRA CARTAO MAESTRO              29/07 BOMPRECO B21 PA	285779	\N
+570	1	6	2020-07-29	-9.25	COMPRA CARTAO MAESTRO              29/07 EMPORIO MERCADI	264179	\N
+538	1	6	2020-07-27	-72.00	COMPRA CARTAO MAESTRO              25/07 CABOCLO DO SERT	271779	\N
+665	1	6	2020-08-03	-31.00	COMPRA CARTAO MAESTRO              01/08 PAG.MariaDoCarm	270179	\N
+666	1	6	2020-08-03	-39.20	COMPRA CARTAO MAESTRO              02/08 BEATRIZ CONCEIC	565879	\N
+667	1	6	2020-08-03	-5.50	COMPRA CARTAO MAESTRO              02/08 BEATRIZ CONCEIC	590079	\N
+668	1	6	2020-08-03	-19.75	COMPRA CARTAO MAESTRO              02/08 EMPORIO MERCADI	454379	\N
+573	1	4	2020-07-27	2285.56	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	22907	\N
+576	3	7	2020-07-27	-436.47	PAGAMENTO DE TITULOS - BCE	\N	\N
+577	1	6	2020-07-30	-15.11	COMPRA CARTAO MAESTRO              30/07 BISTEKAS CASA D	342779	\N
+580	1	14	2020-07-30	-39.98	COMPRA CARTAO MAESTRO              30/07 FARMACIA PERMAN	220279	\N
+581	1	6	2020-07-31	-6.00	COMPRA CARTAO MAESTRO              31/07 BEATRIZ CONCEIC	534579	\N
+582	1	6	2020-07-31	-15.80	COMPRA CARTAO MAESTRO              31/07 BISTEKAS CASA D	45179	\N
+583	1	6	2020-07-31	-3.00	COMPRA CARTAO MAESTRO              31/07 BEATRIZ CONCEIC	143179	\N
+669	1	13	2020-08-03	-7.23	MENSALIDADE DE SEGURO              Parc 006/012 AP	157211	\N
+670	1	6	2020-08-03	-6.70	COMPRA CARTAO MAESTRO              03/08 BEATRIZ CONCEIC	111979	\N
+671	1	6	2020-08-03	-5.49	COMPRA CARTAO MAESTRO              03/08 BOMPRECO B21 PA	400179	\N
+673	1	13	2020-08-07	-79.50	TARIFA MENSALIDADE PACOTE SERVICOS  JULHO / 2020	160808	\N
+674	1	8	2020-08-07	-100.00	COMPRA CARTAO MAESTRO              07/08 POSTO SARANDI	594179	\N
+676	3	13	2020-08-05	-47.70	TARIFA MENSALIDADE PACOTE SERVICOS  JULHO / 2020	0	\N
+679	3	7	2020-08-06	-270.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+680	3	6	2020-08-07	-16.00	COMPRA CARTAO MAESTRO              07/08 BOMPRECO B21 PA	104475	\N
+681	3	14	2020-08-07	-42.69	COMPRA CARTAO MAESTRO              07/08 FARMACIA PERMAN	124475	\N
+682	3	6	2020-08-07	-21.32	COMPRA CARTAO MAESTRO              07/08 BOMPRECO B21 PA	22175	\N
+578	1	6	2020-07-30	-1.50	COMPRA CARTAO MAESTRO              30/07 ESFERA .MARCIO	435779	\N
+579	1	6	2020-07-30	-28.00	COMPRA CARTAO MAESTRO              30/07 PAG.MariaDoCarm	524379	\N
+595	4	6	2020-08-03	-150.00	Bistekas Carnes - compras para 7 dias 	\N	\N
+672	1	6	2020-08-05	-85.01	COMPRA CARTAO MAESTRO              05/08 PAG.RNINFORMATI	34879	\N
+675	3	3	2020-08-04	5954.00	LIQUIDO DE VENCIMENTO              CNPJ 031409011000153	10804	\N
+677	3	12	2020-08-06	-60.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+678	3	12	2020-08-06	-20.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+700	3	6	2020-08-10	-5.00	COMPRA CARTAO MAESTRO              09/08 BEATRIZ CONCEIC	355575	\N
+701	3	6	2020-08-10	-28.75	COMPRA CARTAO MAESTRO              09/08 JOSELIA DE ANDR	14375	\N
+702	3	6	2020-08-10	-5.10	COMPRA CARTAO MAESTRO              09/08 BEATRIZ CONCEIC	264675	\N
+704	3	6	2020-08-10	-7.40	COMPRA CARTAO MAESTRO              09/08 JOSELIA DE ANDR	154875	\N
+703	3	18	2020-08-10	-56.00	COMPRA CARTAO MAESTRO              09/08 PAPEL PAUTADO	314475	\N
+705	4	6	2020-08-10	-200.00	GASTOS DIVERSOS	\N	\N
+708	3	6	2020-08-10	-20.00	COMPRA CARTAO MAESTRO              10/08 MERCADOPAGO .MA	241675	\N
+709	3	6	2020-08-10	-10.60	COMPRA CARTAO MAESTRO              10/08 BEATRIZ CONCEIC	494475	\N
+710	3	6	2020-08-10	-15.27	COMPRA CARTAO MAESTRO              10/08 BOMPRECO B21 PA	33775	\N
+711	3	6	2020-08-10	-11.50	COMPRA CARTAO MAESTRO              10/08 JOSELIA DE ANDR	3375	\N
+707	3	17	2020-08-10	-300.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+713	3	6	2020-08-12	-3.75	COMPRA CARTAO MAESTRO              12/08 OMENA ALIMENTOS	294475	\N
+714	3	12	2020-08-12	-10.00	RECARGA TELEFONE CELULAR           IB 82 *****6999 OI ALAGOA	0	\N
+715	3	6	2020-08-12	-15.97	COMPRA CARTAO MAESTRO              12/08 BOMPRECO B21 PA	171175	\N
+717	3	6	2020-08-12	-7.75	COMPRA CARTAO MAESTRO              12/08 JOSELIA DE ANDR	451175	\N
+718	3	6	2020-08-12	-6.25	COMPRA CARTAO MAESTRO              12/08 JOSELIA DE ANDR	222775	\N
+719	3	6	2020-08-13	-28.08	COMPRA CARTAO MAESTRO              13/08 BOMPRECO B21 PA	354252	\N
+720	3	6	2020-08-13	-17.70	COMPRA CARTAO MAESTRO              13/08 EMPORIO MERCADI	451552	\N
+721	3	6	2020-08-13	-5.90	COMPRA CARTAO MAESTRO              13/08 BEATRIZ CONCEIC	155352	\N
+716	3	17	2020-08-12	-101.63	PGTO TITULO OUTRO BCO - INTERNET   B2W . COMPANHIA DIGITAL	0	\N
+712	3	6	2020-08-12	-25.00	COMPRA CARTAO MAESTRO              12/08 PAG.EditeSoares	593975	\N
+724	5	\N	2020-08-13	-100.00	transferencia	\N	\N
+722	5	6	2020-08-13	0.00	cesta de alimentos	\N	\N
+727	3	6	2020-08-14	-28.73	COMPRA CARTAO MAESTRO              14/08 BOMPRECO B21 PA	200652	\N
+728	3	6	2020-08-14	-10.30	COMPRA CARTAO MAESTRO              14/08 BEATRIZ CONCEIC	551352	\N
+729	3	6	2020-08-14	-8.00	COMPRA CARTAO MAESTRO              14/08 PAG.AndersonCle	332452	\N
+733	3	6	2020-08-17	-15.30	COMPRA CARTAO MAESTRO              15/08 BEATRIZ CONCEIC	274352	\N
+734	3	6	2020-08-17	-7.00	COMPRA CARTAO MAESTRO              15/08 EMPORIO MERCADI	232052	\N
+738	3	6	2020-08-17	-13.25	COMPRA CARTAO MAESTRO              16/08 EMPORIO MERCADINHO	581552	\N
+739	3	6	2020-08-17	-8.10	COMPRA CARTAO MAESTRO              16/08 BEATRIZ CONCEICAO D	73852	\N
+737	3	6	2020-08-17	-145.43	COMPRA CARTAO MAESTRO              16/08 CENTER CARNES	65052	\N
+735	3	20	2020-08-17	-56.00	COMPRA CARTAO MAESTRO              15/08 POIT DO ACAI	311152	\N
+732	3	6	2020-08-17	-52.00	COMPRA CARTAO MAESTRO              15/08 KOMMO	275452	\N
+731	3	21	2020-08-17	-89.90	COMPRA CARTAO MAESTRO              15/08 ABY S SPORTS	562852	\N
+730	3	20	2020-08-17	-74.70	COMPRA CARTAO MAESTRO              15/08 LOJAS IMPERADOR	442552	\N
+726	3	6	2020-08-14	-20.00	COMPRA CARTAO MAESTRO              14/08 BARBEARIA PAI E	383552	\N
+736	3	20	2020-08-17	-9.75	COMPRA CARTAO MAESTRO              15/08 EMPORIO MERCADI	454052	\N
+725	4	\N	2020-08-13	100.00	trasferencia	3	\N
+742	1	6	2020-08-17	-14.00	COMPRA CARTAO MAESTRO              15/08 GALETO SAO LUIZ	314879	\N
+743	1	13	2020-08-13	-6.54	TARIFA MANUTENCAO TIT VENCIDO	\N	\N
+741	1	6	2020-08-17	-20.00	COMPRA CARTAO MAESTRO              15/08 BIKE CLUB	222779	\N
+740	3	20	2020-08-17	-22.92	COMPRA CARTAO MAESTRO              16/08 FARMACIA PERMANENTE	294252	\N
+744	4	20	2020-08-17	-100.00	EMPRESTIMO MATHEUS	\N	\N
+750	3	6	2020-08-17	-14.40	COMPRA CARTAO MAESTRO              17/08 BEATRIZ CONCEICAO D	210552	\N
+751	3	6	2020-08-17	-25.00	COMPRA CARTAO MAESTRO              17/08 EMPORIO MERCADINHO	272352	\N
+752	3	16	2020-08-17	-623.00	PGTO TITULO OUTRO BCO - INTERNET   ESCOLA GERACAO KIDS	0	\N
+745	3	20	2020-08-17	95.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+746	3	20	2020-08-17	34.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+747	3	20	2020-08-17	10.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusm o V	0	\N
+748	3	20	2020-08-17	20.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusm o V	0	\N
+749	3	20	2020-08-17	119.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+753	3	20	2020-08-18	-180.00	SAQUE BANCO 24HS	429271	\N
+754	3	6	2020-08-18	-6.80	COMPRA CARTAO MAESTRO              18/08 BEATRIZ CONCEICAO D	162952	\N
+756	3	6	2020-08-18	-20.00	COMPRA CARTAO MAESTRO              18/08 MERCADOPAGO .MANDUB	93652	\N
+757	3	6	2020-08-18	-20.45	COMPRA CARTAO MAESTRO              18/08 BOMPRECO B21 PAJUCA	13952	\N
+759	3	6	2020-08-19	-6.50	COMPRA CARTAO MAESTRO              19/08 JOSELIA DE ANDRADE	580752	\N
+760	3	6	2020-08-19	-6.25	COMPRA CARTAO MAESTRO              19/08 JOSELIA DE ANDRADE	354552	\N
+758	3	6	2020-08-19	-43.60	COMPRA CARTAO MAESTRO              19/08 FELICIA	444452	\N
+755	3	6	2020-08-18	-65.00	COMPRA CARTAO MAESTRO              18/08 SAO MIGUEL GAS	285652	\N
+761	4	20	2020-08-19	40.00	pagamento matheus	\N	\N
+765	3	6	2020-08-20	-18.20	COMPRA CARTAO MAESTRO              20/08 JOSELIA DE ANDRADE	414352	\N
+766	3	6	2020-08-20	-67.50	COMPRA CARTAO MAESTRO              20/08 PAG.MariaDoCarmo	220852	\N
+767	3	6	2020-08-21	-4.50	COMPRA CARTAO MAESTRO              21/08 BEATRIZ CONCEICAO D	275652	\N
+768	3	6	2020-08-21	-16.00	COMPRA CARTAO MAESTRO              21/08 BOMPRECO B21 PAJUCA	283852	\N
+770	3	6	2020-08-24	-40.00	COMPRA CARTAO MAESTRO              22/08 SUMUP  .RESTAURANTE	234752	\N
+771	3	8	2020-08-24	-100.00	COMPRA CARTAO MAESTRO              22/08 POSTO VIA EXPRESSA	322852	\N
+769	3	22	2020-08-24	-1246.00	COMPRA CARTAO MAESTRO              22/08 PLADIM	571752	\N
+772	3	20	2020-08-24	-33.00	COMPRA CARTAO MAESTRO              22/08 PAG.MariaDoCarmo	292552	\N
+764	3	6	2020-08-20	-14.90	COMPRA CARTAO MAESTRO              20/08 MARIA ISABELE C A G	275652	\N
+762	3	7	2020-08-19	-12.80	DEBITO AUT. FAT.CARTAO MASTER CARD FINAL 3705	0	\N
+763	3	6	2020-08-20	-26.00	COMPRA CARTAO MAESTRO              20/08 PAG.EditeSoaresDa	573252	\N
+773	1	8	2020-08-19	-30.00	AUTO POSTO GUIMARAES	\N	\N
+774	3	6	2020-08-24	-56.00	COMPRA CARTAO MAESTRO              23/08 GALETO SAO LUIZ	282652	\N
+775	3	6	2020-08-24	-11.60	COMPRA CARTAO MAESTRO              23/08 BEATRIZ CONCEICAO D	334752	\N
+776	3	6	2020-08-24	-31.75	COMPRA CARTAO MAESTRO              23/08 BOMPRECO B21 PAJUCA	343152	\N
+779	3	6	2020-08-24	-9.45	COMPRA CARTAO MAESTRO              24/08 BEATRIZ CONCEICAO D	520252	\N
+777	3	6	2020-08-24	-105.40	COMPRA CARTAO MAESTRO              23/08 EXTRA 1363 MACEIO	21852	\N
+778	3	20	2020-08-24	69.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+780	3	6	2020-08-24	-7.75	COMPRA CARTAO MAESTRO              24/08 OMENA ALIMENTOS	411252	\N
+781	3	6	2020-08-24	-11.00	COMPRA CARTAO MAESTRO              24/08 EMPORIO MERCADINHO	460552	\N
+782	3	6	2020-08-25	-13.00	COMPRA CARTAO MAESTRO              25/08 MARIA ISABELE C A G	252	\N
+783	3	6	2020-08-25	-9.74	COMPRA CARTAO MAESTRO              25/08 BOMPRECO B21 PAJUCA	143352	\N
+784	3	6	2020-08-25	-7.80	COMPRA CARTAO MAESTRO              25/08 BEATRIZ CONCEICAO D	315652	\N
+785	3	6	2020-08-25	-16.25	COMPRA CARTAO MAESTRO              25/08 EMPORIO MERCADINHO	405452	\N
+786	3	6	2020-08-25	-5.30	COMPRA CARTAO MAESTRO              25/08 JOSELIA DE ANDRADE	512952	\N
+787	1	20	2020-08-24	-50.00	SAQUE TERMINAL INTER AG	600186	\N
+788	1	7	2020-08-25	-50.34	DEBITO DE DIVIDA/ACORDO EM ATRASO	42608	\N
+789	1	4	2020-08-26	3226.36	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	62608	\N
+790	1	7	2020-08-26	-521.19	DEBITO DE DIVIDA/ACORDO EM ATRASO	72608	\N
+792	3	6	2020-08-26	-10.90	COMPRA CARTAO MAESTRO              26/08 BEATRIZ CONCEICAO D	152852	\N
+793	3	14	2020-08-26	-46.86	COMPRA CARTAO MAESTRO              26/08 FARMACIA PERMANENTE	314752	\N
+794	3	6	2020-08-26	-13.30	COMPRA CARTAO MAESTRO              26/08 JOSELIA DE ANDRADE	194952	\N
+791	3	6	2020-08-26	-109.90	COMPRA CARTAO MAESTRO              26/08 CENTER CARNES	533652	\N
+795	4	6	2020-08-26	-40.00	ajuste saldo carteira	\N	\N
+796	3	6	2020-08-27	-28.73	COMPRA CARTAO MAESTRO              27/08 OMENA ALIMENTOS	343952	\N
+797	3	15	2020-08-28	-211.56	PGTO CONTA DE TELEFONE EM CANAIS   INTERNET VIVO FIXO NAC	0	\N
+803	1	6	2020-08-27	-7.60	COMPRA CARTAO MAESTRO              27/08 JOSELIA DE ANDRADE	125479	\N
+802	1	6	2020-08-27	-5.40	COMPRA CARTAO MAESTRO              27/08 MARIA ISABELE C A G	63479	\N
+801	1	6	2020-08-27	-14.50	COMPRA CARTAO MAESTRO              27/08 MARIA ISABELE C A G	484379	\N
+800	1	13	2020-08-26	-2.00	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+804	1	6	2020-08-28	-14.08	COMPRA CARTAO MAESTRO              28/08 BOMPRECO B21 PAJUCA	55279	\N
+805	1	6	2020-08-28	-20.00	COMPRA CARTAO MAESTRO              28/08 MERCADOPAGO .MANDUB	171679	\N
+806	1	6	2020-08-28	-7.25	COMPRA CARTAO MAESTRO              28/08 JOSELIA DE ANDRADE	274079	\N
+807	1	6	2020-08-28	-6.00	COMPRA CARTAO MAESTRO              28/08 PAG.MariaDoCarmo	514979	\N
+808	1	6	2020-08-28	-7.00	COMPRA CARTAO MAESTRO              28/08 JOSELIA DE ANDRADE	592479	\N
+810	1	6	2020-08-31	-21.96	COMPRA CARTAO MAESTRO              29/08 ILAHUI	364479	\N
+809	1	6	2020-08-31	-86.00	COMPRA CARTAO MAESTRO              29/08 CASA LEA	251579	\N
+812	1	9	2020-08-31	-15.23	COMPRA CARTAO MAESTRO              29/08 CASA VIEIRA PATIO	210879	\N
+815	1	6	2020-08-31	-29.00	COMPRA CARTAO MAESTRO              29/08 PAG.MariaDoCarmo	472579	\N
+817	1	14	2020-08-31	-13.99	COMPRA CARTAO MAESTRO              30/08 FARMACIA DO TRABALH	550379	\N
+814	1	6	2020-08-31	-34.20	COMPRA CARTAO MAESTRO              29/08 EXTRA 1363 MACEIO	191779	\N
+813	1	6	2020-08-31	-8.00	COMPRA CARTAO MAESTRO              29/08 PB ADMINISTRADORA D	240779	\N
+811	1	6	2020-08-31	-19.99	COMPRA CARTAO MAESTRO              29/08 ILAHUI	40479	\N
+816	1	6	2020-08-31	-50.00	SAQUE BANCO 24HS	530273	\N
+819	1	6	2020-08-31	-8.45	omena	\N	\N
+820	1	6	2020-08-31	-8.45	COMPRA CARTAO MAESTRO              30/08 OMENA ALIMENTOS	1979	\N
+821	1	6	2020-08-31	-26.77	COMPRA CARTAO MAESTRO              30/08 BOMPRECO B21 PAJUCA	520479	\N
+823	1	6	2020-08-31	-16.79	COMPRA CARTAO MAESTRO              31/08 BISTEKAS CASA DE CA	300579	\N
+824	1	6	2020-08-31	-11.70	COMPRA CARTAO MAESTRO              31/08 OMENA ALIMENTOS	485879	\N
+826	1	6	2020-08-31	-12.25	COMPRA CARTAO MAESTRO              31/08 JOSELIA DE ANDRADE	250279	\N
+828	1	6	2020-09-01	-30.69	COMPRA CARTAO MAESTRO              01/09 BISTEKAS CASA DE CA	421679	\N
+827	1	13	2020-08-31	-11.80	TAR BAIXA COB SIMPLES-ELETRONICA	194631	\N
+825	1	20	2020-08-31	-100.00	SAQUE BANCO 24HS	43273	\N
+822	1	6	2020-08-31	-99.55	COMPRA CARTAO MAESTRO              30/08 EXTRA 1363 MACEIO	230179	\N
+829	1	6	2020-09-01	-17.55	COMPRA CARTAO MAESTRO              01/09 OMENA ALIMENTOS	295579	\N
+830	1	14	2020-09-01	-28.00	COMPRA CARTAO MAESTRO              01/09 F.T. BOA VISTA F1	215379	\N
+831	1	6	2020-09-01	-4.50	COMPRA CARTAO MAESTRO              01/09 JOSELIA DE ANDRADE	321479	\N
+832	1	6	2020-09-01	-12.00	COMPRA CARTAO MAESTRO              01/09 PAG.MariaDoCarmo	475979	\N
+833	1	13	2020-09-02	-9.00	TARIFA SAQUE ATM/BANCO 24HS	80309	\N
+834	1	6	2020-09-02	-19.57	COMPRA CARTAO MAESTRO              02/09 BOMPRECO B21 PAJUCA	181979	\N
+835	1	8	2020-09-02	-100.00	COMPRA CARTAO MAESTRO              02/09 POSTO SARANDI	412279	\N
+836	1	6	2020-09-02	-12.50	COMPRA CARTAO MAESTRO              02/09 JOSELIA DE ANDRADE	533379	\N
+837	1	6	2020-09-02	-6.00	COMPRA CARTAO MAESTRO              02/09 JOSELIA DE ANDRADE	282179	\N
+838	1	13	2020-09-03	-7.23	MENSALIDADE DE SEGURO              Parc 007/012 AP	157211	\N
+839	1	6	2020-09-03	-16.00	COMPRA CARTAO MAESTRO              03/09 BISTEKAS CASA DE CA	403779	\N
+840	1	6	2020-09-03	-22.90	COMPRA CARTAO MAESTRO              03/09 MARIA ISABELE C A G	482179	\N
+841	1	6	2020-09-03	-5.25	COMPRA CARTAO MAESTRO              03/09 JOSELIA DE ANDRADE	330279	\N
+842	1	6	2020-09-03	-11.69	COMPRA CARTAO MAESTRO              03/09 OMENA ALIMENTOS	375279	\N
+843	1	6	2020-09-03	-44.63	COMPRA CARTAO MAESTRO              03/09 CESTA DE ALIMENTOS	315179	\N
+844	3	3	2020-09-03	2090.00	Salário Ofm 	\N	\N
+845	3	9	2020-09-03	-720.00	compra da cadeira de escritório	\N	\N
+846	1	6	2020-09-04	-7.17	COMPRA CARTAO MAESTRO              04/09 OMENA ALIMENTOS	524179	\N
+847	1	6	2020-09-04	-20.00	COMPRA CARTAO MAESTRO              04/09 BOMPRECO B21 PAJUCA	383979	\N
+848	1	6	2020-09-04	-22.00	COMPRA CARTAO MAESTRO              04/09 GALETO SAO LUIZ	311079	\N
+849	3	13	2020-09-03	-49.40	TARIFA MENSALIDADE PACOTE SERVICOS  AGOSTO / 2020	0	\N
+861	3	12	2020-09-08	-40.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+862	3	12	2020-09-08	-20.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+863	1	6	2020-09-04	-6.25	COMPRA CARTAO MAESTRO              04/09 JOSELIA DE ANDRADE	312979	\N
+864	1	6	2020-09-08	-44.49	COMPRA CARTAO MAESTRO              05/09 CENTER CARNES	595879	\N
+865	1	6	2020-09-08	-28.70	COMPRA CARTAO MAESTRO              05/09 OMENA ALIMENTOS	164779	\N
+866	1	6	2020-09-08	-40.00	COMPRA CARTAO MAESTRO              05/09 PAG.MariaDoCarmo	322779	\N
+867	1	6	2020-09-08	-6.25	COMPRA CARTAO MAESTRO              05/09 JOSELIA DE ANDRADE	465579	\N
+868	1	6	2020-09-08	-7.00	COMPRA CARTAO MAESTRO              05/09 JOSELIA DE ANDRADE	523579	\N
+853	3	3	2020-09-04	4727.00	CREDITO DE SALARIO                 CNPJ 031409011000153	10904	\N
+852	3	9	2020-09-04	-183.70	COMPRA CARTAO MAESTRO              04/09 MAX CASA	455852	\N
+854	3	23	2020-09-08	-113.19	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+855	3	23	2020-09-08	-5.23	PAGAMENTO DPVAT EM CANAIS          INTERNET SEGURADORA LIDER	0	\N
+856	3	6	2020-09-08	-80.00	COMPRA CARTAO MAESTRO              05/09 BIO LEVE DISTRIBUID	231552	\N
+857	3	23	2020-09-08	-132.77	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+858	3	23	2020-09-08	-132.50	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+859	3	23	2020-09-08	-125.35	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+860	3	23	2020-09-08	-116.43	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+869	1	14	2020-09-08	-100.00	COMPRA CARTAO MAESTRO              05/09 CAO GATAO	501479	\N
+870	1	9	2020-09-08	-378.50	COMPRA CARTAO MAESTRO              05/09 EXTRA 1363 MACEIO	474179	\N
+871	1	6	2020-09-08	-16.00	COMPRA CARTAO MAESTRO              05/09 EXTRA 1363 MACEIO	483679	\N
+872	1	8	2020-09-08	-60.00	COMPRA CARTAO MAESTRO              06/09 AUTO POSTO MANGABEI	115279	\N
+873	1	6	2020-09-08	-30.00	COMPRA CARTAO MAESTRO              06/09 MP .MERCADOP	480779	\N
+874	1	6	2020-09-08	-20.00	COMPRA CARTAO MAESTRO              06/09 MANUEL BELO DA SILV	61479	\N
+1171	3	14	2020-11-14	-28.31	boa vista	\N	\N
+1173	6	14	2020-11-13	-24.00	farmacia boa vista	\N	\N
+1174	4	25	2020-11-15	-79.00	despesas estacionamento 	\N	\N
+1172	6	31	2020-11-09	-65.50	big tids	\N	\N
+875	1	6	2020-09-08	-46.80	COMPRA CARTAO MAESTRO              06/09 IDEAL SUPERMERCADO	403079	\N
+876	1	6	2020-09-08	-15.09	COMPRA CARTAO MAESTRO              06/09 IDEAL SUPERMERCADO	435079	\N
+915	3	6	2020-09-11	-20.00	COMPRA CARTAO MAESTRO              11/09 MP .MANDUBEB	462052	\N
+877	1	18	2020-09-08	-47.00	COMPRA CARTAO MAESTRO              06/09 MP .PONTODOB	33079	\N
+878	1	6	2020-09-08	-12.78	COMPRA CARTAO MAESTRO              06/09 DAVID ROGERIO LIMA	65979	\N
+879	1	6	2020-09-08	-23.00	COMPRA CARTAO MAESTRO              06/09 MP .MERCADOP	205179	\N
+918	3	6	2020-09-14	-70.00	COMPRA CARTAO MAESTRO              12/09 SAO MIGUEL GAS	332552	\N
+1424	6	6	2021-01-08	-10.00	mercado pago	\N	\N
+889	3	7	2020-09-08	-540.61	PREST. DE EMPREST. FINANCIAMENTO   PARC 003/060 320000193710	193710	\N
+898	3	6	2020-09-09	-12.00	COMPRA CARTAO MAESTRO              09/09 PAG.MariaDoCarmo	583252	\N
+902	1	13	2020-09-08	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS  AGOSTO / 2020	210909	\N
+891	3	6	2020-09-08	-7.00	COMPRA CARTAO MAESTRO              08/09 POLO COMERCIAL ESTA	92552	\N
+899	1	6	2020-09-08	-121.00	COMPRA CARTAO MAESTRO              07/09 BODE ASSADO DO LUCI	553579	\N
+900	1	18	2020-09-08	-39.50	COMPRA CARTAO MAESTRO              07/09 STELO S.A..PAN TROP	174379	\N
+901	1	8	2020-09-08	-117.49	COMPRA CARTAO MAESTRO              07/09 J P ALVES PEREIRA C	414279	\N
+903	1	6	2020-09-08	-50.43	COMPRA CARTAO MAESTRO              08/09 DAVID ROGERIO LIMA	143379	\N
+1425	6	35	2021-01-08	-600.00	transferencia para pessoa física	\N	\N
+1426	3	35	2021-01-08	600.00	transferencia	\N	\N
+908	1	20	2020-09-08	-126.00	COMPRA CARTAO MAESTRO              08/09 MSS MODAS	444379	\N
+907	1	20	2020-09-08	-39.99	COMPRA CARTAO MAESTRO              08/09 ROTA DO MAR POLO	360579	\N
+905	1	21	2020-09-08	-48.00	COMPRA CARTAO MAESTRO              08/09 EUMAR FIRFOR	3579	\N
+909	1	21	2020-09-08	-39.99	COMPRA CARTAO MAESTRO              08/09 ROTA DO MAR POLO	532279	\N
+890	3	21	2020-09-08	-227.00	COMPRA CARTAO MAESTRO              08/09 PAG.PRModas	24052	\N
+892	3	6	2020-09-08	-6.00	COMPRA CARTAO MAESTRO              08/09 PANIFICADORA BOA ES	350352	\N
+894	3	21	2020-09-09	-190.00	COMPRA CARTAO MAESTRO              09/09 STAR MODAS	493152	\N
+895	3	21	2020-09-09	-68.00	COMPRA CARTAO MAESTRO              09/09 PAG.PRModas	555052	\N
+896	3	6	2020-09-09	-7.00	COMPRA CARTAO MAESTRO              09/09 POLO COMERCIAL ESTA	594452	\N
+897	3	6	2020-09-09	-39.00	COMPRA CARTAO MAESTRO              09/09 TABUA DE SABORES	80552	\N
+893	3	21	2020-09-09	-76.00	COMPRA CARTAO MAESTRO              09/09 ACQIO  .KYLLS MODAS	330552	\N
+906	1	20	2020-09-08	-35.00	COMPRA CARTAO MAESTRO              08/09 MARANDS	103979	\N
+910	3	6	2020-09-09	-15.25	COMPRA CARTAO MAESTRO 09/09 JOSELIA DE ANDRADE	\N	\N
+904	1	9	2020-09-08	-36.00	COMPRA CARTAO MAESTRO              08/09 PAG.JoseRonaldoDeAm	194979	\N
+912	3	6	2020-09-10	-41.69	COMPRA CARTAO MAESTRO              10/09 BOMPRECO B21 PAJUCA	521152	\N
+913	3	6	2020-09-10	-19.90	COMPRA CARTAO MAESTRO              10/09 OMENA ALIMENTOS	201552	\N
+914	3	7	2020-09-11	-100.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+916	3	6	2020-09-14	-34.59	COMPRA CARTAO MAESTRO              12/09 BISTEKAS CASA DE CA	575952	\N
+917	3	6	2020-09-14	-6.20	COMPRA CARTAO MAESTRO              12/09 BEATRIZ CONCEICAO D	80652	\N
+919	3	6	2020-09-14	-59.94	COMPRA CARTAO MAESTRO              13/09 BOMPRECO B21 PAJUCA	103452	\N
+1427	3	7	2021-01-08	-551.78	contas a pagar	\N	\N
+1428	3	13	2021-01-04	-49.40	tarifa bancária	\N	\N
+1429	4	35	2021-01-08	50.00	transferencia	\N	\N
+1430	4	9	2021-01-08	-40.00	metade conserto relógio	\N	\N
+1431	4	6	2021-01-08	-35.00	diversos	\N	\N
+922	3	9	2020-09-14	-50.26	COMPRA CARTAO MAESTRO              13/09 CASA VIEIRA PRAIA	285952	\N
+924	3	6	2020-09-14	-13.75	COMPRA CARTAO MAESTRO              13/09 JOSELIA DE ANDRADE	214552	\N
+925	3	6	2020-09-14	-28.12	COMPRA CARTAO MAESTRO              14/09 BOMPRECO B21 PAJUCA	294352	\N
+926	3	6	2020-09-14	-4.50	COMPRA CARTAO MAESTRO              14/09 JOSELIA DE ANDRADE	1452	\N
+927	3	14	2020-09-14	-42.83	COMPRA CARTAO MAESTRO              14/09 FARMACIA PERMANENTE	570752	\N
+928	3	6	2020-09-15	-108.64	COMPRA CARTAO MAESTRO              15/09 BOMPRECO B21 PAJUCA	500152	\N
+920	3	8	2020-09-14	-100.00	COMPRA CARTAO MAESTRO              13/09 POSTO PONTA VERDE	164352	\N
+923	3	6	2020-09-14	-155.50	COMPRA CARTAO MAESTRO              13/09 PIZ PIRATAS DO PICU	590652	\N
+921	3	7	2020-09-14	-50.00	SAQUE BANCO 24HS	712178	\N
+929	3	6	2020-09-15	-18.50	COMPRA CARTAO MAESTRO              15/09 JOSELIA DE ANDRADE	453452	\N
+930	3	6	2020-09-16	-63.87	COMPRA CARTAO MAESTRO              16/09 CENTER CARNES	243352	\N
+931	3	6	2020-09-16	-19.62	COMPRA CARTAO MAESTRO              16/09 OMENA ALIMENTOS	341752	\N
+935	3	6	2020-09-17	-30.75	COMPRA CARTAO MAESTRO              17/09 JOSELIA DE ANDRADE	320952	\N
+936	3	6	2020-09-18	-40.35	COMPRA CARTAO MAESTRO              18/09 OMENA ALIMENTOS	21552	\N
+937	3	9	2020-09-18	-67.38	COMPRA CARTAO MAESTRO              18/09 CASA VIEIRA CENTRO	273952	\N
+941	3	6	2020-09-21	-22.78	COMPRA CARTAO MAESTRO              19/09 BOMPRECO B21 PAJUCA	52152	\N
+944	3	6	2020-09-21	-27.34	COMPRA CARTAO MAESTRO              19/09 BOMPRECO B21 PAJUCA	283652	\N
+945	3	6	2020-09-21	-24.70	COMPRA CARTAO MAESTRO              19/09 PAG.AndersonCleyton	192352	\N
+942	3	6	2020-09-21	-20.00	COMPRA CARTAO MAESTRO              19/09 MP .MANDUBEB	402452	\N
+967	1	6	2020-09-25	-150.00	SAQUE BANCO 24HS	130114	\N
+940	3	6	2020-09-18	-68.74	COMPRA CARTAO MAESTRO              19/09 SUPERMERCADO PALATO	51652	\N
+939	3	6	2020-09-18	-13.00	COMPRA CARTAO MAESTRO              19/09 MP .MERCADOP	73452	\N
+938	3	6	2020-09-18	-5.00	COMPRA CARTAO MAESTRO              18/09 YANNA PRESENTES	452652	\N
+932	3	6	2020-09-16	-18.00	COMPRA CARTAO MAESTRO              16/09 FRUTOS DE GOIAIS MA	571352	\N
+933	3	6	2020-09-16	-5.00	COMPRA CARTAO MAESTRO              16/09 FRUTOS DE GOIAIS MA	101952	\N
+934	3	9	2020-09-17	-49.90	COMPRA CARTAO MAESTRO              17/09 MAX CASA	530352	\N
+946	3	6	2020-09-21	-22.00	COMPRA CARTAO MAESTRO              20/09 GALETO SAO LUIZ	172052	\N
+947	3	14	2020-09-21	-27.50	COMPRA CARTAO MAESTRO              20/09 F.T. BOA VISTA F1	415552	\N
+949	3	6	2020-09-21	-29.00	COMPRA CARTAO MAESTRO              20/09 PAG.MariaDoCarmo	464752	\N
+950	3	7	2020-09-21	-923.26	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	0	\N
+951	3	6	2020-09-21	-34.79	COMPRA CARTAO MAESTRO              21/09 BOMPRECO B21 PAJUCA	592852	\N
+953	3	14	2020-09-21	-60.62	COMPRA CARTAO MAESTRO              21/09 FARMACIA DO TRABALH	275652	\N
+948	3	8	2020-09-21	-100.00	COMPRA CARTAO MAESTRO              20/09 AUTO POSTO COMENDAD	423652	\N
+952	3	23	2020-09-21	-107.80	PGTO TRIBUTO ESTADUAL EM CANAIS    INTERNET SEFAZ AL DAR	0	\N
+956	3	6	2020-09-22	-71.59	COMPRA CARTAO MAESTRO              22/09 OMENA ALIMENTOS	543252	\N
+954	3	6	2020-09-22	-100.00	SAQUE BANCO 24HS	955001	\N
+955	3	9	2020-09-22	-14.50	COMPRA CARTAO MAESTRO              22/09 QUEIROZ ALUMINIO	95952	\N
+957	3	6	2020-09-22	-15.90	COMPRA CARTAO MAESTRO              22/09 MARIA ISABELE C A G	590852	\N
+959	3	6	2020-09-23	-146.39	COMPRA CARTAO MAESTRO              23/09 CENTER CARNES	201752	\N
+958	3	20	2020-09-23	200.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+960	3	6	2020-09-23	-39.00	COMPRA CARTAO MAESTRO              23/09 BODEGA DO ALAGOANO	533552	\N
+963	1	9	2020-09-24	-93.66	COMPRA CARTAO MAESTRO              24/09 CASA VIEIRA PRAIA	155879	\N
+966	1	6	2020-09-25	-23.12	COMPRA CARTAO MAESTRO              25/09 OMENA ALIMENTOS	241179	\N
+961	1	7	2020-09-23	-29.20	DEBITO DE DIVIDA/ACORDO EM ATRASO	22509	\N
+964	1	7	2020-09-24	-542.33	DEBITO DE DIVIDA/ACORDO EM ATRASO	62509	\N
+965	1	13	2020-09-24	-2.30	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+962	1	4	2020-09-24	3312.20	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	42509	\N
+968	1	6	2020-09-25	-29.00	COMPRA CARTAO MAESTRO              25/09 PAG.MariaDoCarmo	34479	\N
+969	1	6	2020-09-25	-3.00	COMPRA CARTAO MAESTRO              25/09 PAG.MariaDoCarmo	250679	\N
+970	1	6	2020-09-25	-10.00	COMPRA CARTAO MAESTRO              25/09 PAG.MariaDoCarmo	210179	\N
+971	1	6	2020-09-28	-15.00	COMPRA CARTAO MAESTRO              26/09 JOSELIA DE ANDRADE	405679	\N
+975	1	14	2020-09-28	-10.60	COMPRA CARTAO MAESTRO              27/09 F.T. BOA VISTA F1	434179	\N
+976	1	14	2020-09-28	-12.50	COMPRA CARTAO MAESTRO              27/09 F.T. BOA VISTA F1	525079	\N
+980	1	6	2020-09-28	-15.00	COMPRA CARTAO MAESTRO              28/09 PAG.MariaDoCarmo	241179	\N
+981	1	13	2020-09-29	-4.50	TARIFA SAQUE ATM/BANCO 24HS        25/09/2020	192909	\N
+985	1	6	2020-09-29	-12.00	COMPRA CARTAO MAESTRO              29/09 PAG.MariaDoCarmo	272079	\N
+984	1	6	2020-09-29	-46.00	COMPRA CARTAO MAESTRO              29/09 GH LAVA JATO EIRELI	461679	\N
+982	1	6	2020-09-29	-25.10	COMPRA CARTAO MAESTRO              29/09 PAG.Soteca	412779	\N
+972	1	6	2020-09-28	-37.00	COMPRA CARTAO MAESTRO              26/09 PIZZA AMERICANA	445479	\N
+973	1	6	2020-09-28	-8.00	COMPRA CARTAO MAESTRO              26/09 PB ADMINISTRADORA D	321579	\N
+974	1	6	2020-09-28	-12.17	COMPRA CARTAO MAESTRO              26/09 EXTRA 1363 MACEIO	180379	\N
+979	1	6	2020-09-28	-65.77	COMPRA CARTAO MAESTRO              28/09 ERVA DOCE	285079	\N
+977	1	20	2020-09-28	-150.00	SAQUE BANCO 24HS	908117	\N
+983	1	6	2020-09-29	-18.50	COMPRA CARTAO MAESTRO              29/09 PAG.BERTULINAVARIED	264779	\N
+978	1	6	2020-09-28	-75.95	COMPRA CARTAO MAESTRO              27/09 RRA PINHEIRO EIRELI	292379	\N
+986	1	13	2020-09-29	-4.50	TARIFA SAQUE ATM/BANCO 24HS        25/09/2020	130310	\N
+987	1	13	2020-09-30	-4.50	TARIFA SAQUE ATM/BANCO 24HS        27/09/2020	190310	\N
+988	1	6	2020-09-30	-70.85	COMPRA CARTAO MAESTRO              30/09 BOMPRECO B21 PAJUCA	423279	\N
+1436	6	41	2021-01-11	0.11	REND PAGO APLIC AUT MAIS	20210111009	\N
+990	1	14	2020-09-30	-7.98	COMPRA CARTAO MAESTRO              30/09 FARMACIA PERMANENTE	150779	\N
+991	1	6	2020-09-30	-38.00	COMPRA CARTAO MAESTRO              30/09 PAG.MariaDoCarmo	312479	\N
+989	1	8	2020-09-30	-137.51	COMPRA CARTAO MAESTRO              30/09 AUTO POSTO MANGABEI	385479	\N
+992	1	6	2020-10-01	-66.00	COMPRA CARTAO MAESTRO              01/10 GH LAVA JATO EIRELI	574379	\N
+993	1	6	2020-10-01	-20.00	COMPRA CARTAO MAESTRO              01/10 BARBEARIA PAI E FIL	502879	\N
+994	1	6	2020-10-02	-58.00	COMPRA CARTAO MAESTRO              02/10 GH LAVA JATO EIRELI	190079	\N
+995	1	6	2020-10-02	-13.00	COMPRA CARTAO MAESTRO              02/10 BISTRO DO SERTAO	165579	\N
+996	1	6	2020-10-02	-45.00	COMPRA CARTAO MAESTRO              02/10 BODEGA DO ALAGOANO	215479	\N
+1002	1	14	2020-10-05	-7.50	COMPRA CARTAO MAESTRO              03/10 SUMUP  .FARMACIAPOP	475979	\N
+1009	1	13	2020-10-05	-7.23	MENSALIDADE DE SEGURO              Parc 008/012 AP	157211	\N
+1010	1	6	2020-10-05	-22.40	COMPRA CARTAO MAESTRO              05/10 SNACK RESTAURANTE	344679	\N
+998	1	6	2020-10-05	-59.00	COMPRA CARTAO MAESTRO              03/10 TABUA DE SABORES	483679	\N
+1197	6	25	2020-11-23	-14.00	estacionamento	\N	\N
+997	1	6	2020-10-05	-58.80	COMPRA CARTAO MAESTRO              03/10 PAG.ReiDog	114479	\N
+999	1	6	2020-10-05	-80.00	COMPRA CARTAO MAESTRO              03/10 MP .UNIVERSO	235679	\N
+1000	1	8	2020-10-05	-112.68	COMPRA CARTAO MAESTRO              03/10 AUTO POSTO FORENE	53879	\N
+1001	1	6	2020-10-05	-74.88	COMPRA CARTAO MAESTRO              03/10 SUPERMERCADO FENIX	391779	\N
+1003	1	6	2020-10-05	-19.00	COMPRA CARTAO MAESTRO              03/10 POSTO DE MED SANTA	521079	\N
+1004	1	6	2020-10-05	-111.20	COMPRA CARTAO MAESTRO              04/10 SUPERMERCADO FENIX	534479	\N
+1005	1	6	2020-10-05	-19.99	COMPRA CARTAO MAESTRO              04/10 CENTAURO CE 53	111379	\N
+1006	1	20	2020-10-05	-314.00	COMPRA CARTAO MAESTRO              04/10 SUELDOS	462879	\N
+1007	1	6	2020-10-05	-9.00	COMPRA CARTAO MAESTRO              04/10 RECIFE PARKING	32779	\N
+1008	1	8	2020-10-05	-161.00	COMPRA CARTAO MAESTRO              04/10 POSTO SUL	123279	\N
+1011	1	6	2020-10-05	-78.40	COMPRA CARTAO MAESTRO              05/10 AC CENTRAL MACEIO	310079	\N
+1012	1	13	2020-10-07	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS  SETEMBRO / 2020	21210	\N
+1013	1	6	2020-10-07	-85.35	COMPRA CARTAO MAESTRO              07/10 BISTEKAS CASA DE CA	30779	\N
+1015	1	6	2020-10-07	-25.50	COMPRA CARTAO MAESTRO              07/10 PAG.AndersonCleyton	403379	\N
+1016	1	6	2020-10-08	-40.00	COMPRA CARTAO MAESTRO              08/10 MP .MANDUBEB	564579	\N
+1017	1	6	2020-10-08	-69.00	COMPRA CARTAO MAESTRO              08/10 POIT DO ACAI	94279	\N
+1014	1	6	2020-10-07	-40.00	SAQUE TERMINAL INTER AG	603192	\N
+1018	3	13	2020-10-05	-49.40	TARIFA MENSALIDADE PACOTE SERVICOS  SETEMBRO / 2020	0	\N
+1019	3	12	2020-10-06	-60.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+1020	3	7	2020-10-07	-540.61	PREST. DE EMPREST. FINANCIAMENTO   PARC 004/060 320000193710	193710	\N
+1022	3	6	2020-10-09	-12.00	COMPRA CARTAO MAESTRO              09/10 OMENA ALIMENTOS	581952	\N
+1025	3	6	2020-10-13	-29.00	COMPRA CARTAO MAESTRO              11/10 PAG.MariaDoCarmo	180152	\N
+1027	3	6	2020-10-13	-6.50	COMPRA CARTAO MAESTRO              11/10 PAG.AndersonCleyton	282252	\N
+1021	3	6	2020-10-09	-60.00	SAQUE TERMINAL INTER AG	4538	\N
+1023	3	8	2020-10-13	-165.84	COMPRA CARTAO MAESTRO              10/10 POSTO VIA MARE	510852	\N
+1024	3	6	2020-10-13	-8.90	COMPRA CARTAO MAESTRO              11/10 BR MANIA	230652	\N
+1026	3	6	2020-10-13	-102.82	COMPRA CARTAO MAESTRO              11/10 SUPERMERCADO PALATO	160352	\N
+1029	3	9	2020-10-13	-34.97	COMPRA CARTAO MAESTRO              12/10 CASA VIEIRA PRAIA	424952	\N
+1035	3	6	2020-10-15	-18.50	COMPRA CARTAO MAESTRO              15/10 BOMPRECO B21 PAJUCA	81352	\N
+1034	3	14	2020-10-14	-17.14	COMPRA CARTAO MAESTRO              14/10 FCIA PAGUE MENOS 15	582152	\N
+1033	3	8	2020-10-14	-50.00	COMPRA CARTAO MAESTRO              14/10 POSTO PAJUCARA	474652	\N
+1156	1	6	2020-11-11	-14.00	COMPRA CARTAO MAESTRO              11/11 R C RACOES LTDA ME	211879	\N
+1028	3	6	2020-10-13	-93.34	COMPRA CARTAO MAESTRO              12/10 EXTRA 1363 MACEIO	81452	\N
+1032	3	24	2020-10-14	-1578.30	PAGAMENTO DE TITULOS - BCE         62.307.848/0001-15	0	\N
+1031	3	25	2020-10-14	-30.00	SAQUE TERMINAL INTER AG	3192	\N
+1155	1	13	2020-11-10	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+1157	1	6	2020-11-12	-22.79	COMPRA CARTAO MAESTRO              12/11 BOMPRECO B21 PAJUCA	383879	\N
+1159	1	14	2020-11-13	-27.00	COMPRA CARTAO MAESTRO              13/11 F.T. BOA VISTA F1	21479	\N
+1160	1	6	2020-11-13	-29.27	COMPRA CARTAO MAESTRO              13/11 BOMPRECO B21 PAJUCA	582379	\N
+1435	6	7	2021-01-11	-409.80	ITAUCARD VISA 0602-2458	20210111008	\N
+1165	1	6	2020-11-16	-143.60	COMPRA CARTAO MAESTRO              14/11 PAG.RaimundoAntonio	483879	\N
+1161	1	6	2020-11-16	-54.00	COMPRA CARTAO MAESTRO              14/11 GH LAVA JATO EIRELI	421079	\N
+1163	1	6	2020-11-16	-42.50	COMPRA CARTAO MAESTRO              14/11 POSTO MILLENIUM	493079	\N
+1162	1	6	2020-11-16	-40.00	COMPRA CARTAO MAESTRO              14/11 REIS ALIMENTOS	555879	\N
+1164	1	6	2020-11-16	-20.00	COMPRA CARTAO MAESTRO              14/11 BARBEARIA PAI E FIL	471779	\N
+1158	1	31	2020-11-12	-11.00	COMPRA CARTAO MAESTRO              12/11 MARIA ISABELE C A G	411579	\N
+1030	3	31	2020-10-13	-206.30	COMPRA CARTAO MAESTRO              12/10 PIZ PIRATAS DO PICU	474852	\N
+1437	6	6	2021-01-12	-217.42	ELECTRONATACADAO 21	20210112001	\N
+1438	6	6	2021-01-12	-476.71	ELECTRONATACADAO 21	20210112002	\N
+1434	6	6	2021-01-11	-9.49	ELECTRONREIS ALIMEN	20210111007	\N
+1453	6	6	2021-01-15	-20.00	ELECTRONMERCPAGO	20210115001	\N
+1454	6	6	2021-01-15	-63.87	ELECTRONPOSTO MILLE	20210115002	\N
+1455	6	35	2021-01-15	-140.00	PIX TRANSF  EDNEY S15/01	20210115003	\N
+1462	6	6	2021-01-18	-85.00	ELECTRONMERCADINHO	20210118006	\N
+1461	6	14	2021-01-18	-57.04	ELECTRON3151DROGASI	20210118005	\N
+1459	6	6	2021-01-18	-49.00	ELECTRONTAPAJOARA L	20210118003	\N
+1458	6	6	2021-01-18	-20.00	CXE 000380 SAQUE 16/01	20210118002	\N
+1457	6	6	2021-01-18	-9.00	ELECTRONJR BIJUTERI	20210118001	\N
+1036	3	16	2020-10-15	-623.00	PGTO TITULO OUTRO BCO - INTERNET   ESCOLA GERACAO KIDS	0	\N
+1038	3	6	2020-10-16	-26.96	COMPRA CARTAO MAESTRO              16/10 BOMPRECO B21 PAJUCA	415152	\N
+1039	3	6	2020-10-16	-16.00	COMPRA CARTAO MAESTRO              16/10 BOMPRECO B21 PAJUCA	50352	\N
+1073	3	6	2020-10-26	-33.00	COMPRA CARTAO MAESTRO              24/10 SUMUP  .MACEIOCELL	101952	\N
+1442	6	6	2021-01-12	-60.00	ELECTRONPAG*Gentech	20210112006	\N
+1446	6	9	2021-01-14	-60.00	ELECTRONPAG*JorgeCa	20210114002	\N
+1040	3	25	2020-10-16	-30.00	SAQUE TERMINAL INTER AG	3192	\N
+1041	3	6	2020-10-16	-50.00	SAQUE TERMINAL INTER AG	186	\N
+1077	3	8	2020-10-26	-100.00	COMPRA CARTAO MAESTRO              25/10 POSTO MILLENIUM	20552	\N
+1042	3	25	2020-10-16	-20.00	SAQUE TERMINAL INTER AG	\N	\N
+1037	3	6	2020-10-15	-55.00	BID KIDS	281952	\N
+1045	3	9	2020-10-19	-234.90	COMPRA CARTAO MAESTRO              17/10 LEROY MACEIO	440352	\N
+1048	3	9	2020-10-19	-95.64	COMPRA CARTAO MAESTRO              18/10 CASA VIEIRA PRAIA	595852	\N
+1043	3	17	2020-10-19	-700.00	COMPRA CARTAO MAESTRO              17/10 J C INSTRUMENTOS MU	495152	\N
+1445	6	35	2021-01-14	-50.00	SAQUE 24H 05387204	20210114001	\N
+1046	3	8	2020-10-19	-100.00	COMPRA CARTAO MAESTRO              17/10 AUTO POSTO MANGABEI	582252	\N
+1047	3	6	2020-10-19	-20.00	COMPRA CARTAO MAESTRO              17/10 MP .MANDUBEB	182852	\N
+1521	1	8	2021-02-02	-26.00	lavagem carro	\N	\N
+1049	3	6	2020-10-19	-86.52	COMPRA CARTAO MAESTRO              18/10 SUPERMERCADO PALATO	293852	\N
+1050	3	6	2020-10-19	-300.00	SAQUE TERMINAL INTER AG	186	\N
+1054	3	9	2020-10-20	-127.89	COMPRA CARTAO MAESTRO              20/10 LEROY MACEIO	30352	\N
+1055	3	6	2020-10-21	-2.78	COMPRA CARTAO MAESTRO              21/10 BOMPRECO B21 PAJUCA	2952	\N
+1056	3	6	2020-10-21	-20.00	COMPRA CARTAO MAESTRO              21/10 BOMPRECO B21 PAJUCA	14752	\N
+1057	3	6	2020-10-21	-23.00	COMPRA CARTAO MAESTRO              21/10 GALETO SAO LUIZ	581852	\N
+1058	3	9	2020-10-21	-19.80	COMPRA CARTAO MAESTRO              21/10 LEROY MACEIO	465252	\N
+1060	3	14	2020-10-21	-47.27	COMPRA CARTAO MAESTRO              21/10 FARMACIA PERMANENTE	111552	\N
+1061	3	6	2020-10-22	-18.50	COMPRA CARTAO MAESTRO              22/10 BOMPRECO B21 PAJUCA	492475	\N
+1071	3	6	2020-10-23	-26.00	COMPRA CARTAO MAESTRO              23/10 PAG.MariaDoCarmo	55775	\N
+1051	3	6	2020-10-20	-17.50	COMPRA CARTAO MAESTRO              20/10 STELO S.A..CASA D A	390852	\N
+1052	3	25	2020-10-20	-26.90	COMPRA CARTAO MAESTRO              20/10 MC DONALDS MIG	240752	\N
+1059	3	8	2020-10-21	-100.00	COMPRA CARTAO MAESTRO              21/10 AUTO POSTO MANGABEI	574852	\N
+1062	3	25	2020-10-22	-34.16	COMPRA CARTAO MAESTRO              22/10 MARIAH	292152	\N
+1053	3	6	2020-10-20	-7.00	COMPRA CARTAO MAESTRO              20/10 P S ADMINISTRADORA	502852	\N
+1063	3	6	2020-10-22	-78.95	COMPRA CARTAO MAESTRO              22/10 KRC DOS SANTOS	242552	\N
+1064	3	6	2020-10-22	-26.97	COMPRA CARTAO MAESTRO              22/10 KRC DOS SANTOS	421752	\N
+1065	3	6	2020-10-23	-5.00	COMPRA CARTAO MAESTRO              23/10 MP .ESTACION	62152	\N
+1066	3	9	2020-10-23	-499.99	COMPRA CARTAO MAESTRO              23/10 EXTRA 1363 MACEIO	543652	\N
+1068	3	14	2020-10-23	-300.00	SAQUE BANCO 24HS	324123	\N
+1069	3	14	2020-10-23	-37.59	COMPRA CARTAO MAESTRO              23/10 3151DROGASIL	424152	\N
+1070	3	14	2020-10-23	-36.60	COMPRA CARTAO MAESTRO              23/10 MARIA ISABELE C A G	512952	\N
+1072	3	6	2020-10-26	-66.93	COMPRA CARTAO MAESTRO              24/10 OMENA ALIMENTOS	162975	\N
+1074	3	6	2020-10-26	-15.00	COMPRA CARTAO MAESTRO              25/10 PAG.AndersonCleyton	274452	\N
+1075	3	6	2020-10-26	-9.28	COMPRA CARTAO MAESTRO              25/10 BOMPRECO B21 PAJUCA	21875	\N
+1079	3	6	2020-10-26	-27.09	COMPRA CARTAO MAESTRO              26/10 BOMPRECO B21 PAJUCA	232975	\N
+1076	3	6	2020-10-26	-131.60	COMPRA CARTAO MAESTRO              25/10 PAG.RaimundoAntonio	381152	\N
+1080	3	6	2020-10-26	-10.50	COMPRA CARTAO MAESTRO              26/10 MP .TEPESTIS	514675	\N
+1081	3	6	2020-10-26	-8.64	DEBITO AUT. FAT.CARTAO MASTER CARD FINAL 3705	0	\N
+1082	3	10	2020-10-27	-534.98	PAGAMENTO CONTA LUZ EM CANAIS      INTERNET CEAL ALAGOAS	0	\N
+1078	3	28	2020-10-26	-200.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+1170	3	6	2020-11-12	-16.00	andersonclayton	\N	\N
+1067	3	31	2020-10-23	-49.00	COMPRA CARTAO MAESTRO              23/10 GH LAVA JATO EIRELI	531552	\N
+1044	3	31	2020-10-19	-42.00	COMPRA CARTAO MAESTRO              17/10 GH LAVA JATO EIRELI	524352	\N
+1443	6	41	2021-01-12	0.31	REND PAGO APLIC AUT MAIS	20210112007	\N
+1447	6	41	2021-01-14	0.02	REND PAGO APLIC AUT APR	20210114003	\N
+1441	6	17	2021-01-12	-1400.00	ELECTRONJ C INSTRUM	20210112005	\N
+1440	6	6	2021-01-12	-42.00	ELECTRONGH LAVA JAT	20210112004	\N
+1439	6	6	2021-01-12	-7.80	ELECTRONCARAJAS	20210112003	\N
+1444	6	25	2021-01-13	-14.00	ELECTRONESTAPAR HSC	20210113001	\N
+1449	4	25	2021-01-14	-8.00	estacionamento	\N	\N
+1448	4	35	2021-01-14	50.00	transferencia	\N	\N
+1450	4	20	2021-01-14	20.00	emprestimo matheus  , pagamento colegio	\N	\N
+1451	3	20	2021-01-14	250.00	transferencia matheus para pagamento mensalidade colégio	\N	\N
+1456	6	41	2021-01-15	0.03	REND PAGO APLIC AUT APR	20210115004	\N
+1463	6	35	2021-01-18	-455.00	PIX TRANSF  EDNEY S18/01	20210118007	\N
+1460	6	6	2021-01-18	-24.30	ELECTRONPAG*Anderso	20210118004	\N
+1464	3	35	2021-01-15	140.00	transferência para completar pagamento matheus	\N	\N
+1465	3	35	2021-01-20	455.00	transferencia praa completar pagamento matheus	\N	\N
+1466	3	20	2021-01-15	-430.00	pagar a mensalidade do matheus 	\N	\N
+1468	3	7	2021-01-20	-89.00	pagamentos débito cartão adriana	\N	\N
+1467	3	20	2021-01-20	-365.75	pagar o cartão da adriana 	\N	\N
+1470	4	31	2021-01-14	-70.00	diversão e lazer	\N	\N
+1471	7	6	2021-01-15	-114.40	cenetr carnes	\N	\N
+1472	7	6	2021-01-14	-20.84	bompreco	\N	\N
+1473	6	9	2021-01-19	-19.08	ELECTRONCARAJAS	20210119001	\N
+1474	6	6	2021-01-25	-149.33	ELECTRONCENTER CARN	20210125001	\N
+1475	6	6	2021-01-25	-31.96	ELECTRONOMENA ALIME	20210125002	\N
+1476	6	36	2021-01-25	-24.00	ELECTRONMARIA ISABE	20210125003	\N
+1477	6	8	2021-01-19	-180.14	ELECTRONMAXI POSTO	20210119002	\N
+1479	6	25	2021-01-20	-14.00	ELECTRONESTAPAR HSC	20210120001	\N
+1083	3	15	2020-10-27	-138.94	PGTO CONTA DE TELEFONE EM CANAIS   INTERNET VIVO FIXO NAC	0	\N
+1086	3	6	2020-10-27	-25.60	COMPRA CARTAO MAESTRO              27/10 OMENA ALIMENTOS	145252	\N
+1087	3	6	2020-10-27	-15.50	COMPRA CARTAO MAESTRO              28/10 PAG.AndersonCleyton	460852	\N
+1088	3	6	2020-10-28	-42.00	COMPRA CARTAO MAESTRO              28/10 OMENA ALIMENTOS	194875	\N
+1089	3	6	2020-10-29	-20.75	COMPRA CARTAO MAESTRO              29/10 BOMPRECO B21 PAJUCA	451975	\N
+1090	3	6	2020-10-29	-8.90	COMPRA CARTAO MAESTRO              29/10 PAG.TACIDODAVIDALEN	353275	\N
+1085	3	6	2020-10-27	-20.00	COMPRA CARTAO MAESTRO              27/10 MP .MANDUBEB	94152	\N
+1091	1	4	2020-10-28	3406.87	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	23010	\N
+1092	1	9	2020-10-28	-80.00	COMPRA CARTAO MAESTRO              28/10 MADEIRAS DO BRASIL	342879	\N
+1093	1	25	2020-10-28	-18.00	COMPRA CARTAO MAESTRO              28/10 MARIA ISABELE C A G	43479	\N
+1094	1	6	2020-10-28	-40.70	COMPRA CARTAO MAESTRO              28/10 ARACAJN PETISCARIA	352379	\N
+1095	1	6	2020-10-28	-5.00	COMPRA CARTAO MAESTRO              28/10 EXTRA 1363 MACEIO	30579	\N
+1096	1	13	2020-10-28	-2.30	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+1097	1	25	2020-10-29	-38.10	COMPRA CARTAO MAESTRO              29/10 UVA DOCE RESTAURANT	12879	\N
+1098	1	8	2020-10-29	-49.93	COMPRA CARTAO MAESTRO              29/10 POSTO TIGRE CAMBONA	32679	\N
+1099	1	14	2020-10-29	-31.86	COMPRA CARTAO MAESTRO              29/10 MC PONTA VERDE 2	364879	\N
+1100	4	30	2020-10-27	2408.00	Recebimento fgts e seguro desemprego	\N	\N
+1104	3	7	2020-10-30	-14.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+1105	3	9	2020-10-30	-151.59	COMPRA CARTAO MAESTRO              30/10 LEROY MACEIO	60452	\N
+1103	3	20	2020-10-30	310.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+1102	3	6	2020-10-30	-31.00	COMPRA CARTAO MAESTRO              30/10 LANCHONETE CHIC	520252	\N
+1107	1	6	2020-10-30	-15.40	COMPRA CARTAO MAESTRO              30/10 OMENA ALIMENTOS	143479	\N
+1109	1	6	2020-10-30	-7.55	COMPRA CARTAO MAESTRO              30/10 BOMPRECO B21 PAJUCA	74279	\N
+1110	1	6	2020-10-30	-30.00	COMPRA CARTAO MAESTRO              30/10 GALETO SAO LUIZ	382979	\N
+1111	1	14	2020-10-30	-33.00	COMPRA CARTAO MAESTRO              30/10 F.T. BOA VISTA F1	502479	\N
+1112	1	6	2020-10-30	-45.00	COMPRA CARTAO MAESTRO              30/10 PAG.MariaDoCarmo	295079	\N
+1106	1	6	2020-10-30	-21.00	COMPRA CARTAO MAESTRO              30/10 MARIA ISABELE C A G	479	\N
+1108	1	14	2020-10-30	-8.79	COMPRA CARTAO MAESTRO              30/10 3151DROGASIL	553279	\N
+1113	1	6	2020-11-03	-144.76	COMPRA CARTAO MAESTRO              31/10 PAG.RaimundoAntonio	172779	\N
+1114	1	9	2020-11-03	-93.44	COMPRA CARTAO MAESTRO              31/10 EXTRA 1363 MACEIO	480879	\N
+1115	1	20	2020-11-03	-15.00	COMPRA CARTAO MAESTRO              31/10 EXTRA 1363 MACEIO	485779	\N
+1101	3	20	2020-10-30	-281.87	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	0	\N
+1116	4	25	2020-10-30	-20.00	pagamento diversos estacionamento	\N	\N
+1117	1	6	2020-11-03	-13.00	COMPRA CARTAO MAESTRO              01/11 PAG.MariaDoCarmo	373379	\N
+1122	1	6	2020-11-03	-192.84	COMPRA CARTAO MAESTRO              02/11 CENTER CARNES	331379	\N
+1123	1	6	2020-11-03	-156.66	COMPRA CARTAO MAESTRO              02/11 OMENA ALIMENTOS	15079	\N
+1125	1	9	2020-11-03	-25.46	COMPRA CARTAO MAESTRO              02/11 CASA VIEIRA PRAIA	292979	\N
+1126	1	6	2020-11-03	-48.00	COMPRA CARTAO MAESTRO              02/11 PAG.MariaDoCarmo	100079	\N
+1127	1	13	2020-11-03	-7.23	MENSALIDADE DE SEGURO              Parc 009/012 AP	157211	\N
+1128	1	14	2020-11-03	-32.00	COMPRA CARTAO MAESTRO              03/11 FARMACIA DO TRABALH	473679	\N
+1131	1	6	2020-11-05	-35.00	COMPRA CARTAO MAESTRO              05/11 PAG.MariaDoCarmo	13979	\N
+1132	1	6	2020-11-05	-5.00	COMPRA CARTAO MAESTRO              05/11 PAG.MariaDoCarmo	541379	\N
+1119	1	8	2020-11-03	-171.25	COMPRA CARTAO MAESTRO              01/11 POSTO MELO	592579	\N
+1084	3	31	2020-10-27	-52.00	COMPRA CARTAO MAESTRO              27/10 GH LAVA JATO EIRELI	164252	\N
+1120	1	6	2020-11-03	-12.98	COMPRA CARTAO MAESTRO              02/11 POSTO MILLENIUM	452879	\N
+1121	1	8	2020-11-03	-26.00	COMPRA CARTAO MAESTRO              02/11 POSTO MILLENIUM	540479	\N
+1129	1	6	2020-11-03	-29.90	COMPRA CARTAO MAESTRO              03/11 MARIA ISABELE C A G	91179	\N
+1130	1	6	2020-11-05	-65.00	COMPRA CARTAO MAESTRO              05/11 SAO MIGUEL GAS	375379	\N
+1133	3	30	2020-10-29	11727.75	recebimento recisão fgts	\N	\N
+1134	3	13	2020-11-03	-49.40	TARIFA MENSALIDADE PACOTE SERVICOS  OUTUBRO / 2020	0	\N
+1136	3	9	2020-11-04	-107.18	COMPRA CARTAO MAESTRO              04/11 LEROY MACEIO	115552	\N
+1135	3	25	2020-11-03	-11.00	COMPRA CARTAO MAESTRO              03/11 PAG.EdlaneAlvesDaSi	585752	\N
+1145	4	25	2020-11-06	-14.00	pagamento estacionamento	\N	\N
+1137	3	17	2020-11-05	-49.90	COMPRA CARTAO MAESTRO              05/11 MAX CASA	202452	\N
+1138	4	25	2020-11-05	-140.00	despesas trabalho	\N	\N
+1139	6	3	2020-11-01	427.00	vale refeição	\N	\N
+1140	1	6	2020-11-06	-19.19	COMPRA CARTAO MAESTRO              06/11 OMENA ALIMENTOS	444579	\N
+1142	1	14	2020-11-09	-21.99	COMPRA CARTAO MAESTRO              07/11 FARMACIA PERMANENTE	55579	\N
+1143	1	14	2020-11-09	-53.45	COMPRA CARTAO MAESTRO              07/11 F.T. BOA VISTA F1	373279	\N
+1124	1	31	2020-11-03	-129.70	COMPRA CARTAO MAESTRO              02/11 CASA DE MAINHA	555079	\N
+1144	4	6	2020-11-06	-400.00	pagamento niida feira	\N	\N
+1146	6	3	2020-11-06	4625.13	recebimento salário 	\N	\N
+1147	6	25	2020-11-06	-103.55	compra wireless	\N	\N
+1148	3	7	2020-11-09	-540.61	PREST. DE EMPREST. FINANCIAMENTO PARC 005/060 320000193710	\N	\N
+1151	1	6	2020-11-09	-22.00	COMPRA CARTAO MAESTRO              09/11 BOMPRECO B21 PAJUCA	21279	\N
+1152	1	6	2020-11-10	-33.96	COMPRA CARTAO MAESTRO              10/11 OMENA ALIMENTOS	35179	\N
+1149	1	6	2020-11-09	-8.00	COMPRA CARTAO MAESTRO              08/11 MP .EDB	14279	\N
+1153	4	25	2020-11-10	-55.00	despessas estacionamento	\N	\N
+1154	1	13	2020-11-09	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS  OUTUBRO / 2020	61511	\N
+1166	3	15	2020-11-11	-20.00	recarga telefone	\N	\N
+1169	3	9	2020-11-11	-86.35	compra fone	\N	\N
+1175	1	6	2020-11-16	-187.92	COMPRA CARTAO MAESTRO              15/11 CENTER CARNES	381679	\N
+1176	1	6	2020-11-16	-36.44	COMPRA CARTAO MAESTRO              15/11 BISTEKAS CASA DE CA	444579	\N
+1178	1	6	2020-11-17	-5.66	COMPRA CARTAO MAESTRO              17/11 PHARMACOS EXPRESS P	70079	\N
+1177	1	6	2020-11-16	-10.00	COMPRA CARTAO MAESTRO              16/11 CASA D ACARA.CASA D	291679	\N
+1118	1	31	2020-11-03	-73.70	COMPRA CARTAO MAESTRO              01/11 ARACAJN PETISCARIA	405179	\N
+1141	1	6	2020-11-09	-20.00	COMPRA CARTAO MAESTRO              07/11 MP .MANDUBEB	63979	\N
+1179	3	16	2020-11-16	-623.00	mensalidade mes 11/20	\N	\N
+1180	3	9	2020-11-16	-339.40	compra armário	\N	\N
+1181	6	8	2020-11-16	-181.11	posto	\N	\N
+1186	1	6	2020-11-25	-41.43	COMPRA CARTAO MAESTRO              25/11 OMENA ALIMENTOS	521479	\N
+1184	1	4	2020-11-24	3021.14	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	72511	\N
+1182	1	6	2020-11-17	-183.50	COMPRA CARTAO MAESTRO              17/11 UNICOMPRA SUPERMERC	132079	\N
+1183	1	6	2020-11-19	-20.00	COMPRA CARTAO MAESTRO              19/11 MERCPAGO    .MANDUB	371879	\N
+1185	1	13	2020-11-24	-2.30	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+1191	3	12	2020-11-23	-60.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	0	\N
+1189	3	10	2020-11-19	-425.61	PAGAMENTO CONTA LUZ EM CANAIS      INTERNET CEAL ALAGOAS	0	\N
+1187	3	20	2020-11-19	300.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+1190	3	31	2020-11-23	-32.99	COMPRA CARTAO MAESTRO              21/11 RECANTO DA PIZZA	142752	\N
+1192	3	6	2020-11-23	6.00	TED RECEBIDA DIF TITULARIDADE STR  David Matheus de Gusmao V	0	\N
+1188	3	20	2020-11-19	-195.50	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	0	\N
+1193	6	31	2020-11-19	-56.00	bigquits	\N	\N
+1196	6	31	2020-11-23	-27.00	eletronmaria	\N	\N
+1198	4	20	2020-11-19	-100.00	devolução adriana 	\N	\N
+1199	4	6	2020-11-24	-400.00	pagamento venda nilda	\N	\N
+1200	4	25	2020-11-25	-22.00	estacionamento	\N	\N
+1202	3	15	2020-11-26	-129.96	PGTO CONTA DE TELEFONE EM CANAIS   INTERNET VIVO FIXO NAC	0	\N
+1206	3	7	2020-11-30	-20.00	PAGAMENTO DE TITULOS - BCE         08.561.701/0001-01	0	\N
+1204	3	7	2020-11-26	-9.12	DEBITO AUT. FAT.CARTAO MASTER CARD FINAL 3705	0	\N
+1205	3	6	2020-11-30	-18.00	COMPRA CARTAO MAESTRO              29/11 GALETO NORDESTINO	400475	\N
+1203	3	6	2020-11-26	-55.00	COMPRA CARTAO MAESTRO              26/11 BODEGA DO ALAGOANO	451175	\N
+1207	3	25	2020-12-02	-14.00	COMPRA CARTAO MAESTRO              02/12 ESTAPAR HSC BOLSAO	121575	\N
+1208	1	6	2020-11-26	-20.00	COMPRA CARTAO MAESTRO              26/11 BOMPRECO B21 PAJUCA	174279	\N
+1209	1	6	2020-11-27	-22.95	COMPRA CARTAO MAESTRO              27/11 BOMPRECO B21 PAJUCA	465279	\N
+1222	1	6	2020-11-30	-44.55	COMPRA CARTAO MAESTRO              30/11 OMENA ALIMENTOS	100279	\N
+1223	1	6	2020-11-30	-11.40	COMPRA CARTAO MAESTRO              30/11 OMENA ALIMENTOS	522079	\N
+1226	1	6	2020-12-02	-28.14	COMPRA CARTAO MAESTRO              02/12 OMENA ALIMENTOS	340779	\N
+1210	1	14	2020-11-27	-44.50	COMPRA CARTAO MAESTRO              27/11 FARM TRAB BOA VISTA	153179	\N
+1211	1	6	2020-11-27	-7.50	COMPRA CARTAO MAESTRO              27/11 CASA D ACARA.CASA D	344879	\N
+1212	1	6	2020-11-27	-14.00	COMPRA CARTAO MAESTRO              27/11 R C RACOES LTDA ME	141679	\N
+1213	1	31	2020-11-27	-33.00	COMPRA CARTAO MAESTRO              27/11 CASA DO SUCO FILIAL	295079	\N
+1214	1	31	2020-11-30	-220.00	COMPRA CARTAO MAESTRO              28/11 PAG.GentechServicos	453479	\N
+1215	1	31	2020-11-30	-46.95	COMPRA CARTAO MAESTRO              29/11 POSTO MILLENIUM	223979	\N
+1216	1	8	2020-11-30	-167.97	COMPRA CARTAO MAESTRO              29/11 MAXI POSTO VI	503979	\N
+1217	1	31	2020-11-30	-30.99	COMPRA CARTAO MAESTRO              29/11 MAXI POSTO VI	553479	\N
+1218	1	31	2020-11-30	-145.00	COMPRA CARTAO MAESTRO              29/11 GLAUCIANA LEITE GOU	345779	\N
+1219	1	31	2020-11-30	-25.00	COMPRA CARTAO MAESTRO              29/11 AVENIDA CAFE CONVEN	380879	\N
+1220	1	14	2020-11-30	-31.50	COMPRA CARTAO MAESTRO              29/11 FARM TRAB BOA VISTA	553679	\N
+1221	1	31	2020-11-30	-37.00	COMPRA CARTAO MAESTRO              29/11 CASA DO SUCO FILIAL	83779	\N
+1224	1	31	2020-12-01	-53.00	COMPRA CARTAO MAESTRO              01/12 GH LAVA JATO EIRELI	35879	\N
+1225	1	25	2020-12-01	-14.00	COMPRA CARTAO MAESTRO              01/12 ESTAPAR HSC BOLSAO	125979	\N
+1228	4	27	2020-11-30	-250.00	pagamento contadora	\N	\N
+1230	4	25	2020-12-02	-128.00	despesas trabalho	\N	\N
+1231	6	8	2020-11-27	-50.00	posto	\N	\N
+1243	1	31	2020-12-03	-45.00	COMPRA CARTAO MAESTRO              03/12 CASA DO SUCO FILIAL	511679	\N
+1236	6	7	2020-12-01	-61.00	itau card	\N	\N
+1201	3	24	2020-11-26	-1587.26	PAGAMENTO DE TITULOS - BCE         62.307.848/0001-15	0	\N
+1233	6	3	2020-11-30	323.00	salario	\N	\N
+1235	6	3	2020-11-30	790.69	salario	\N	\N
+1238	6	3	2020-12-04	5121.04	renumracao	\N	\N
+1247	1	6	2020-12-04	-20.00	COMPRA CARTAO MAESTRO              04/12 MERCPAGO    .MANDUB	400379	\N
+1239	6	31	2020-12-07	-44.00	posto mile	\N	\N
+1240	6	31	2020-12-07	-117.60	rodizio	\N	\N
+1241	6	31	2020-12-07	-46.00	pizza	\N	\N
+1242	1	13	2020-12-03	-7.23	MENSALIDADE DE SEGURO              Parc 010/012 AP	157211	\N
+1244	1	6	2020-12-03	-16.80	COMPRA CARTAO MAESTRO              04/12 PAG.AndersonCleyton	454779	\N
+1246	1	6	2020-12-04	-48.00	COMPRA CARTAO MAESTRO              04/12 GH LAVA JATO EIRELI	330679	\N
+1245	1	14	2020-12-04	-11.00	COMPRA CARTAO MAESTRO              04/12 FARM TRAB BOA VISTA	312479	\N
+1250	1	31	2020-12-04	-8.00	COMPRA CARTAO MAESTRO              04/12 KRC DOS SANTOS	400779	\N
+1248	1	31	2020-12-04	-54.00	COMPRA CARTAO MAESTRO              04/12 KRC DOS SANTOS	155179	\N
+1249	1	31	2020-12-04	-22.00	COMPRA CARTAO MAESTRO              04/12 KRC DOS SANTOS	202279	\N
+1252	1	36	2020-12-07	-104.50	COMPRA CARTAO MAESTRO              05/12 MARIA ISABELE C A G	533779	\N
+1253	1	6	2020-12-07	-25.45	COMPRA CARTAO MAESTRO              05/12 BOMPRECO B21 PAJUCA	181479	\N
+1251	1	31	2020-12-04	-22.56	COMPRA CARTAO MAESTRO              05/12 EXTRA 1363 MACEIO	152879	\N
+1254	3	13	2020-12-07	-49.40	tarifa mensalidade	\N	\N
+1255	1	13	2020-12-07	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS  NOVEMBRO / 2020	40912	\N
+1256	1	6	2020-12-07	-22.23	COMPRA CARTAO MAESTRO              07/12 BOMPRECO B21 PAJUCA	320579	\N
+1257	1	6	2020-12-07	-30.00	COMPRA CARTAO MAESTRO              07/12 GALETO SAO LUIZ	112679	\N
+1258	1	31	2020-12-08	-114.60	COMPRA CARTAO MAESTRO              08/12 PAG.RaimundoAntonio	521879	\N
+1259	1	6	2020-12-08	-13.97	COMPRA CARTAO MAESTRO              08/12 EXTRA 1363 MACEIO	123179	\N
+1262	6	6	2020-12-07	-5.08	ELECTRONCASA VIEIRA	20201207003	\N
+1263	6	6	2020-12-07	-12.93	ELECTRONCASA VIEIRA	20201207004	\N
+1270	6	31	2020-12-07	-15.00	ELECTRONPOSTO JACIN	20201207011	\N
+1271	6	31	2020-12-07	-44.00	ELECTRONPOSTO MILLE	20201207012	\N
+1272	6	6	2020-12-07	-227.11	ELECTRONSUPERMERCAD	20201207013	\N
+1273	6	3	2020-12-07	0.09	REND PAGO APLIC AUT MAIS	20201207014	\N
+1260	6	7	2020-12-07	-100.00	ELECTRONBADULAQUE P	20201207001	\N
+1261	6	31	2020-12-07	-16.50	ELECTRONCACAU SHOW	20201207002	\N
+1265	6	6	2020-12-07	-38.89	ELECTRONEXTRA MACEI	20201207006	\N
+1267	6	9	2020-12-07	-68.99	ELECTRONLEROY MACEI	20201207008	\N
+1266	6	6	2020-12-07	-40.00	ELECTRONFABIO MORAE	20201207007	\N
+1264	6	25	2020-12-07	-14.00	ELECTRONESTAPAR HSC	20201207005	\N
+1274	4	6	2020-12-07	-400.00	pagamento nilda	\N	\N
+1275	4	31	2020-12-03	-30.00	gastos diversos	\N	\N
+1276	4	17	2020-12-05	-70.00	oferta na manancial	\N	\N
+1280	1	6	2020-12-10	-1.89	COMPRA CARTAO MAESTRO              10/12 BOMPRECO B21 PAJUCA	45179	\N
+1283	1	6	2020-12-10	-15.70	COMPRA CARTAO MAESTRO              10/12 PAG.AndersonCleyton	125779	\N
+1284	1	13	2020-12-10	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+1285	1	6	2020-12-11	-30.28	COMPRA CARTAO MAESTRO              11/12 BOMPRECO B21 PAJUCA	485979	\N
+1287	1	6	2020-12-11	-302.01	COMPRA CARTAO MAESTRO              11/12 BOMPRECO PONTA VERD	373379	\N
+1278	1	6	2020-12-09	-3.77	COMPRA CARTAO MAESTRO              09/12 PHARMACOS EXPRESS P	391279	\N
+1277	1	8	2020-12-09	-150.78	COMPRA CARTAO MAESTRO              09/12 AUTO POSTO TIGRE JA	550879	\N
+1522	1	31	2021-02-02	-17.48	lanche	\N	\N
+1279	1	6	2020-12-09	-25.00	COMPRA CARTAO MAESTRO              09/12 CHURRASCARIA DOIS I	471579	\N
+1282	1	6	2020-12-10	-18.22	COMPRA CARTAO MAESTRO              10/12 REIS ALIMENTOS	515679	\N
+1281	1	6	2020-12-10	-25.00	COMPRA CARTAO MAESTRO              10/12 CHURRASCARIA DOIS I	364179	\N
+1286	1	6	2020-12-11	-16.32	COMPRA CARTAO MAESTRO              11/12 EXTRA 1363 MACEIO	272079	\N
+1288	6	35	2020-12-12	-700.00	tansferencia bancária	\N	\N
+1289	3	35	2020-12-12	700.00	transferencia bancária	\N	\N
+1290	6	25	2020-12-12	-40.00	refeição trabalho	\N	\N
+1291	1	6	2020-12-14	-62.00	COMPRA CARTAO MAESTRO 13/12 GALETO SAO LUIZ	\N	\N
+1292	1	6	2020-12-14	-29.46	COMPRA CARTAO MAESTRO 14/12 BOMPRECO B21 PAJUCA	\N	\N
+1293	\N	6	2020-12-14	-40.69	COMPRA CARTAO MAESTRO 14/12 BOMPRECO B21 PAJUCA	\N	\N
+1300	1	6	2020-12-15	-15.00	COMPRA CARTAO MAESTRO              15/12 MERCPAGO    .MANDUB	30579	\N
+1294	1	6	2020-12-14	-40.69	COMPRA CARTAO MAESTRO 14/12 BOMPRECO B21 PAJUCA	\N	\N
+1296	4	31	2020-12-14	-20.00	igreja	\N	\N
+1297	3	7	2020-12-12	-35.98	 parcela 6/60	\N	\N
+1298	3	7	2020-12-12	-517.09	 parcela 6/60	\N	\N
+1301	1	6	2020-12-16	-52.00	COMPRA CARTAO MAESTRO              16/12 BISTEKAS CASA DE CA	252579	\N
+1303	1	6	2020-12-17	-12.94	COMPRA CARTAO MAESTRO              17/12 OMENA ALIMENTOS	574279	\N
+1304	1	6	2020-12-21	-35.55	COMPRA CARTAO MAESTRO              19/12 BOMPRECO B21 PAJUCA	272279	\N
+1307	1	6	2020-12-21	-21.49	COMPRA CARTAO MAESTRO              20/12 BOMPRECO B21 PAJUCA	80379	\N
+1308	1	9	2020-12-21	-102.89	COMPRA CARTAO MAESTRO              20/12 LEROY MACEIO	105179	\N
+1299	1	6	2020-12-15	-6.00	COMPRA CARTAO MAESTRO              15/12 ESFERA .MARCIO FRUT	265279	\N
+1302	1	6	2020-12-16	-188.58	COMPRA CARTAO MAESTRO              16/12 EXTRA 1363 MACEIO	443579	\N
+1306	1	8	2020-12-21	-136.32	COMPRA CARTAO MAESTRO              19/12 POSTO MILLENIUM	312879	\N
+1305	1	14	2020-12-21	-30.62	COMPRA CARTAO MAESTRO              19/12 3151DROGASIL	330679	\N
+1310	6	31	2020-12-14	-10.00	ELECTRONCASA DO SUC	20201214002	\N
+1309	6	31	2020-12-14	-35.00	ELECTRONCASA DO SUC	20201214001	\N
+1311	6	25	2020-12-14	-14.00	ELECTRONESTAPAR HSC	20201214003	\N
+1312	6	3	2020-12-14	0.01	REND PAGO APLIC AUT MAIS	20201214004	\N
+1313	6	16	2020-12-15	-623.00	INT PAG TIT 109001994406	20201215001	\N
+1314	6	31	2020-12-15	-57.00	ELECTRONBODEGA DO A	20201215002	\N
+1315	6	21	2020-12-15	-112.98	ELECTRONMC1 MAGABEI	20201215003	\N
+1316	6	21	2020-12-15	-7.00	ELECTRONP S ADMINIS	20201215004	\N
+1317	6	3	2020-12-15	0.13	REND PAGO APLIC AUT MAIS	20201215005	\N
+1320	6	27	2020-12-16	-1300.00	PIX TRANSF  EDNEY S16/12	20201216003	\N
+1318	6	31	2020-12-16	-29.70	ELECTRONHABIB S	20201216001	\N
+1321	6	3	2020-12-16	0.23	REND PAGO APLIC AUT MAIS	20201216004	\N
+1322	6	14	2020-12-17	-52.29	ELECTRON3151DROGASI	20201217001	\N
+1323	6	3	2020-12-17	0.01	REND PAGO APLIC AUT MAIS	20201217002	\N
+1324	6	31	2020-12-18	-94.00	ELECTRONBIGLOSO	20201218001	\N
+1325	6	25	2020-12-18	-25.00	ELECTRONUVA DOCE RE	20201218002	\N
+1326	6	3	2020-12-18	664.04	REMUNERACAO/SALARIO	20201218003	\N
+1327	6	31	2020-12-21	-30.69	ELECTRONPOSTO MILLE	20201221001	\N
+1328	4	17	2020-12-15	-250.00	doação a ana maria	\N	\N
+1330	4	25	2020-12-15	-15.00	trabalho	\N	\N
+1329	4	6	2020-12-15	-15.00	diversos	\N	\N
+1331	3	12	2020-12-21	-60.00	recarga celular	\N	\N
+1332	3	27	2020-12-16	-70.00	pagamento impostos empresa	\N	\N
+1335	1	6	2020-12-23	-27.81	COMPRA CARTAO MAESTRO              23/12 BOMPRECO PONTA VERD	40979	\N
+1333	1	6	2020-12-22	-15.00	COMPRA CARTAO MAESTRO              22/12 MERCPAGO    .MANDUB	475279	\N
+1337	1	6	2020-12-24	-20.00	COMPRA CARTAO MAESTRO              24/12 BARBEARIA PAI E FIL	1779	\N
+1336	1	4	2020-12-24	2920.60	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	72412	\N
+1319	6	36	2020-12-16	-92.00	ELECTRONMARIA ISABE	20201216002	\N
+1341	1	6	2020-12-24	-53.96	COMPRA CARTAO MAESTRO              24/12 BOMPRECO PONTA VERD	184379	\N
+1342	1	6	2020-12-24	-17.50	COMPRA CARTAO MAESTRO              24/12 OMENA ALIMENTOS	194679	\N
+1343	1	25	2020-12-21	-14.00	despesas trabalho	\N	\N
+1344	6	10	2020-12-24	-458.90	energia 	\N	\N
+1345	6	24	2020-12-24	-1589.51	pagamento parcela carro 12/2020	\N	\N
+1334	1	31	2020-12-23	-49.50	COMPRA CARTAO MAESTRO              23/12 HABIB S	31779	\N
+1338	1	6	2020-12-24	-17.63	COMPRA CARTAO MAESTRO              24/12 REIS ALIMENTOS	123679	\N
+1340	1	8	2020-12-24	-26.00	COMPRA CARTAO MAESTRO              24/12 POSTO MILLENIUM	262179	\N
+1339	1	31	2020-12-24	-9.99	COMPRA CARTAO MAESTRO              24/12 POSTO MILLENIUM	254979	\N
+1346	1	13	2020-12-21	-2.30	tarifa registro	\N	\N
+1347	1	6	2020-12-28	-70.28	bompreço	\N	\N
+1348	1	21	2020-12-28	-73.00	compra calça para edney	\N	\N
+1351	1	21	2020-12-28	-93.78	compra 3 calcinhas e 1 sutia esther	\N	\N
+1352	1	20	2020-12-28	-39.90	empréstimo para o matheus	\N	\N
+1349	1	6	2020-12-28	-6.00	seac kafeine	\N	\N
+1353	6	35	2020-12-28	-50.00	saque	\N	\N
+1354	6	36	2020-12-28	-27.00	RACAO CACHORRO	\N	\N
+1355	4	35	2020-12-28	50.00	transferência	\N	\N
+1356	6	6	2020-12-28	-300.00	saque 	\N	\N
+1357	1	6	2020-12-28	-55.25	bompreço	\N	\N
+1358	1	6	2020-12-28	-42.97	americanas	\N	\N
+1359	1	18	2020-12-28	-45.00	presente neto ildezuilde	\N	\N
+1360	4	20	2020-12-28	40.00	recebimento matheus	\N	\N
+1361	4	6	2020-12-28	-35.00	diversos	\N	\N
+1362	4	31	2020-12-28	-30.00	diversos	\N	\N
+1363	1	6	2020-12-28	-6.00	diversos	\N	\N
+1364	1	36	2020-12-29	-29.00	COMPRA CARTAO MAESTRO              29/12 R C RACOES LTDA	302979	\N
+1365	1	6	2020-12-29	-7.50	COMPRA CARTAO MAESTRO              29/12 PAG.BrendaRafaelaDe	294679	\N
+1366	1	8	2020-12-29	-122.81	COMPRA CARTAO MAESTRO              30/12 AUTO POSTO MANGABEI	12279	\N
+1367	1	31	2020-12-29	-44.00	COMPRA CARTAO MAESTRO              30/12 POSTO MILLENIUM	445579	\N
+1368	1	38	2020-12-30	-33.00	COMPRA CARTAO MAESTRO              30/12 MERCPAGO    .MERCAD	384479	\N
+1369	1	37	2020-12-30	-185.01	COMPRA CARTAO MAESTRO              30/12 POSTO BR CRUZEIRO I	594879	\N
+1373	1	37	2020-12-30	-145.47	COMPRA CARTAO MAESTRO              30/12 SHELL	124379	\N
+1374	1	39	2020-12-30	-160.00	COMPRA CARTAO MAESTRO              30/12 JOSE SOLON D.HOTEL	25979	\N
+1372	1	38	2020-12-30	-16.00	COMPRA CARTAO MAESTRO              30/12 PAG.RafaelCorreiaDa	472279	\N
+1375	1	38	2020-12-30	-105.00	COMPRA CARTAO MAESTRO              30/12 PAG.EdmilsonDosSant	361079	\N
+1371	1	38	2020-12-30	-97.00	COMPRA CARTAO MAESTRO              30/12 A GAUCHINHA	431879	\N
+1370	1	38	2020-12-30	-31.89	COMPRA CARTAO MAESTRO              30/12 J A D ARAUJO . CIA	120679	\N
+1376	6	12	2020-12-28	-133.00	telefone	\N	\N
+1377	1	38	2020-12-31	-55.00	COMPRA CARTAO MAESTRO              31/12 PAG.IraciJoseHipoli	474979	\N
+1378	1	39	2020-12-31	-160.00	COMPRA CARTAO MAESTRO              31/12 JOSE SOLON D.HOTEL	450679	\N
+1380	1	38	2020-12-31	-11.00	COMPRA CARTAO MAESTRO              31/12 AGNALDO DISTRIBUIDO	530079	\N
+1379	1	38	2020-12-31	-76.00	COMPRA CARTAO MAESTRO              31/12 RESTAURANTE E POUSA	452279	\N
+1381	1	38	2020-12-31	-83.00	COMPRA CARTAO MAESTRO              31/12 PAG.IraciJoseHipoli	403779	\N
+1382	1	38	2020-12-31	-8.75	COMPRA CARTAO MAESTRO              31/12 PAG.IraciJoseHipoli	425879	\N
+1384	1	39	2021-01-04	-160.00	COMPRA CARTAO MAESTRO              01/01 JOSE SOLON D.HOTEL	172179	\N
+1383	1	38	2021-01-04	-55.00	COMPRA CARTAO MAESTRO              01/01 MERCPAGO    .PIZZAR	83579	\N
+1395	1	14	2021-01-04	-32.99	COMPRA CARTAO MAESTRO              03/01 FARMACIAS PAGUE MEN	243479	\N
+1391	1	39	2021-01-04	-160.00	COMPRA CARTAO MAESTRO              02/01 JOSE SOLON D.HOTEL	254579	\N
+1393	1	37	2021-01-04	-157.09	COMPRA CARTAO MAESTRO              03/01 POSTO PAI HEROI	584779	\N
+1389	1	9	2021-01-04	-136.97	COMPRA CARTAO MAESTRO              02/01 PAG.LojasLeBiscuit	583079	\N
+1394	1	38	2021-01-04	-127.00	COMPRA CARTAO MAESTRO              03/01 CHURRASCARIA ALAGOI	72879	\N
+1399	1	37	2021-01-04	-110.89	COMPRA CARTAO MAESTRO              03/01 SANFRANCISCO COMBUS	354979	\N
+1396	1	37	2021-01-04	-109.00	COMPRA CARTAO MAESTRO              03/01 PAG.Vercol	342779	\N
+1386	1	38	2021-01-04	-86.00	COMPRA CARTAO MAESTRO              02/01 QUADRADINHA PIZZARI	585779	\N
+1390	1	38	2021-01-04	-67.10	COMPRA CARTAO MAESTRO              02/01 RMC COMERCIO DE ALI	405779	\N
+1400	1	38	2021-01-04	-56.00	COMPRA CARTAO MAESTRO              03/01 SUMUP  .CTG	250479	\N
+1392	1	37	2021-01-04	-50.00	COMPRA CARTAO MAESTRO              03/01 DANIEL AMADEU LEAL	192479	\N
+1385	1	38	2021-01-04	-35.00	COMPRA CARTAO MAESTRO              02/01 PAG.IraciJoseHipoli	495879	\N
+1397	1	38	2021-01-04	-18.00	COMPRA CARTAO MAESTRO              03/01 CHURRASCARIA BOA ME	391779	\N
+1387	1	38	2021-01-04	-3.00	COMPRA CARTAO MAESTRO              02/01 QUADRADINHA PIZZARI	495079	\N
+1398	1	38	2021-01-04	-30.00	COMPRA CARTAO MAESTRO              03/01 A GAUCHINHA	364279	\N
+1388	1	38	2021-01-04	-22.70	COMPRA CARTAO MAESTRO              02/01 PAG.LucianoSilvaBor	553079	\N
+1401	6	25	2021-01-04	-14.00	estacionamento	\N	\N
+1402	6	14	2021-01-05	-30.62	drogasil	\N	\N
+1403	6	8	2021-01-07	-26.00	posto	\N	\N
+1405	6	6	2021-01-07	-10.00	agua	\N	\N
+1406	6	3	2021-01-07	4074.48	renumeração salário	\N	\N
+1407	7	3	2021-01-01	473.00	vale alimentação	\N	\N
+1409	7	6	2021-01-04	-4.08	bompreco	\N	\N
+1410	7	6	2021-01-06	-40.81	bompreco	\N	\N
+1411	7	6	2021-01-07	-42.55	bompreco	\N	\N
+1412	7	6	2021-01-07	-166.75	bompreco	\N	\N
+1413	7	6	2021-01-08	-44.42	bompreco	\N	\N
+1414	7	6	2021-01-11	-20.39	bompreco	\N	\N
+1432	6	25	2021-01-11	-14.00	estacionamento	\N	\N
+1415	6	8	2021-01-11	-174.43	ELECTRONPOSTO SARAN	20210111001	\N
+1420	6	6	2021-01-11	-93.40	ELECTRONPAG*Raimund	20210111006	\N
+1417	6	36	2021-01-11	-27.00	ELECTRONMARIA ISABE	20210111003	\N
+1418	6	36	2021-01-11	-55.00	ELECTRONJACILMA MAR	20210111004	\N
+1416	6	6	2021-01-11	-20.00	CXE 000133 SAQUE 09/01	20210111002	\N
+1452	4	20	2021-01-18	355.00	recebimento pagamento adriana	\N	\N
+1422	6	35	2021-01-08	-50.00	saque	\N	\N
+1423	6	9	2021-01-08	-79.99	leroy	\N	\N
+1478	6	14	2021-01-19	-53.01	ELECTRON3151DROGASI	20210119003	\N
+1480	6	6	2021-01-21	-26.00	ELECTRONCHURRASCARI	20210121001	\N
+1481	6	18	2021-01-22	-76.90	ELECTRONHNA*OBOTICA	20210122001	\N
+1482	6	6	2021-01-22	-22.33	ELECTRONTAPAJOARA L	20210122002	\N
+1558	1	6	2021-02-10	-31.00	COMPRA CARTAO MAESTRO              10/02 GH LAVA JATO EIRELI	474379	\N
+1485	6	31	2021-01-25	-65.00	ELECTRONBIGLOSO	20210125006	\N
+1486	6	31	2021-01-25	-23.00	ELECTRONBIGLOSO	20210125007	\N
+1484	6	6	2021-01-25	-2.99	ELECTRONEXTRA MACEI	20210125005	\N
+1483	6	9	2021-01-25	-71.52	ELECTRONEXTRA MACEI	20210125004	\N
+1487	7	6	2021-01-22	-18.00	bompreco	\N	\N
+1488	4	20	2021-01-20	50.00	recebimento matheus 	\N	\N
+1489	4	6	2021-01-23	-350.00	pagamento nilda	\N	\N
+1490	4	6	2021-01-23	-20.00	diversos	\N	\N
+1491	4	6	2021-01-23	-27.00	diversos	\N	\N
+1492	6	25	2021-01-26	-14.00	ELECTRONESTAPAR HSC	20210126001	\N
+1493	6	25	2021-01-27	-14.00	ELECTRONESTAPAR HSC	20210127003	\N
+1494	6	6	2021-01-27	-44.62	ELECTRONREIS ALIMEN	20210127004	\N
+1495	6	41	2021-01-27	0.01	REND PAGO APLIC AUT MAIS	20210127005	\N
+1496	6	25	2021-01-29	-14.00	ELECTRONESTAPAR HSC	20210129002	\N
+1497	6	6	2021-01-26	-6.00	ELECTRONJOSE FERNAN	20210126002	\N
+1498	6	10	2021-01-27	-517.37	INT  PAG TIT BANCO 001	20210127001	\N
+1499	6	12	2021-01-27	-60.00	INT PRE-PAGOXXXXX  5028	20210127002	\N
+1500	6	9	2021-01-28	-31.00	ELECTRONPAG*Anderso	20210128001	\N
+1501	6	6	2021-01-28	-20.00	PIX TRANSF  DAVID M28/01	20210128002	\N
+1502	6	24	2021-01-29	-1589.51	INT  PAG TIT BANCO 033	20210129001	\N
+1503	6	41	2021-01-29	0.03	REND PAGO APLIC AUT APR	20210129003	\N
+1504	1	13	2021-01-04	-7.23	mensalidade seguro	\N	\N
+1505	1	13	2021-01-12	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	\N	\N
+1506	1	4	2021-01-29	3062.03	mensalidade	\N	\N
+1507	1	13	2021-01-29	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS DEZEMBRO / 2020 	\N	\N
+1508	1	9	2021-02-01	-25.00	material de construcao	\N	\N
+1509	1	9	2021-02-01	-34.60	material de construção	\N	\N
+1510	7	3	2021-01-29	473.00	recebimento ticker alimentacao	\N	\N
+1511	7	6	2021-01-29	-168.32	cenetr CARNE	\N	\N
+1512	7	6	2021-01-29	-66.92	palato	\N	\N
+1513	6	35	2021-02-01	-200.00	transferencia	\N	\N
+1514	6	6	2021-02-03	-15.00	bompreço	\N	\N
+1515	6	6	2021-02-03	-20.00	bompreço	\N	\N
+1516	6	14	2021-02-03	-7.00	boa vista	\N	\N
+1517	1	31	2021-02-01	-62.00	biglosos	\N	\N
+1518	1	14	2021-02-01	-59.25	remedios	\N	\N
+1519	1	6	2021-02-01	-3.99	comercial drugstore	\N	\N
+1520	1	8	2021-02-01	-183.91	combustível	\N	\N
+1523	1	9	2021-02-02	-50.00	conserto liquidificador	\N	\N
+1524	1	13	2021-02-03	-7.23	mensalidade seguro	\N	\N
+1525	1	25	2021-02-03	-14.00	estampar	\N	\N
+1527	4	25	2021-02-03	-10.00	estacionamento	\N	\N
+1528	4	6	2021-02-03	-6.00	diversos	\N	\N
+1526	4	35	2021-02-01	200.00	transferencia	\N	\N
+1529	6	36	2021-02-04	-30.00	maria isabel	\N	\N
+1530	6	9	2021-02-04	-350.00	reforma somá 1/2	\N	\N
+1531	6	41	2021-02-04	0.01	rendimento aplicação	\N	\N
+1532	6	31	2021-02-05	-43.98	posto mile	\N	\N
+1533	6	20	2021-02-05	12370.00	dinheiro do empréstimo	\N	\N
+1534	6	3	2021-02-05	4663.41	salário pessoa física	\N	\N
+1535	6	9	2021-02-05	-519.60	compra das portas	\N	\N
+1536	1	13	2021-02-05	-88.00	mensalidade jan/2020	\N	\N
+1537	1	6	2021-02-05	-35.63	bompreço pajussara	\N	\N
+1538	1	31	2021-02-05	-180.80	aniversário matheus	\N	\N
+1539	1	8	2021-02-08	-100.00	combustível ecosport	\N	\N
+1540	1	6	2021-02-08	-65.00	refeiçao fora	\N	\N
+1541	1	31	2021-02-08	-52.00	refeição fora	\N	\N
+1542	4	6	2021-02-05	-140.00	feira	\N	\N
+1543	1	14	2021-02-08	-31.27	drogasil	\N	\N
+1544	1	21	2021-02-08	-129.94	marisa vestido para esther	\N	\N
+1545	1	21	2021-02-08	-7.00	estacionamento	\N	\N
+1546	1	6	2021-02-08	-498.72	atacadao	\N	\N
+1547	1	6	2021-02-08	-437.91	atacadoa	\N	\N
+1548	1	6	2021-02-09	-13.46	posto	\N	\N
+1549	1	8	2021-02-09	-196.28	ṕosto	\N	\N
+1550	1	13	2021-02-09	-5.90	tarifa baixa simples	\N	\N
+1551	6	35	2021-02-08	-650.00	transferencia bancaria	\N	\N
+1552	6	7	2021-02-09	-317.46	pagamento cartao	\N	\N
+1553	6	9	2021-02-10	-2900.00	pagamento 1 parcela  marcenaria	\N	\N
+1554	3	7	2021-02-08	-12.76	parcela	\N	\N
+1555	3	13	2021-02-08	-49.40	tarifa jan/2020	\N	\N
+1556	3	35	2021-02-08	650.00	transferencia	\N	\N
+1557	3	7	2021-02-08	-527.89	parcela emprestimo	\N	\N
+1561	1	13	2021-02-11	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+1563	1	6	2021-02-12	-17.00	COMPRA CARTAO MAESTRO              12/02 BOMPRECO B21 PAJUCA	74279	\N
+1559	1	6	2021-02-11	-35.30	COMPRA CARTAO MAESTRO              11/02 JEIMES ALBUQUERQUE	444979	\N
+1560	1	25	2021-02-11	-14.00	COMPRA CARTAO MAESTRO              11/02 ESTAPAR HSC BOLSAO	343079	\N
+1562	1	6	2021-02-12	-55.00	COMPRA CARTAO MAESTRO              12/02 PAG.CILLABIJU	181879	\N
+1564	1	31	2021-02-17	-126.06	COMPRA CARTAO MAESTRO              13/02 PAG.RaimundoAntonio	194479	\N
+1565	6	9	2021-02-10	-3245.00	compra mesa e bufeff da mesa lojas guido	\N	\N
+1566	6	9	2021-02-12	-101.00	compras dos pés dos sofá	\N	\N
+1567	6	9	2021-02-12	-327.97	compras das cortinas , protetor de colcao e varão cortina	\N	\N
+1568	6	9	2021-02-12	-1437.00	compra de 3 box cama , 1 colcão d33	\N	\N
+1569	6	16	2021-02-12	-100.00	pagamento faculdade matheus	\N	\N
+1575	1	6	2021-02-17	-44.50	COMPRA CARTAO MAESTRO              15/02 REIS ALIMENTOS	144979	\N
+1570	1	14	2021-02-17	-16.45	COMPRA CARTAO MAESTRO              14/02 3151DROGASIL	394379	\N
+1574	1	6	2021-02-17	-15.00	COMPRA CARTAO MAESTRO              14/02 EXTRA 1363 MACEIO	132179	\N
+1577	1	14	2021-02-17	-12.36	COMPRA CARTAO MAESTRO              16/02 FARM TRAB BOA VISTA	585679	\N
+1576	1	6	2021-02-17	-11.96	COMPRA CARTAO MAESTRO              15/02 MAXI POSTO IV	1179	\N
+1571	1	14	2021-02-17	-9.99	COMPRA CARTAO MAESTRO              14/02 3151DROGASIL	415179	\N
+1572	1	6	2021-02-17	-7.00	COMPRA CARTAO MAESTRO              14/02 P S ADMINISTRADORA	65879	\N
+1578	1	6	2021-02-17	-31.67	COMPRA CARTAO MAESTRO              16/02 BOMPRECO B21 PAJUCA	20479	\N
+1579	1	6	2021-02-17	-21.00	COMPRA CARTAO MAESTRO              16/02 PAG.MariaDoCarmo	210579	\N
+1573	1	6	2021-02-17	-162.64	COMPRA CARTAO MAESTRO              14/02 EXTRA 1363 MACEIO	122479	\N
+1580	6	6	2021-02-17	-450.00	pagamento nilda	\N	\N
+1581	6	6	2021-02-17	-153.87	center carnes	\N	\N
+1582	6	9	2021-02-17	-100.00	compra de travesseiros	\N	\N
+1583	6	9	2021-02-17	-66.00	materia de construção	\N	\N
+1650	1	13	2021-03-02	-7.56	MENSALIDADE DE SEGURO Parc 001/012 AP	\N	\N
+1586	7	6	2021-02-07	-131.18	palato	\N	\N
+1587	7	6	2021-02-07	-34.95	palato	\N	\N
+1588	7	6	2021-02-11	-49.27	bompreço	\N	\N
+1589	1	8	2002-02-22	-5.15	uper adriana	\N	\N
+1590	4	20	2021-02-18	100.00	recebimento adriana 	\N	\N
+1591	4	9	2021-02-20	-50.00	pagamento frete sofa	\N	\N
+1592	4	9	2021-02-20	-50.00	pagamento instalação vaso sanitario 	\N	\N
+1593	6	20	2021-02-18	-100.00	empréstimo adriana	\N	\N
+1594	6	7	2021-02-18	-100.00	pagamento despesas cartão adriana	\N	\N
+1595	6	31	2021-02-18	-39.00	ponto do suco 	\N	\N
+1596	6	31	2021-02-18	-5.00	ponto do suco 	\N	\N
+1598	6	9	2021-02-22	-165.91	despesas material de limpeza apartamento	\N	\N
+1651	1	9	2021-03-03	-119.80	OMPRA CARTAO MAESTRO 03/03 LEROY MACEIO dobradiças	\N	\N
+1600	6	8	2021-02-22	-157.98	combustivel	\N	\N
+1601	6	6	2021-02-22	-21.08	extra maceió	\N	\N
+1602	6	25	2021-02-22	-14.00	esacionamento]	\N	\N
+1603	6	15	2021-02-22	-133.15	telefone 	\N	\N
+1604	6	15	2021-02-22	-132.98	telefone	\N	\N
+1605	6	9	2021-02-22	-350.00	pagamento restante reforma sofá	\N	\N
+1606	6	9	2021-02-22	-7.00	pagamento estacionamento	\N	\N
+1607	6	9	2021-02-23	-350.00	pagamento metade do servico de 600,00 (assentamento das portas 250 cozinha americana 350) e 50 despesas de entulho	\N	\N
+1609	6	9	2021-02-23	-10.17	ipanema construções	\N	\N
+1608	6	9	2021-02-23	-10.00	despesas material apartatamento incomel	\N	\N
+1610	6	9	2021-02-23	-56.08	despesas material construção apartamento 	\N	\N
+1611	6	6	2021-02-23	-12.70	diversos	\N	\N
+1612	6	4	2021-02-23	-4.00	diversos	\N	\N
+1613	6	9	2021-02-24	-129.20	compra de 2 ducha de banheiro e massa corrida ipanema construções	\N	\N
+1614	6	6	2021-02-24	-15.00	agual	\N	\N
+1615	6	9	2021-02-24	-370.00	pagamento da pedra de cozinha americana	\N	\N
+1585	6	6	2021-02-17	-55.00	não identificado	\N	\N
+1584	6	9	2021-02-17	-9.00	materia de construção	\N	\N
+1617	6	6	2021-02-22	-60.00	pag maceioS	\N	\N
+1618	3	17	2021-02-19	55.00	dizimo matheus 	\N	\N
+1619	3	8	2021-02-19	-50.00	combustivel	\N	\N
+1620	3	6	2021-02-20	-47.00	almoço	\N	\N
+1621	3	6	2021-02-24	-16.46	omena alimentos	\N	\N
+1616	6	36	2021-02-25	-30.00	ração cachorro	\N	\N
+1597	6	9	2021-02-22	-60.00	despesas materiais construção apartamento	\N	\N
+1599	6	9	2021-02-22	-97.70	despesas material de construção na leroy apartamento	\N	\N
+1622	6	12	2021-02-26	-60.00	telefone	\N	\N
+1624	6	9	2021-02-26	-183.40	compra de 2 fechaduras	\N	\N
+1625	6	6	2021-02-26	-49.00	almoço no lava jado	\N	\N
+1623	6	6	2021-02-26	-55.00	jantar 	\N	\N
+1626	6	9	2021-02-26	-35.58	leroy	\N	\N
+1627	6	6	2021-02-26	-15.55	posto compra de agua	\N	\N
+1628	7	3	2021-02-26	473.00	recebimento saldo alimentação	\N	\N
+1631	7	6	2021-02-27	-41.04	ompreco	\N	\N
+1629	7	6	2021-02-26	-127.14	bidtecas	\N	\N
+1633	6	6	2021-03-01	-20.50	pag benedit	\N	\N
+1634	6	8	2021-03-01	-26.00	lava jato	\N	\N
+1635	6	6	2021-03-01	-24.00	diversos	\N	\N
+1636	6	21	2021-03-01	-230.00	aretuza roupa adriana	\N	\N
+1639	1	4	2021-02-26	3112.87	recebimento santa casa	\N	\N
+1640	1	8	2021-02-26	-3.00	posto jacintinho	\N	\N
+1641	1	8	2021-02-26	-131.87	posto jacintinho	\N	\N
+1642	1	9	2021-02-26	-57.50	compra de fechaduras	\N	\N
+1652	1	6	2021-03-03	-7.25	COMPRA CARTAO MAESTRO 03/03 PAG.PanificacaoAlbu	\N	\N
+1653	1	6	2021-03-03	-52.00	almoço	\N	\N
+1654	1	13	2021-03-03	-4.50	TARIFA SAQUE ATM/BANCO 24HS 02/03/2021	\N	\N
+1643	1	9	2021-02-28	-17.00	compra da lixadeiras	\N	\N
+1632	6	9	2021-02-28	-300.00	pagamento 2 arcela mão de obra pedreiros assentamento da porta e cozinha americana	\N	\N
+1655	6	9	2021-03-01	-30.00	despesas matheus	\N	\N
+1657	6	6	2021-03-01	-20.00	telefone adriana	\N	\N
+1637	6	9	2021-02-28	-110.97	material casa	\N	\N
+1638	6	9	2021-02-28	-8.00	estacionamento	\N	\N
+1644	6	24	2021-02-28	-1589.53	financiamento carro	\N	\N
+1645	6	10	2021-02-28	-406.51	conta de energia	\N	\N
+1646	1	9	2021-03-01	-189.90	compra das fechaduras 	\N	\N
+1647	1	9	2021-03-01	-22.98	tomada eletrica	\N	\N
+1648	1	13	2021-03-01	-2.30	tarifa for 	\N	\N
+1649	1	9	2021-03-02	-140.00	pagamento restante mão de obra cozinha americana 	\N	\N
+1662	1	9	2021-03-04	-59.80	COMPRA CARTAO MAESTRO              04/03 LEROY MACEIO	123279	\N
+1665	1	13	2021-03-05	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS FEVEREIRO / 2021	90803	\N
+1661	1	6	2021-03-04	-54.00	COMPRA CARTAO MAESTRO              04/03 PAG.JoseRenivaldoDa	494279	\N
+1664	1	14	2021-03-04	-52.41	COMPRA CARTAO MAESTRO              04/03 DROGATIM DROGARIAS	2079	\N
+1660	1	8	2021-03-04	-9.26	COMPRA CARTAO MAESTRO              04/03 UBER .TRIP HELP.UBE	294679	\N
+1669	1	14	2021-03-05	-96.25	COMPRA CARTAO MAESTRO              05/03 3151DROGASIL	474779	\N
+1666	1	25	2021-03-05	-18.00	COMPRA CARTAO MAESTRO              05/03 GH LAVA JATO EIRELI	165179	\N
+1668	1	8	2021-03-05	-11.36	COMPRA CARTAO MAESTRO              05/03 UBER .TRIP HELP.UBE	92979	\N
+1667	1	6	2021-03-05	-10.00	COMPRA CARTAO MAESTRO              05/03 MP .LAVAJATOESTACDA	305879	\N
+1673	1	31	2021-03-08	-97.57	COMPRA CARTAO MAESTRO              06/03 CASA DA CARNE DO SO	521579	\N
+1670	1	36	2021-03-08	-33.10	COMPRA CARTAO MAESTRO              06/03 PAG.ReiDog	343979	\N
+1672	1	6	2021-03-08	-8.00	COMPRA CARTAO MAESTRO              06/03 PAG.ParqueShopping	145879	\N
+1674	1	21	2021-03-08	-317.42	COMPRA CARTAO MAESTRO              07/03 HNA.OBOTICARIO	323079	\N
+1760	6	6	2021-03-24	-13.37	ELECTRONPAG*Panific	20210324003	\N
+1761	6	6	2021-03-25	-7.00	ELECTRONMERCPAGO	20210325001	\N
+1663	1	8	2021-03-04	-190.72	COMPRA CARTAO MAESTRO              04/03 AUTO POSTO LIDERANC	514779	\N
+1675	1	9	2021-03-08	-685.00	COMPRA CARTAO MAESTRO              07/03 LASER ELETRO 086	592879	\N
+1678	1	6	2021-03-08	-10.98	COMPRA CARTAO MAESTRO              08/03 SUPERMERCADO PALATO	200379	\N
+1679	1	8	2021-03-08	-8.22	COMPRA CARTAO MAESTRO              08/03 UBER .TRIP HELP.UBE	540479	\N
+1676	1	6	2021-03-08	-8.00	COMPRA CARTAO MAESTRO              07/03 PB ADMINISTRADORA D	154179	\N
+1671	1	6	2021-03-08	-4.80	COMPRA CARTAO MAESTRO              06/03 AMOR AOS PEDACOS	490279	\N
+1677	1	6	2021-03-08	-4.49	COMPRA CARTAO MAESTRO              08/03 MC PONTA VERDE 2	124979	\N
+1681	6	41	2021-03-04	0.03	REND PAGO APLIC AUT MAIS	20210304002	\N
+1686	6	9	2021-03-08	-6.99	ELECTRONCASA VIEIRA	20210308003	\N
+1682	6	9	2021-03-04	-2900.00	PIX TRANSF  Cristia04/03	20210304001	\N
+1683	6	3	2021-03-05	4633.41	REMUNERACAO/SALARIO	20210305001	\N
+1688	6	35	2021-03-08	-650.00	PIX TRANSF  EDNEY S08/03	20210308005	\N
+1687	6	6	2021-03-08	-32.00	PIX TRANSF  DAVID M08/03	20210308004	\N
+1720	6	6	2021-03-15	-47.00	ELECTRONGH LAVA JAT	20210315003	\N
+1684	6	6	2021-03-08	-6.00	ELECTRONHB ALIMENTO	20210308001	\N
+1685	6	6	2021-03-08	-4.00	ELECTRONHB ALIMENTO	20210308002	\N
+1690	3	35	2021-03-08	650.00	transferência bancária	\N	\N
+1691	4	9	2021-03-06	320.00	venda das portas 	\N	\N
+1692	4	6	2021-03-08	-40.00	serviço lavanderia redes	\N	\N
+1693	4	9	2021-03-08	-170.00	servico da rede de proteção	\N	\N
+1694	4	6	2021-03-08	-50.00	diversos	\N	\N
+1699	1	13	2021-03-11	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+1700	1	6	2021-03-12	-24.07	COMPRA CARTAO MAESTRO              12/03 BOMPRECO B21 PAJUCA	221379	\N
+1701	1	6	2021-03-12	-30.00	COMPRA CARTAO MAESTRO              12/03 MARIA ISABELE C A G	360479	\N
+1703	1	6	2021-03-12	-17.00	COMPRA CARTAO MAESTRO              12/03 BOMPRECO B21 PAJUCA	371279	\N
+1695	1	6	2021-03-09	-28.20	COMPRA CARTAO MAESTRO              09/03 REIS ALIMENTOS	4979	\N
+1696	1	8	2021-03-09	-10.70	COMPRA CARTAO MAESTRO              09/03 UBER .TRIP HELP.UBE	405979	\N
+1697	1	6	2021-03-10	-6.00	COMPRA CARTAO MAESTRO              10/03 ALUISIO SANTOS EPP	344879	\N
+1698	1	6	2021-03-11	-14.00	COMPRA CARTAO MAESTRO              11/03 JOSE FERNAND.CASA D	273279	\N
+1702	1	6	2021-03-12	-11.50	COMPRA CARTAO MAESTRO              12/03 MP .MMARIABEATRIZDA	253979	\N
+1704	1	8	2021-03-12	-9.94	COMPRA CARTAO MAESTRO              12/03 UBER .TRIP HELP.UBE	184679	\N
+1705	1	6	2021-03-15	-37.80	COMPRA CARTAO MAESTRO              13/03 REIS ALIMENTOS	240579	\N
+1707	6	7	2021-03-09	-372.97	ITAUCARD VISA 0602-2458	20210309002	\N
+1711	6	14	2021-03-11	-49.99	ELECTRONFARMACIA DO	20210311001	\N
+1706	6	14	2021-03-09	-46.29	ELECTRON3151DROGASI	20210309001	\N
+1710	6	8	2021-03-10	-201.66	ELECTRONPOSTO EXTRA	20210310003	\N
+1708	6	9	2021-03-10	-86.45	ELECTRONAMAZONAS TE	20210310001	\N
+1709	6	6	2021-03-10	-9.77	ELECTRONLOJAS AMERI	20210310002	\N
+1714	6	9	2021-03-11	-90.00	PIX TRANSF  MARCO A11/03	20210311004	\N
+1712	6	9	2021-03-11	-80.78	ELECTRONLEROY MACEI	20210311002	\N
+1715	6	9	2021-03-11	-35.00	PIX TRANSF  Wemerso11/03	20210311005	\N
+1717	6	16	2021-03-12	-100.00	PIX TRANSF  DAVID M12/03	20210312002	\N
+1713	6	9	2021-03-11	-29.80	ELECTRONPAG*LojaDas	20210311003	\N
+1716	6	9	2021-03-12	-36.96	ELECTRONLEROY MACEI	20210312001	\N
+1718	6	9	2021-03-15	-11.00	ELECTRONACQ*COLMED	20210315001	\N
+1719	6	9	2021-03-15	-10.00	ELECTRONCOMERCIAL M	20210315002	\N
+1722	7	6	2021-03-06	-32.17	bompreço	\N	\N
+1721	7	6	2021-03-04	-192.35	bompreço	\N	\N
+1723	7	6	2021-03-09	-27.06	bompreço	\N	\N
+1724	7	6	2021-03-10	-20.39	bompreço	\N	\N
+1725	7	6	2021-03-11	-36.18	bompreço	\N	\N
+1726	3	7	2021-03-08	-526.36	pagamento empréstimo	\N	\N
+1727	3	13	2021-03-08	-49.40	mensalidade fevereiro	\N	\N
+1728	4	9	2021-03-13	-50.00	serviço mão de obra	\N	\N
+1729	4	6	2021-03-13	-50.00	diversos	\N	\N
+1730	1	6	2021-03-15	-38.00	COMPRA CARTAO MAESTRO              13/03 PAG.MariaDoCarmo	65079	\N
+1731	1	6	2021-03-15	-67.43	COMPRA CARTAO MAESTRO              14/03 BOMPRECO B21 PAJUCA	380579	\N
+1732	1	6	2021-03-15	-26.00	COMPRA CARTAO MAESTRO              14/03 PAG.MariaDoCarmo	254879	\N
+1736	1	6	2021-03-15	-20.00	COMPRA CARTAO MAESTRO              15/03 PAG.MariaDoCarmo	244079	\N
+1737	1	6	2021-03-15	-7.00	COMPRA CARTAO MAESTRO              15/03 PAG.AndersonCleyton	290479	\N
+1743	1	6	2021-03-16	-15.00	COMPRA CARTAO MAESTRO              16/03 PAG.MariaDoCarmo	415679	\N
+1744	1	6	2021-03-16	-6.50	COMPRA CARTAO MAESTRO              16/03 PAG.AndersonCleyton	483079	\N
+1734	1	6	2021-03-15	-60.00	COMPRA CARTAO MAESTRO              15/03 GH LAVA JATO EIRELI	153579	\N
+1735	1	25	2021-03-15	-20.00	COMPRA CARTAO MAESTRO              15/03 ESTAPAR HSC BOLSAO	13379	\N
+1733	1	9	2021-03-15	-9.00	COMPRA CARTAO MAESTRO              15/03 PAG.Soteca	292979	\N
+1741	1	6	2021-03-16	-90.00	COMPRA CARTAO MAESTRO              16/03 PAG.PanificacaoAlbu	43679	\N
+1739	1	6	2021-03-16	-13.00	COMPRA CARTAO MAESTRO              16/03 POSTO JACINTINHO	61379	\N
+1740	1	6	2021-03-16	-8.00	COMPRA CARTAO MAESTRO              16/03 HORTIFRUTI VITORIA	560979	\N
+1738	1	6	2021-03-16	-6.20	COMPRA CARTAO MAESTRO              16/03 SUMUP  .SUMUPDANIEL	173179	\N
+1742	1	6	2021-03-16	-3.00	COMPRA CARTAO MAESTRO              16/03 PAG.PanificacaoAlbu	155979	\N
+1745	6	6	2021-03-15	-500.00	pagamento nildda	\N	\N
+1746	6	6	2021-03-15	-100.00	pixel pagamento mudança	\N	\N
+1748	6	14	2021-03-16	-11.00	diversos manutencao da casa	\N	\N
+1747	6	6	2021-03-16	-7.00	diversos	\N	\N
+1749	6	6	2021-03-17	-30.86	compra feira café da manha	\N	\N
+1750	6	36	2021-03-29	-86.50	ELECTRONMARIA ISABE	20210329004	\N
+1752	6	9	2021-03-19	-200.58	ELECTRONLEROY MACEI	20210319001	\N
+1753	6	9	2021-03-19	-37.90	ELECTRONLEROY MACEI	20210319002	\N
+1754	6	6	2021-03-22	-334.22	ELECTRONEXTRA MACEI	20210322001	\N
+1756	6	14	2021-03-22	-40.48	ELECTRON3151DROGASI	20210322003	\N
+1755	6	6	2021-03-22	-19.00	ELECTRONPAG*Panific	20210322002	\N
+1757	6	9	2021-03-23	-194.59	ELECTRONLEROY MACEI	20210323001	\N
+1765	6	9	2021-03-26	-54.46	ELECTRONCASA VIEIRA	20210326001	\N
+1771	6	9	2021-03-29	-129.75	ELECTRONCASA VIEIRA	20210329001	\N
+1751	6	7	2021-03-18	-264.51	INT  PAG TIT BANCO 739	20210318001	\N
+1759	6	9	2021-03-24	-33.27	ELECTRONLEROY MACEI	20210324002	\N
+1758	6	6	2021-03-24	-20.00	ELECTRONBARBEARIA P	20210324001	\N
+1764	6	6	2021-03-25	-38.80	ELECTRONSACOLAO	20210325004	\N
+1763	6	6	2021-03-25	-13.00	ELECTRONPAG*BERTULI	20210325003	\N
+1762	6	6	2021-03-25	-7.00	ELECTRONMERCPAGO	20210325002	\N
+1770	6	31	2021-03-26	-44.00	ELECTRONPAG*Pedagio	20210326006	\N
+1768	6	31	2021-03-26	-15.00	ELECTRONPAG*Panific	20210326004	\N
+1769	6	6	2021-03-26	-14.00	ELECTRONPAG*Panific	20210326005	\N
+1767	6	6	2021-03-26	-13.30	ELECTRONIVANILDO MA	20210326003	\N
+1766	6	6	2021-03-26	-4.00	ELECTRONCOSTELAO	20210326002	\N
+1772	6	6	2021-03-29	-164.90	ELECTRONCOSTELAO	20210329002	\N
+1776	6	14	2021-03-29	-60.00	ELECTRON3151DROGASI	20210329007	\N
+1773	6	6	2021-03-29	-45.00	ELECTRONFABIO MORAE	20210329003	\N
+1774	6	6	2021-03-29	-31.00	ELECTRONPAG*JoseRen	20210329005	\N
+1807	3	8	2021-04-01	-9.90	COMPRA CARTAO MAESTRO              01/04 MP .TRANSPORTEDAS N	304675	\N
+1804	3	6	2021-04-05	-29.30	COMPRA CARTAO MAESTRO              02/04 IRMAOS FONSECA	135875	\N
+1775	6	6	2021-03-29	-10.00	ELECTRONPOSTO JACIN	20210329006	\N
+1777	6	8	2021-03-29	-9.86	PIX TRANSF  JOAO FL28/03	20210329008	\N
+1778	6	35	2021-03-29	1370.00	PIX TRANSF  E S DE 29/03	20210329009	\N
+1779	6	10	2021-03-31	-503.26	INT EQUATORIAL ALAGOA 78	20210331001	\N
+1782	6	8	2021-03-31	-209.01	ELECTRONPOSTO TIGRE	20210331004	\N
+1780	6	9	2021-03-31	-189.99	ELECTRONCAMICADO SH	20210331002	\N
+1781	6	9	2021-03-31	-7.00	ELECTRONP S ADMINIS	20210331003	\N
+1785	1	24	2021-03-29	-1598.51	pagamento parcela carro	\N	\N
+1786	1	35	2021-03-29	-1370.00	transferencia	\N	\N
+1784	1	4	2021-03-29	2945.88	Recebimeto Santa Casa	\N	\N
+1787	7	3	2021-03-31	473.00	recebimento saldo alimentação	\N	\N
+1788	6	6	2021-03-31	-50.00	ajuste de saldo	\N	\N
+1809	3	3	2021-04-05	80.00	ajuste de saldo	\N	\N
+1791	7	6	2021-04-03	-232.79	gbarbosa	\N	\N
+1792	7	6	2021-04-05	-75.00	gbarbosa	\N	\N
+1790	7	31	2021-04-01	-126.97	ponto certo	\N	\N
+1789	7	31	2021-04-01	-36.93	ponto certo	\N	\N
+1795	6	42	2021-04-01	-23.68	LIS/JUROS	20210401003	\N
+1796	6	42	2021-04-01	-14.22	IOF	20210401004	\N
+1794	6	8	2021-04-01	-15.00	PIX TRANSF  WILLIAM01/04	20210401002	\N
+1793	6	8	2021-04-01	-10.00	ELECTRONPAG*IraldyB	20210401001	\N
+1797	6	35	2021-04-05	-220.50	INT  PAG TIT BANCO 033	20210405001	\N
+1799	6	35	2021-04-05	225.00	PIX TRANSF  DAVID M05/04	20210405003	\N
+1800	6	7	2021-04-06	-547.94	CREDIARIO AUTOM   01/36	20210406001	\N
+1801	6	3	2021-04-07	4503.26	REMUNERACAO/SALARIO	20210407001	\N
+1798	6	6	2021-04-05	-39.85	ELECTRONCENCOSUD BR	20210405002	\N
+1802	3	6	2021-04-05	-26.00	COMPRA CARTAO MAESTRO              04/04 PAG.MariaDoCarmo	285675	\N
+1803	3	14	2021-04-05	-34.99	COMPRA CARTAO MAESTRO              02/04 FARMACIA PERMANENTE	172475	\N
+1806	3	6	2021-04-01	-20.00	COMPRA CARTAO MAESTRO              01/04 PAG.MariaDoCarmo	244975	\N
+1808	3	6	2021-04-01	-28.00	COMPRA CARTAO MAESTRO              01/04 PAG.PanificacaoAlbu	450975	\N
+1805	3	6	2021-04-01	-10.60	COMPRA CARTAO MAESTRO              01/04 MERCPAGO    .MCBORR	543675	\N
+1810	6	9	2021-04-08	-388.90	compra ventilador	\N	\N
+1811	6	6	2021-04-08	-12.00	carajas	\N	\N
+1812	6	6	2021-04-08	-15.00	jantar	\N	\N
+1813	6	43	2021-04-09	-109.03	iptu parcela 1/10	\N	\N
+1814	6	7	2021-04-09	-155.80	pagamento cartão 	\N	\N
+1815	6	35	2021-04-09	-2100.00	transferência bancária	\N	\N
+1816	3	35	2021-04-09	2100.00	transferência bancária	\N	\N
+1817	3	44	2021-04-09	-562.00	pagamento condomínio	\N	\N
+1818	3	6	2021-04-09	-309.00	feira pagamento nilda	\N	\N
+1819	3	16	2021-04-09	-100.00	pagamento escola matheus	\N	\N
+1820	3	6	2021-04-09	-19.00	compra de agua  pao	\N	\N
+1821	3	6	2021-04-09	-64.61	feira	\N	\N
+1822	3	13	2021-04-09	-49.40	trarifa bancária	\N	\N
+1823	3	35	2021-04-10	-120.00	transferencia para carteira 	\N	\N
+1824	4	35	2021-04-10	120.00	matheus 	\N	\N
+1825	4	6	2021-04-11	-10.00	refrigerante	\N	\N
+1826	4	6	2021-04-11	-15.00	lanche na lenilda	\N	\N
+1827	4	6	2021-04-11	-8.00	compra de feira	\N	\N
+1828	3	7	2021-04-12	-481.85	débito acordo	\N	\N
+1829	3	6	2021-04-11	-43.25	costelão	\N	\N
+1831	3	6	2021-04-12	-33.35	costelão	\N	\N
+1830	4	6	2021-04-12	-7.00	café	\N	\N
+1832	3	6	2021-04-13	-86.75	despesas feira	\N	\N
+1841	4	6	2021-04-13	-8.00	despesas diversas	\N	\N
+1842	4	30	2021-04-15	150.00	venda pia	\N	\N
+1843	4	30	2021-04-15	80.00	venda capa chuva	\N	\N
+1844	3	7	2021-04-15	-197.00	pagamento cartao celetem	\N	\N
+1845	4	6	2021-04-17	-27.00	despesas diversas	\N	\N
+1848	4	17	2021-04-24	-250.00	oferta a igreja	\N	\N
+1847	4	6	2021-04-17	-22.00	despesas diversas	\N	\N
+1849	4	35	2021-04-30	170.00	entrada igreja	\N	\N
+1850	4	17	2021-04-30	27.00	oferta da igreja	\N	\N
+1851	1	13	2021-04-08	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	194631	\N
+1854	1	13	2021-04-27	-7.56	MENSALIDADE DE SEGURO              Parc 002/012 AP	251879	\N
+1856	1	13	2021-04-27	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS  MARCO / 2021	80105	\N
+1870	1	6	2021-04-29	-15.00	COMPRA CARTAO MAESTRO              29/04 PAG.MariaDoCarmo	153279	\N
+1852	1	13	2021-04-12	-74.00	TARIFA ADIANTAMENTO DEPOSITANTE    08/04/2021	40105	\N
+1855	1	6	2021-04-27	-118.00	COMPRA CARTAO MAESTRO              27/04 COSTELAO	335579	\N
+1857	1	13	2021-04-27	-10.00	TARIFA AVULSA ENVIO PIX            29/03/2021	90105	\N
+1859	1	13	2021-04-27	-5.74	JUROS ADIANTAMENTO A DEPOSITANTES  PERIODO: 01/04 A 26/04/21	110105	\N
+1858	1	13	2021-04-27	-2.30	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+1860	1	13	2021-04-27	-1.61	MULTA MORATORIA - ATRASO           PERIODO: 01/04 A 26/04/21	120105	\N
+1853	1	4	2021-04-27	3322.20	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	50105	\N
+1862	1	10	2021-04-28	-322.32	PAGAMENTO CONTA LUZ EM CANAIS      INTERNET CEAL ALAGOAS	150105	\N
+1861	1	15	2021-04-28	-74.66	PAGAMENTO DE CARNES EM CANAIS      INTERNET NET SERVICOS DE	140105	\N
+1864	1	8	2021-04-28	-50.00	COMPRA CARTAO MAESTRO              28/04 PST 2650 EXTRA MACE	434079	\N
+1863	1	6	2021-04-28	-49.60	COMPRA CARTAO MAESTRO              28/04 COSTELAO	175279	\N
+1866	1	6	2021-04-29	-56.44	COMPRA CARTAO MAESTRO              29/04 COSTELAO	113979	\N
+1868	1	6	2021-04-29	-6.50	COMPRA CARTAO MAESTRO              29/04 MP .BARRACADAIRMADA	33479	\N
+1869	1	6	2021-04-29	-4.80	COMPRA CARTAO MAESTRO              29/04 IRMAOS FONSECA	52779	\N
+1871	1	35	2021-04-30	-170.00	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	260105	\N
+1872	1	6	2021-04-30	-17.00	COMPRA CARTAO MAESTRO              30/04 PAG.PanificacaoAlbu	360779	\N
+1873	7	3	2021-04-30	477.00	recebimento alimentação	\N	\N
+1874	7	6	2021-04-30	-53.31	g barbosa	\N	\N
+1875	7	6	2021-05-01	-20.00	g barbosa	\N	\N
+1867	1	36	2021-04-29	-19.99	COMPRA CARTAO MAESTRO              29/04 CENCOSUD BRASIL	393779	\N
+1865	1	24	2021-04-29	-1589.51	PAGAMENTO DE TITULOS - BCE         62.307.848/0001-15	190105	\N
+1876	4	6	2021-04-30	-10.00	diversos	\N	\N
+1879	7	6	2021-05-01	-74.49	gbarbosa	\N	\N
+1878	1	14	2021-05-01	-8.00	alodipino	\N	\N
+1877	43	8	2021-05-01	-223.32	posto extra	\N	\N
+1880	7	6	2021-05-02	-66.34	g barbosa	\N	\N
+1881	1	6	2021-05-02	-45.00	almoço no extra	\N	\N
+1882	4	7	2021-05-04	-130.00	pagamento nilda	\N	\N
+1883	4	36	2021-05-04	-30.00	raçao cachorro	\N	\N
+1884	4	6	2021-05-04	-20.00	compra do capacitor ventilador	\N	\N
+1885	7	6	2021-05-04	-92.28	g	\N	\N
+1886	7	6	2021-05-05	-98.12	g	\N	\N
+1887	8	6	2021-05-04	-104.00	gas de cozinha e 2 aguas	\N	\N
+1888	1	6	2021-05-03	-8.00	modes	\N	\N
+1890	1	12	2021-05-03	-60.00	carga telefone	\N	\N
+1891	1	6	2021-05-01	-14.99	horti fruti	\N	\N
+1892	1	6	2021-05-02	-7.29	g barbosa	\N	\N
+1893	1	13	2021-05-03	-8.00	mensalidade seguro	\N	\N
+1894	1	6	2021-04-30	-17.00	agua	\N	\N
+1895	1	6	2021-05-06	-54.45	costelao	\N	\N
+1896	1	13	2021-05-06	-6.54	tarifa registro	\N	\N
+1897	1	13	2021-05-07	-88.00	pacote de mensalidades	\N	\N
+1898	1	6	2021-05-07	-18.24	g barbosa	\N	\N
+1899	7	6	2021-05-07	-74.00	g	\N	\N
+1900	43	14	2021-05-07	-345.00	\N	\N	\N
+1902	6	7	2021-05-06	-547.94	empréstimo 2/36	\N	\N
+1901	6	3	2021-05-07	4633.41	salário 	\N	\N
+1903	1	6	2021-05-08	-74.00	refeiçao fora	\N	\N
+1906	1	6	2021-05-09	-14.63	extra	\N	\N
+1904	1	6	2021-05-09	-100.00	extra	\N	\N
+1907	1	6	2021-05-10	-14.00	estacionamento	\N	\N
+1908	1	6	2021-05-10	-75.92	gbarbosa	\N	\N
+1909	1	6	2021-05-10	-3.99	remedio	\N	\N
+1910	4	6	2021-05-09	-14.00	diversos	\N	\N
+1913	1	13	2021-05-25	-2.30	TAR LIQ COB COM REG VIA PAGFOR	194631	\N
+1911	1	4	2021-05-25	3480.96	CR COB DINHEIRO CONF RECEBIMENTO   4538/008496463	22805	\N
+1914	1	6	2021-05-26	-85.50	COMPRA CARTAO MAESTRO              26/05 CENCOSUD BRASIL	345379	\N
+1915	1	8	2021-05-27	-50.00	COMPRA CARTAO MAESTRO              27/05 MM EMPREENDIMENTOS	315379	\N
+1916	1	24	2021-05-28	-1588.76	PAGAMENTO DE TITULOS - BCE         62.307.848/0001-15	102805	\N
+1912	1	7	2021-05-25	-705.31	PGTO TITULO OUTRO BCO - INTERNET   FINANCEIRA ITAU CBD S.A	32805	\N
+1919	3	13	2021-05-10	-49.40	TARIFA MENSALIDADE PACOTE SERVICOS  ABRIL / 2021	0	\N
+1970	1	13	2021-06-08	-88.00	TARIFA MENSALIDADE PACOTE SERVICOS MAIO / 2021	\N	\N
+1920	3	43	2021-05-10	-109.59	PGTO TRIBUTOS MUNICIPAIS-CANAIS    INTERNET PM MACEIO	0	\N
+1921	3	44	2021-05-10	-562.00	PGTO TITULO OUTRO BCO - INTERNET   PJBANK	0	\N
+1922	3	35	2021-05-10	700.00	PIX RECEBIDO OUTRA INST -MESMA TIT EDNEY SILVA DE CHANTAL	0	\N
+1918	3	35	2021-05-11	480.00	PIX RECEBIDO OUTRA INST -MESMA TIT EDNEY SILVA DE CHANTAL	0	\N
+1917	3	7	2021-05-12	-481.85	DEBITO DE ACORDO	0	\N
+1923	6	41	2021-05-13	0.01	REND PAGO APLIC AUT MAIS	20210513002	\N
+1930	6	7	2021-05-10	-635.09	ITAUCARD VISA 0602-4704	20210510003	\N
+1929	6	35	2021-05-10	-700.00	PIX TRANSF  EDNEY S10/05	20210510002	\N
+1931	6	35	2021-05-11	-480.00	PIX TRANSF  EDNEY S11/05	20210511001	\N
+1928	6	7	2021-05-10	-30.00	PIX TRANSF  DAVID M10/05	20210510001	\N
+1932	6	7	2021-05-13	-2007.76	INT  PAG TIT BANCO 739	20210513001	\N
+1933	6	7	2021-05-21	-100.00	INT  PAG TIT BANCO 033	20210521001	\N
+1935	4	20	2021-05-21	60.00	emprestimos	\N	\N
+1936	4	6	2021-05-28	-20.00	lanche	\N	\N
+1934	6	20	2021-05-21	-60.00	transferencia	\N	\N
+1942	1	9	2021-05-31	-85.91	COMPRA CARTAO MAESTRO              29/05 CASA VIEIRA PRAIA	561179	\N
+1943	1	6	2021-05-31	-60.00	COMPRA CARTAO MAESTRO              29/05 GALETO SAO LUIZ	33279	\N
+1947	1	12	2021-06-01	-60.00	RECARGA TELEFONE CELULAR           IB 82 *****5028 TIM BRASI	140306	\N
+1949	1	6	2021-06-02	-60.00	COMPRA CARTAO MAESTRO              02/06 GALETO SAO LUIZ	260779	\N
+1938	1	15	2021-05-28	-209.88	PAGAMENTO DE CARNES EM CANAIS      INTERNET NET SERVICOS DE	30306	\N
+1939	1	6	2021-05-28	-67.90	COMPRA CARTAO MAESTRO              28/05 COSTELAO	14079	\N
+1940	1	6	2021-05-28	-18.98	COMPRA CARTAO MAESTRO              28/05 HORTI FRUTTI VITORI	453179	\N
+1946	1	6	2021-05-31	-107.57	COMPRA CARTAO MAESTRO              30/05 EXTRA 1363 MACEIO	221779	\N
+1941	1	6	2021-05-31	-30.00	COMPRA CARTAO MAESTRO              29/05 PAG.BartolomeuLopes	24379	\N
+1944	1	6	2021-05-31	-14.00	COMPRA CARTAO MAESTRO              29/05 PAG.PanificacaoAlbu	525679	\N
+1948	1	9	2021-06-02	-76.00	COMPRA CARTAO MAESTRO              02/06 PAG.GalFlexSolucoes	410479	\N
+1945	1	6	2021-05-31	-45.00	COMPRA CARTAO MAESTRO              30/05 FABIO MORAES DA SIL	490779	\N
+1950	6	35	2021-05-28	-70.00	pixel para edney	\N	\N
+1952	6	13	2021-06-01	-26.00	acerto de saldo	\N	\N
+1953	3	35	2021-05-28	70.00	transferecia	\N	\N
+1954	3	10	2021-05-28	-60.70	energia elétirca	\N	\N
+1956	3	6	2021-05-28	-35.36	g barbosa	\N	\N
+1959	7	6	2021-06-02	-82.48	g barbosa	\N	\N
+1958	7	6	2021-06-01	-133.60	g barbosa	\N	\N
+1955	3	17	2021-05-28	40.00	recebimento igreja	\N	\N
+1957	7	3	2021-05-31	473.00	recebimento	\N	\N
+1960	7	6	2021-06-03	-28.80	costelai	\N	\N
+1962	7	6	2021-06-05	-45.45	g barbosa	\N	\N
+1961	7	6	2021-06-05	-83.00	costelao	\N	\N
+1963	7	6	2021-06-07	-27.49	costelao	\N	\N
+1964	7	6	2021-06-08	-56.00	costelao	\N	\N
+1965	1	6	2021-06-04	-24.80	panificação	\N	\N
+1966	1	36	2021-06-04	-48.90	gastos com o cachorro	\N	\N
+1967	1	13	2021-06-04	-7.56	MENSALIDADE DE SEGURO Parc 004/012 AP	\N	\N
+1968	1	6	2021-06-04	-31.50	COMPRA CARTAO MAESTRO 04/06 PAG.PanificacaoAlbu	\N	\N
+1969	1	13	2021-06-07	-6.54	TAR REG TIT COB RAPIDA SIMP-ELETR	\N	\N
+1976	6	7	2021-06-09	-503.50	ITAUCARD VISA 0602-5231	20210609002	\N
+1972	6	13	2021-06-01	-2.11	IOF	20210601002	\N
+1971	6	13	2021-06-01	-2.08	LIS/JUROS	20210601001	\N
+1973	6	7	2021-06-07	-547.94	CREDIARIO AUTOM   03/36	20210607001	\N
+1974	6	3	2021-06-07	4571.23	REMUNERACAO/SALARIO	20210607002	\N
+1975	6	6	2021-06-09	-53.25	ELECTRONO COSTELAO	20210609001	\N
+1978	6	35	2021-06-10	-1100.00	PIX TRANSF  EDNEY S10/06	20210610002	\N
+1977	6	7	2021-06-10	-50.00	SAQUE 24H 07173628	20210610001	\N
+1979	6	35	2021-06-14	-100.00	PIX TRANSF  EDNEY S12/06	20210614001	\N
+1980	3	8	2021-06-08	-6.00	uber	\N	\N
+1982	3	44	2021-06-10	-562.00	pgto condominio	\N	\N
+1983	3	43	2021-06-10	-108.63	iptu	\N	\N
+1984	3	13	2021-06-10	-49.40	tarifas bancárias	\N	\N
+1985	3	35	2021-06-14	100.00	pixel	\N	\N
+1986	3	7	2021-06-14	-481.85	debito acordo 	\N	\N
+1981	3	35	2021-06-10	1100.00	pixel	\N	\N
+1987	6	7	2021-06-15	-2587.17	pgto cartao	\N	\N
+1988	6	7	2021-06-15	-20.00	faculdade matheus	\N	\N
+1990	1	6	2021-06-24	-82.84	costelao	\N	\N
+1989	1	4	2021-06-24	3419.42	CR COB DINHEIRO CONF RECEBIMENTO 4538/008496463	\N	\N
+1991	1	6	2021-06-24	-32.90	COMPRA CARTAO MAESTRO 24/06 PAG.PanificacaoAlbu	\N	\N
+1992	1	7	2021-06-24	-426.79	PGTO TITULO OUTRO BCO - INTERNET FINANCEIRA ITAU CBD S.A 	\N	\N
+1993	1	6	2021-06-24	-91.23	COMPRA CARTAO MAESTRO 24/06 UNICOMPRA SUPERMERC 	\N	\N
+1994	1	14	2021-06-24	-11.82	COMPRA CARTAO MAESTRO 24/06 DROGATIM DROGARIAS 	\N	\N
+1995	1	13	2021-06-24	-2.30	TAR LIQ COB COM REG VIA PAGFOR 	\N	\N
+1996	1	15	2021-06-24	-161.79	PAGAMENTO DE CARNES EM CANAIS INTERNET NET SERVICOS DE 	\N	\N
+2005	1	14	2021-06-28	-14.98	COMPRA CARTAO MAESTRO              27/06 FARMACIA DO TRABALH	483079	\N
+1998	1	35	2021-06-25	-400.00	PIX ENVIADO OUTRA INST - DIF TIT   EDNEY SILVA DE CHANTAL	30407	\N
+1999	1	6	2021-06-25	-36.05	COMPRA CARTAO MAESTRO              25/06 COSTELAO	244879	\N
+2000	1	6	2021-06-25	-18.00	COMPRA CARTAO MAESTRO              25/06 PAG.PanificacaoAlbu	595979	\N
+2008	1	24	2021-06-28	-1588.76	PAGAMENTO DE TITULOS - BCE         62.307.848/0001-15	140407	\N
+2006	1	6	2021-06-28	-84.15	COMPRA CARTAO MAESTRO              27/06 UNICOMPRA SUPERMERC	20879	\N
+2001	1	6	2021-06-28	-49.00	COMPRA CARTAO MAESTRO              26/06 PEDAGIO	203379	\N
+2002	1	6	2021-06-28	-44.97	COMPRA CARTAO MAESTRO              27/06 TOMATE CAQUI	543679	\N
+2003	1	6	2021-06-28	-11.00	COMPRA CARTAO MAESTRO              27/06 POSTO VIA MARE	32379	\N
+2007	1	13	2021-06-28	-4.00	TARIFA AVULSA ENVIO PIX            25/06/2021	130407	\N
+2009	1	35	2021-06-28	-270.00	PAGAMENTO DE TITULOS - BCE         27.351.731/0001-38	150407	\N
+2004	1	6	2021-06-28	-14.50	COMPRA CARTAO MAESTRO              27/06 ESFERA .MARCIO FRUT	34879	\N
+2010	1	6	2021-06-30	-67.00	COMPRA CARTAO MAESTRO              30/06 PAG.JoseRenivaldoDa	105179	\N
+2011	1	6	2021-06-30	-16.50	COMPRA CARTAO MAESTRO              30/06 PAG.PanificacaoAlbu	583579	\N
+2012	1	6	2021-07-01	-32.00	COMPRA CARTAO MAESTRO              01/07 PAG.PanificacaoAlbu	312979	\N
+2013	6	35	2021-06-25	400.00	transferencia	\N	\N
+2017	4	7	2021-06-25	-100.00	pgto cartao adriana 	\N	\N
+2016	4	35	2021-06-25	270.00	transferencia	\N	\N
+2018	4	6	2021-06-30	-40.00	acerto de saldo 	\N	\N
+2020	7	6	2021-07-01	-68.71	costelao	\N	\N
+2021	7	6	2021-07-03	-214.88	g barbosa	\N	\N
+2019	7	3	2021-06-30	473.00	recebimento alimentação	\N	\N
+2022	4	6	2021-07-02	-170.00	diversos	\N	\N
+2023	6	12	2021-07-01	-60.00	telefone	\N	\N
+2024	6	42	2021-07-01	-11.90	cheque especial	\N	\N
+2025	6	13	2021-07-01	-1.80	iof 	\N	\N
+2026	6	7	2021-07-06	-547.94	pagamento emprestimo	\N	\N
+2027	6	35	2021-07-07	-250.00	traferencia bancaria 	\N	\N
+2028	6	3	2021-07-06	4530.40	recebimento salário	\N	\N
+2029	6	7	2021-07-08	-150.00	saque banco 24 horas pagamento nilda	\N	\N
+2030	6	7	2021-07-09	-503.50	pagamento cartao itau 	\N	\N
+2031	6	7	2021-07-12	-560.00	transferencia pessoa fisical	\N	\N
+2032	3	35	2021-07-07	250.00	transferencia bancaria	\N	\N
+2033	3	10	2021-07-07	-48.71	pgto  energia 	\N	\N
+2034	3	11	2021-07-07	-99.40	pagamento agua 	\N	\N
+2035	3	13	2021-07-07	-49.40	tarifa bancária	\N	\N
+2036	3	35	2021-07-12	560.00	transferencia bancária	\N	\N
+2037	7	6	2021-07-04	-52.00	costelao	\N	\N
+2038	7	6	2021-07-07	-54.54	costelao	\N	\N
+2056	6	14	2021-10-11	-42.00	ELCSS FARMACIA DO	20211011004	\N
+2059	6	14	2021-10-13	-27.99	ELCSS FARMACIA DO	20211013001	\N
+2041	6	17	2021-10-04	-54.80	ELCSS PHOTO SHOPP	20211004003	\N
+2040	6	17	2021-10-04	-25.50	ELCSS CASA DA COP	20211004002	\N
+2039	6	42	2021-10-04	-22.64	IOF	20211004001	\N
+2069	6	42	2021-10-01	-141.10	LIS/JUROS 	\N	\N
+2070	6	24	2021-10-01	-1623.89	INT PAG TIT BANCO 033	\N	\N
+2042	6	20	2021-10-04	150.00	PIX TRANSF  Adriana03 10	20211004004	\N
+2044	6	7	2021-10-06	-547.94	CREDIARIO AUTOM   07 36	20211006002	\N
+2043	6	6	2021-10-06	-5.00	PIX QRS Luiz Henriq06 10	20211006001	\N
+2045	6	3	2021-10-06	4555.70	REMUNERACAO SALARIO	20211006003	\N
+2049	6	6	2021-10-07	-160.00	PIX TRANSF  DAVID M07 10	20211007004	\N
+2047	6	6	2021-10-07	-38.00	ELCSS N S RACOES	20211007002	\N
+2046	6	6	2021-10-07	-30.50	ELECTRONPAG Panific	20211007001	\N
+2048	6	6	2021-10-07	-9.10	ELCSS PG  ENCONTR	20211007003	\N
+2050	6	6	2021-10-08	-60.00	ELCSS PAG Pedagio	20211008001	\N
+2051	6	6	2021-10-08	-20.00	PIX TRANSF  CELIO C08 10	20211008002	\N
+2052	6	6	2021-10-08	-10.00	PIX TRANSF  MARIA L08 10	20211008003	\N
+2058	6	7	2021-10-11	-396.78	INT UNICLASS VS	20211011006	\N
+2055	6	6	2021-10-11	-233.42	ELCCS CENCOSUD BR	20211011003	\N
+2054	6	8	2021-10-11	-60.00	ELECTRONPOSTO VIP S	20211011002	\N
+2053	6	10	2021-10-11	-36.63	INT EQUATORIAL ALAGOA 78	20211011001	\N
+2057	6	6	2021-10-11	-2.50	ELCSS HORTIFRUTI	20211011005	\N
+2060	6	6	2021-10-13	-65.00	ELCSS PAG Pedagio	20211013002	\N
+2061	6	6	2021-10-15	-62.85	ELCCS MP  COSTELA	20211015001	\N
+2062	6	6	2021-10-15	-40.00	PIX TRANSF  DAVID M15 10	20211015002	\N
+2063	6	4	2021-10-15	3500.00	PIX TRANSF  COOP TR15 10	20211015003	\N
+2065	6	6	2021-10-18	-50.50	ELECTRONCOSTELAO CA	20211018002	\N
+2066	6	6	2021-10-18	-45.00	ELCSS PG  BOTECO	20211018003	\N
+2068	6	6	2021-10-18	-41.80	ELCSS CENCOSUD BR	20211018005	\N
+2064	6	6	2021-10-18	-17.19	ELCSS SUPERMERCAD	20211018001	\N
+2067	6	6	2021-10-18	-10.00	ELCSS PG  SUPER G	20211018004	\N
+2075	6	7	2021-10-18	-550.00	PIX TRANSF  EDNEY S18 10	20211018010	\N
+2074	6	6	2021-10-18	-25.00	PIX TRANSF  Adriana18 10	20211018009	\N
+2076	6	44	2021-10-19	-582.00	INT  PAG TIT BANCO 301	20211019001	\N
+2080	6	13	2021-10-19	-50.00	PIX TRANSF  EDNEY S19 10	20211019005	\N
+2079	6	6	2021-10-19	-35.46	ELCSS MP  COSTELA	20211019004	\N
+2081	6	13	2021-10-19	-10.00	PIX TRANSF  EDNEY S19 10	20211019006	\N
+2078	6	6	2021-10-19	-7.48	ELCSS HORTIFRUTI	20211019003	\N
+2077	6	6	2021-10-19	-5.50	ELECTRONPAG Panific	20211019002	\N
+2082	6	6	2021-10-20	-52.85	ELECTRONMP  COSTELA	20211020001	\N
+2087	6	6	2021-10-21	-6.50	ELCSS SUMUP   HEL	20211021003	\N
+2084	6	7	2021-10-20	-46.70	PIX TRANSF  Josenil20 10 pagamento nilda	20211020003	\N
+2083	6	6	2021-10-20	-14.00	ELECTRONPAG Panific	20211020002	\N
+2085	6	6	2021-10-21	-60.70	ELCCS MP  COSTELA	20211021001	\N
+2086	6	6	2021-10-21	-32.00	ELCSS PIZZARIA SA	20211021002	\N
+2088	6	6	2021-10-22	-183.12	ELECTRONCENCOSUD BR	20211022001	\N
+2091	6	6	2021-10-22	-40.50	ELCSS MP  COSTELA	20211022004	\N
+2089	6	6	2021-10-22	-38.00	ELECTRONN S RACOES	20211022002	\N
+2090	6	6	2021-10-22	-5.23	ELECTRONPAG Panific	20211022003	\N
+2092	6	20	2021-10-18	-140.00	pagamento cartao adriana	\N	\N
+2093	6	6	2021-10-18	-30.34	costelao	\N	\N
+\.
+
+
+--
+-- Data for Name: tbnatureplan; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbnatureplan (id_natureplan, id_workspace, ds_natureplan, id_natureplan_father, ind_type, ind_control_orcamento) FROM stdin;
+2	1	Receita	\N	R	\N
+3	1	Salário Carteira	2	R	\N
+4	1	Salário Jurídica	2	R	\N
+5	1	Despesas	\N	D	\N
+7	1	Contas a Pagar	5	D	\N
+8	1	Transporte	5	D	\N
+9	1	Manutenção Casa	5	D	\N
+10	1	Energia	5	D	\N
+11	1	Agua	5	D	\N
+12	1	Telefone	5	D	\N
+13	1	Tarifa Bancária	5	D	\N
+14	1	Despesas Médicas	5	D	\N
+15	1	Telefone	5	D	\N
+16	1	Escola	5	D	\N
+17	1	Igreja	5	D	\N
+18	1	Presentes e Doações	5	D	\N
+19	1	Financeira	\N	R	\N
+20	1	Empréstimos	19	R	\N
+22	1	Manutenção Mecanica	5	D	\N
+23	1	licenciamento e Ipva	5	D	\N
+24	1	Financiamento	5	D	\N
+25	1	Despesas Trabalho	5	D	\N
+27	1	Empresa	5	D	\N
+28	1	Contadora	27	D	\N
+30	1	Outras Receitas	2	R	\N
+31	1	Diversao	5	D	\N
+35	1	Transferencia Bancaria	5	D	\N
+36	1	alimentacao animal	5	D	\N
+40	1	viagem	\N	D	\N
+37	1	viagem combustivel	40	D	\N
+38	1	viagem alimentação	40	D	\N
+39	1	viagem hospedagem	40	D	\N
+41	1	Rendimento aplicacao	2	R	\N
+21	1	Roupas e perfume	5	D	\N
+42	1	Juros sobre Cheque Especial	5	D	\N
+43	1	Iptu	5	D	\N
+44	1	Condominio	5	D	\N
+6	1	Alimentação	5	D	DI
+\.
+
+
+--
+-- Data for Name: tbprojeto; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbprojeto (id, data_final, data_inicial, nome_projeto, id_workspace) FROM stdin;
+1	\N	\N	Fluxo de Caixa	1
+\.
+
+
+--
+-- Data for Name: tbprojetonatureza; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbprojetonatureza (id, valor_previsto, valor_realizado, id_natureplan, id_projeto, dia) FROM stdin;
+19601	4633.41	\N	3	1	2021-06-07
+19602	473	\N	3	1	2021-07-01
+19603	3480.96	\N	4	1	2021-06-25
+19604	-130	\N	7	1	2021-06-04
+19605	-547.94	\N	7	1	2021-06-06
+19606	-665.09	\N	7	1	2021-06-10
+19607	-481.85	\N	7	1	2021-06-12
+19608	-2007.76	\N	7	1	2021-06-13
+19609	-100	\N	7	1	2021-06-21
+19610	-705.31	\N	7	1	2021-06-25
+19611	-109.48	\N	6	1	2021-06-30
+19612	-118.63	\N	6	1	2021-06-02
+19613	-8	\N	6	1	2021-06-03
+19614	-216.28	\N	6	1	2021-06-04
+19615	-98.12	\N	6	1	2021-06-05
+19616	-54.45	\N	6	1	2021-06-06
+19617	-92.24	\N	6	1	2021-06-07
+19618	-74	\N	6	1	2021-06-08
+19619	-128.63	\N	6	1	2021-06-09
+19620	-93.91	\N	6	1	2021-06-10
+19621	-85.5	\N	6	1	2021-06-26
+19622	-142.24	\N	6	1	2021-06-28
+19623	-256.57	\N	6	1	2021-07-01
+19624	-223.32	\N	8	1	2021-06-30
+19625	-50	\N	8	1	2021-06-27
+19626	-85.91	\N	9	1	2021-07-01
+19627	-60.7	\N	10	1	2021-06-28
+19628	-60	\N	12	1	2021-06-03
+19629	-8	\N	13	1	2021-06-03
+19630	-6.54	\N	13	1	2021-06-06
+19631	-88	\N	13	1	2021-06-07
+19632	-49.4	\N	13	1	2021-06-10
+19633	-2.3	\N	13	1	2021-06-25
+19634	-8	\N	14	1	2021-06-30
+19635	-345	\N	14	1	2021-06-07
+19636	-209.88	\N	15	1	2021-06-28
+19637	40	\N	17	1	2021-06-28
+19638	-1588.76	\N	24	1	2021-06-28
+19639	-30	\N	36	1	2021-06-04
+19640	0.01	\N	41	1	2021-06-13
+19641	-109.59	\N	43	1	2021-06-10
+19642	-562	\N	44	1	2021-06-10
+19651	4571.23	\N	3	1	2021-07-07
+19652	473	\N	3	1	2021-07-30
+19653	3419.42	\N	4	1	2021-07-24
+19654	-547.94	\N	7	1	2021-07-07
+19655	-503.5	\N	7	1	2021-07-09
+19656	-50	\N	7	1	2021-07-10
+19657	-481.85	\N	7	1	2021-07-14
+19658	-2607.17	\N	7	1	2021-07-15
+19659	-426.79	\N	7	1	2021-07-24
+19660	-100	\N	7	1	2021-07-25
+19661	-6	\N	8	1	2021-07-08
+19662	-76	\N	9	1	2021-07-02
+19663	-60	\N	12	1	2021-07-31
+19664	-30.19	\N	13	1	2021-07-31
+19665	-7.56	\N	13	1	2021-07-04
+19666	-6.54	\N	13	1	2021-07-07
+19667	-88	\N	13	1	2021-07-08
+19668	-49.4	\N	13	1	2021-07-10
+19669	-2.3	\N	13	1	2021-07-24
+19670	-4	\N	13	1	2021-07-28
+19671	-11.82	\N	14	1	2021-07-24
+19672	-14.98	\N	14	1	2021-07-28
+19673	-161.79	\N	15	1	2021-07-24
+19674	-1588.76	\N	24	1	2021-07-28
+19675	1100	\N	35	1	2021-07-10
+19676	100	\N	35	1	2021-07-14
+19677	-400	\N	35	1	2021-07-25
+19678	-270	\N	35	1	2021-07-28
+19679	-48.9	\N	36	1	2021-07-04
+19680	-108.63	\N	43	1	2021-07-10
+19681	-562	\N	44	1	2021-07-10
+19682	-133.6	\N	6	1	2021-07-31
+19683	-82.48	\N	6	1	2021-07-02
+19684	-28.8	\N	6	1	2021-07-03
+19685	-56.3	\N	6	1	2021-07-04
+19686	-128.45	\N	6	1	2021-07-05
+19687	-27.49	\N	6	1	2021-07-07
+19688	-56	\N	6	1	2021-07-08
+19689	-53.25	\N	6	1	2021-07-09
+19690	-206.97	\N	6	1	2021-07-24
+19691	-54.05	\N	6	1	2021-07-25
+19692	-203.62	\N	6	1	2021-07-28
+19693	-83.5	\N	6	1	2021-07-30
+\.
+
+
+--
+-- Data for Name: tbuser; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbuser (login, password, email) FROM stdin;
+edchantal	edchantal	edney.chantal@gmail.com
+\.
+
+
+--
+-- Data for Name: tbuserworkspace; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbuserworkspace (login, idworkspace) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tbworkspace; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.tbworkspace (id_workspace, ds_workspace) FROM stdin;
+1	Edney Chantal
+\.
+
+
+--
+-- Data for Name: user_work_space; Type: TABLE DATA; Schema: public; Owner: emdias
+--
+
+COPY public.user_work_space (id, login, idworkspace) FROM stdin;
+\.
+
+
+--
+-- Name: sequence_generator; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.sequence_generator', 20000, true);
+
+
+--
+-- Name: tbaccountbank_id_accountbank_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbaccountbank_id_accountbank_seq', 43, true);
+
+
+--
+-- Name: tbconfigextrato_idconfigextrato_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbconfigextrato_idconfigextrato_seq', 52, true);
+
+
+--
+-- Name: tbloginworkspace_idworklogin_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbloginworkspace_idworklogin_seq', 1, false);
+
+
+--
+-- Name: tbmovementbank_idmovementbank_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbmovementbank_idmovementbank_seq', 2093, true);
+
+
+--
+-- Name: tbnatureplan_id_natureplan_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbnatureplan_id_natureplan_seq', 44, true);
+
+
+--
+-- Name: tbworkspace_id_workspace_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.tbworkspace_id_workspace_seq', 1, true);
+
+
+--
+-- Name: workspace_seq; Type: SEQUENCE SET; Schema: public; Owner: emdias
+--
+
+SELECT pg_catalog.setval('public.workspace_seq', 1, false);
+
+
+--
+-- Name: databasechangeloglock databasechangeloglock_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.databasechangeloglock
+    ADD CONSTRAINT databasechangeloglock_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jhi_authority jhi_authority_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_authority
+    ADD CONSTRAINT jhi_authority_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: jhi_persistent_audit_event jhi_persistent_audit_event_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_persistent_audit_event
+    ADD CONSTRAINT jhi_persistent_audit_event_pkey PRIMARY KEY (event_id);
+
+
+--
+-- Name: jhi_persistent_audit_evt_data jhi_persistent_audit_evt_data_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_persistent_audit_evt_data
+    ADD CONSTRAINT jhi_persistent_audit_evt_data_pkey PRIMARY KEY (event_id, name);
+
+
+--
+-- Name: jhi_user_authority jhi_user_authority_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user_authority
+    ADD CONSTRAINT jhi_user_authority_pkey PRIMARY KEY (user_id, authority_name);
+
+
+--
+-- Name: jhi_user jhi_user_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user
+    ADD CONSTRAINT jhi_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jhi_user_work_spaces jhi_user_work_spaces_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user_work_spaces
+    ADD CONSTRAINT jhi_user_work_spaces_pkey PRIMARY KEY (user_id, work_spaces_id_workspace);
+
+
+--
+-- Name: tbconfigextrato pkconfigextrato; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbconfigextrato
+    ADD CONSTRAINT pkconfigextrato PRIMARY KEY (idconfigextrato);
+
+
+--
+-- Name: tbloginworkspace pkloginworkspace; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbloginworkspace
+    ADD CONSTRAINT pkloginworkspace PRIMARY KEY (idworklogin);
+
+
+--
+-- Name: tbaccountbank tbaccountbank_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbaccountbank
+    ADD CONSTRAINT tbaccountbank_pkey PRIMARY KEY (id_accountbank);
+
+
+--
+-- Name: tbmovementbank tbmovementbank_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbmovementbank
+    ADD CONSTRAINT tbmovementbank_pkey PRIMARY KEY (idmovementbank);
+
+
+--
+-- Name: tbnatureplan tbnatureplan_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbnatureplan
+    ADD CONSTRAINT tbnatureplan_pkey PRIMARY KEY (id_natureplan);
+
+
+--
+-- Name: tbprojeto tbprojeto_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbprojeto
+    ADD CONSTRAINT tbprojeto_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tbprojetonatureza tbprojetonatureza_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbprojetonatureza
+    ADD CONSTRAINT tbprojetonatureza_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tbuser tbuser_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbuser
+    ADD CONSTRAINT tbuser_pkey PRIMARY KEY (login);
+
+
+--
+-- Name: tbuserworkspace tbuserworkspace_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbuserworkspace
+    ADD CONSTRAINT tbuserworkspace_pkey PRIMARY KEY (login, idworkspace);
+
+
+--
+-- Name: tbworkspace tbworkspace_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbworkspace
+    ADD CONSTRAINT tbworkspace_pkey PRIMARY KEY (id_workspace);
+
+
+--
+-- Name: jhi_user uk_9y0frpqnmqe7y6mk109vw3246; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user
+    ADD CONSTRAINT uk_9y0frpqnmqe7y6mk109vw3246 UNIQUE (login);
+
+
+--
+-- Name: jhi_user uk_bycanyquvi09q7fh5pgxrqnku; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user
+    ADD CONSTRAINT uk_bycanyquvi09q7fh5pgxrqnku UNIQUE (email);
+
+
+--
+-- Name: user_work_space user_work_space_pkey; Type: CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.user_work_space
+    ADD CONSTRAINT user_work_space_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: idx_persistent_audit_event; Type: INDEX; Schema: public; Owner: emdias
+--
+
+CREATE INDEX idx_persistent_audit_event ON public.jhi_persistent_audit_event USING btree (principal, event_date);
+
+
+--
+-- Name: idx_persistent_audit_evt_data; Type: INDEX; Schema: public; Owner: emdias
+--
+
+CREATE INDEX idx_persistent_audit_evt_data ON public.jhi_persistent_audit_evt_data USING btree (event_id);
+
+
+--
+-- Name: pkworklogin; Type: INDEX; Schema: public; Owner: emdias
+--
+
+CREATE INDEX pkworklogin ON public.tbloginworkspace USING btree (idworklogin);
+
+
+--
+-- Name: jhi_user_authority fk290okww5jujghp4el5i7mgwu0; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user_authority
+    ADD CONSTRAINT fk290okww5jujghp4el5i7mgwu0 FOREIGN KEY (user_id) REFERENCES public.jhi_user(id);
+
+
+--
+-- Name: jhi_persistent_audit_evt_data fk2ehnyx2si4tjd2nt4q7y40v8m; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_persistent_audit_evt_data
+    ADD CONSTRAINT fk2ehnyx2si4tjd2nt4q7y40v8m FOREIGN KEY (event_id) REFERENCES public.jhi_persistent_audit_event(event_id);
+
+
+--
+-- Name: jhi_user_authority fk4psxl0jtx6nr7rhqbynr6itoc; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user_authority
+    ADD CONSTRAINT fk4psxl0jtx6nr7rhqbynr6itoc FOREIGN KEY (authority_name) REFERENCES public.jhi_authority(name);
+
+
+--
+-- Name: tbprojetonatureza fk8b3jme8vg36g1lx1kc5uya00v; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbprojetonatureza
+    ADD CONSTRAINT fk8b3jme8vg36g1lx1kc5uya00v FOREIGN KEY (id_natureplan) REFERENCES public.tbnatureplan(id_natureplan);
+
+
+--
+-- Name: tbconfigextrato fk_configext_account; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbconfigextrato
+    ADD CONSTRAINT fk_configext_account FOREIGN KEY (id_accountank) REFERENCES public.tbaccountbank(id_accountbank);
+
+
+--
+-- Name: jhi_persistent_audit_evt_data fk_evt_pers_audit_evt_data; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_persistent_audit_evt_data
+    ADD CONSTRAINT fk_evt_pers_audit_evt_data FOREIGN KEY (event_id) REFERENCES public.jhi_persistent_audit_event(event_id);
+
+
+--
+-- Name: tbuserworkspace fkbe851tbf8dcfg7t3v3ucfw9gq; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbuserworkspace
+    ADD CONSTRAINT fkbe851tbf8dcfg7t3v3ucfw9gq FOREIGN KEY (login) REFERENCES public.jhi_user(id);
+
+
+--
+-- Name: user_work_space fkc0b2wa8rrmuosb5fco6876sym; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.user_work_space
+    ADD CONSTRAINT fkc0b2wa8rrmuosb5fco6876sym FOREIGN KEY (login) REFERENCES public.jhi_user(id);
+
+
+--
+-- Name: tbconfigextrato fkconfigextrato01; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbconfigextrato
+    ADD CONSTRAINT fkconfigextrato01 FOREIGN KEY (idworkspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: tbconfigextrato fkconfigextrato02; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbconfigextrato
+    ADD CONSTRAINT fkconfigextrato02 FOREIGN KEY (idnatureplan) REFERENCES public.tbnatureplan(id_natureplan);
+
+
+--
+-- Name: tbprojetonatureza fkf6tv0pi8y2b8n6vrp4q8jtsss; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbprojetonatureza
+    ADD CONSTRAINT fkf6tv0pi8y2b8n6vrp4q8jtsss FOREIGN KEY (id_projeto) REFERENCES public.tbprojeto(id);
+
+
+--
+-- Name: tbprojeto fkj2o8hd0v32dw096bnyfsivhk7; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbprojeto
+    ADD CONSTRAINT fkj2o8hd0v32dw096bnyfsivhk7 FOREIGN KEY (id_workspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: tbloginworkspace fkloginwork; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbloginworkspace
+    ADD CONSTRAINT fkloginwork FOREIGN KEY (idworkspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: tbmovementbank fkmovementbank01; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbmovementbank
+    ADD CONSTRAINT fkmovementbank01 FOREIGN KEY (id_accountbank) REFERENCES public.tbaccountbank(id_accountbank);
+
+
+--
+-- Name: tbmovementbank fkmovementbank02; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbmovementbank
+    ADD CONSTRAINT fkmovementbank02 FOREIGN KEY (id_natureplan) REFERENCES public.tbnatureplan(id_natureplan);
+
+
+--
+-- Name: jhi_user_work_spaces fkoaqogmyrrbojyrjhuu61giovu; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.jhi_user_work_spaces
+    ADD CONSTRAINT fkoaqogmyrrbojyrjhuu61giovu FOREIGN KEY (user_id) REFERENCES public.jhi_user(id);
+
+
+--
+-- Name: tbuserworkspace fkq1umt7rk30mq2j9gjx176ymnx; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbuserworkspace
+    ADD CONSTRAINT fkq1umt7rk30mq2j9gjx176ymnx FOREIGN KEY (idworkspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: user_work_space fksinnlrrp2mfqxbjovwl0b7hwj; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.user_work_space
+    ADD CONSTRAINT fksinnlrrp2mfqxbjovwl0b7hwj FOREIGN KEY (idworkspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: tbaccountbank fktbaccountbank_work; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbaccountbank
+    ADD CONSTRAINT fktbaccountbank_work FOREIGN KEY (id_workspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- Name: tbnatureplan fktbnatureplan01; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbnatureplan
+    ADD CONSTRAINT fktbnatureplan01 FOREIGN KEY (id_natureplan_father) REFERENCES public.tbnatureplan(id_natureplan);
+
+
+--
+-- Name: tbnatureplan fktbnatureplan02; Type: FK CONSTRAINT; Schema: public; Owner: emdias
+--
+
+ALTER TABLE ONLY public.tbnatureplan
+    ADD CONSTRAINT fktbnatureplan02 FOREIGN KEY (id_workspace) REFERENCES public.tbworkspace(id_workspace);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
