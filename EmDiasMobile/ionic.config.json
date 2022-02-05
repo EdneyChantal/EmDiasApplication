@@ -1,0 +1,7 @@
+{
+  "name": "EmDiasMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
