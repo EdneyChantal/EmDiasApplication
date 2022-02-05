@@ -5,41 +5,39 @@ import java.util.Objects;
 
 public class LinhaFluxoCaixaMesDTO implements Serializable,Comparable<LinhaFluxoCaixaMesDTO> {
     private String id;
-
     private String descricao;
-    private String coluna1;
-    private String coluna2;
-
-
-    private String coluna3;
-    private String coluna4;
-    private String coluna5;
-    private String coluna6;
-    private String coluna7;
-    private String coluna8;
-    private String coluna9;
-    private String coluna10;
-    private String coluna11;
-    private String coluna12;
-    private String coluna13;
-    private String coluna14;
-    private String coluna15;
-    private String coluna16;
-    private String coluna17;
-    private String coluna18;
-    private String coluna19;
-    private String coluna20;
-    private String coluna21;
-    private String coluna22;
-    private String coluna23;
-    private String coluna24;
-    private String coluna25;
-    private String coluna26;
-    private String coluna27;
-    private String coluna28;
-    private String coluna29;
-    private String coluna30;
-    private String coluna31;
+    private String coluna1x;
+    private String coluna2x;
+    private String coluna3x;
+    private String coluna4x;
+    private String coluna5x;
+    private String coluna6x;
+    private String coluna7x;
+    private String coluna8x;
+    private String coluna9x;
+    private String coluna10x;
+    private String coluna11x;
+    private String coluna12x;
+    private String coluna13x;
+    private String coluna14x;
+    private String coluna15x;
+    private String coluna16x;
+    private String coluna17x;
+    private String coluna18x;
+    private String coluna19x;
+    private String coluna20x;
+    private String coluna21x;
+    private String coluna22x;
+    private String coluna23x;
+    private String coluna24x;
+    private String coluna25x;
+    private String coluna26x;
+    private String coluna27x;
+    private String coluna28x;
+    private String coluna29x;
+    private String coluna30x;
+    private String coluna31x;
+    private String coluna32x;
 
     public String getId() {
         return id;
@@ -75,256 +73,265 @@ public class LinhaFluxoCaixaMesDTO implements Serializable,Comparable<LinhaFluxo
         this.descricao = descricao;
     }
 
-    public String getColuna1() {
-        return coluna1;
-    }
-
-    public void setColuna1(String coluna1) {
-        this.coluna1 = coluna1;
-    }
-
-    public String getColuna2() {
-        return coluna2;
-    }
-
-    public void setColuna2(String coluna2) {
-        this.coluna2 = coluna2;
-    }
-
-    public String getColuna3() {
-        return coluna3;
-    }
-
-    public void setColuna3(String coluna3) {
-        this.coluna3 = coluna3;
-    }
-
-    public String getColuna4() {
-        return coluna4;
-    }
-
-    public void setColuna4(String coluna4) {
-        this.coluna4 = coluna4;
-    }
-
-    public String getColuna5() {
-        return coluna5;
-    }
-
-    public void setColuna5(String coluna5) {
-        this.coluna5 = coluna5;
-    }
-
-    public String getColuna6() {
-        return coluna6;
-    }
-
-    public void setColuna6(String coluna6) {
-        this.coluna6 = coluna6;
-    }
-
-    public String getColuna7() {
-        return coluna7;
-    }
-
-    public void setColuna7(String coluna7) {
-        this.coluna7 = coluna7;
-    }
-
-    public String getColuna8() {
-        return coluna8;
-    }
-
-    public void setColuna8(String coluna8) {
-        this.coluna8 = coluna8;
-    }
-
-    public String getColuna9() {
-        return coluna9;
-    }
-
-    public void setColuna9(String coluna9) {
-        this.coluna9 = coluna9;
-    }
-
-    public String getColuna10() {
-        return coluna10;
-    }
-
-    public void setColuna10(String coluna10) {
-        this.coluna10 = coluna10;
-    }
-
-    public String getColuna11() {
-        return coluna11;
-    }
-
-    public void setColuna11(String coluna11) {
-        this.coluna11 = coluna11;
-    }
-
-    public String getColuna12() {
-        return coluna12;
-    }
-
-    public void setColuna12(String coluna12) {
-        this.coluna12 = coluna12;
-    }
-
-    public String getColuna13() {
-        return coluna13;
-    }
-
-    public void setColuna13(String coluna13) {
-        this.coluna13 = coluna13;
-    }
-
-    public String getColuna14() {
-        return coluna14;
-    }
-
-    public void setColuna14(String coluna14) {
-        this.coluna14 = coluna14;
-    }
-
-    public String getColuna15() {
-        return coluna15;
-    }
-
-    public void setColuna15(String coluna15) {
-        this.coluna15 = coluna15;
-    }
-
-    public String getColuna16() {
-        return coluna16;
-    }
-
-    public void setColuna16(String coluna16) {
-        this.coluna16 = coluna16;
-    }
-
-    public String getColuna17() {
-        return coluna17;
-    }
-
-    public void setColuna17(String coluna17) {
-        this.coluna17 = coluna17;
-    }
-
-    public String getColuna18() {
-        return coluna18;
-    }
-
-    public void setColuna18(String coluna18) {
-        this.coluna18 = coluna18;
-    }
-
-    public String getColuna19() {
-        return coluna19;
-    }
-
-    public void setColuna19(String coluna19) {
-        this.coluna19 = coluna19;
-    }
-
-    public String getColuna20() {
-        return coluna20;
-    }
-
-    public void setColuna20(String coluna20) {
-        this.coluna20 = coluna20;
-    }
-
-    public String getColuna21() {
-        return coluna21;
-    }
-
-    public void setColuna21(String coluna21) {
-        this.coluna21 = coluna21;
-    }
-
-    public String getColuna22() {
-        return coluna22;
-    }
-
-    public void setColuna22(String coluna22) {
-        this.coluna22 = coluna22;
-    }
-
-    public String getColuna23() {
-        return coluna23;
-    }
-
-    public void setColuna23(String coluna23) {
-        this.coluna23 = coluna23;
-    }
-
-    public String getColuna24() {
-        return coluna24;
-    }
-
-    public void setColuna24(String coluna24) {
-        this.coluna24 = coluna24;
-    }
-
-    public String getColuna25() {
-        return coluna25;
-    }
-
-    public void setColuna25(String coluna25) {
-        this.coluna25 = coluna25;
-    }
-
-    public String getColuna26() {
-        return coluna26;
-    }
-
-    public void setColuna26(String coluna26) {
-        this.coluna26 = coluna26;
-    }
-
-    public String getColuna27() {
-        return coluna27;
-    }
-
-    public void setColuna27(String coluna27) {
-        this.coluna27 = coluna27;
-    }
-
-    public String getColuna28() {
-        return coluna28;
-    }
-
-    public void setColuna28(String coluna28) {
-        this.coluna28 = coluna28;
-    }
-
-    public String getColuna29() {
-        return coluna29;
-    }
-
-    public void setColuna29(String coluna29) {
-        this.coluna29 = coluna29;
-    }
-
-    public String getColuna30() {
-        return coluna30;
-    }
-
-    public void setColuna30(String coluna30) {
-        this.coluna30 = coluna30;
-    }
-
-    public String getColuna31() {
-        return coluna31;
-    }
-
-    public void setColuna31(String coluna31) {
-        this.coluna31 = coluna31;
-    }
-
     @Override
     public int compareTo( LinhaFluxoCaixaMesDTO o) {
         return this.getId().compareTo(o.getId());
+    }
+
+
+    public String getColuna1x() {
+        return coluna1x;
+    }
+
+    public void setColuna1x(String coluna1x) {
+        this.coluna1x = coluna1x;
+    }
+
+    public String getColuna2x() {
+        return coluna2x;
+    }
+
+    public void setColuna2x(String coluna2x) {
+        this.coluna2x = coluna2x;
+    }
+
+    public String getColuna3x() {
+        return coluna3x;
+    }
+
+    public void setColuna3x(String coluna3x) {
+        this.coluna3x = coluna3x;
+    }
+
+    public String getColuna4x() {
+        return coluna4x;
+    }
+
+    public void setColuna4x(String coluna4x) {
+        this.coluna4x = coluna4x;
+    }
+
+    public String getColuna5x() {
+        return coluna5x;
+    }
+
+    public void setColuna5x(String coluna5x) {
+        this.coluna5x = coluna5x;
+    }
+
+    public String getColuna6x() {
+        return coluna6x;
+    }
+
+    public void setColuna6x(String coluna6x) {
+        this.coluna6x = coluna6x;
+    }
+
+    public String getColuna7x() {
+        return coluna7x;
+    }
+
+    public void setColuna7x(String coluna7x) {
+        this.coluna7x = coluna7x;
+    }
+
+    public String getColuna8x() {
+        return coluna8x;
+    }
+
+    public void setColuna8x(String coluna8x) {
+        this.coluna8x = coluna8x;
+    }
+
+    public String getColuna9x() {
+        return coluna9x;
+    }
+
+    public void setColuna9x(String coluna9x) {
+        this.coluna9x = coluna9x;
+    }
+
+    public String getColuna10x() {
+        return coluna10x;
+    }
+
+    public void setColuna10x(String coluna10x) {
+        this.coluna10x = coluna10x;
+    }
+
+    public String getColuna11x() {
+        return coluna11x;
+    }
+
+    public void setColuna11x(String coluna11x) {
+        this.coluna11x = coluna11x;
+    }
+
+    public String getColuna12x() {
+        return coluna12x;
+    }
+
+    public void setColuna12x(String coluna12x) {
+        this.coluna12x = coluna12x;
+    }
+
+    public String getColuna13x() {
+        return coluna13x;
+    }
+
+    public void setColuna13x(String coluna13x) {
+        this.coluna13x = coluna13x;
+    }
+
+    public String getColuna14x() {
+        return coluna14x;
+    }
+
+    public void setColuna14x(String coluna14x) {
+        this.coluna14x = coluna14x;
+    }
+
+    public String getColuna15x() {
+        return coluna15x;
+    }
+
+    public void setColuna15x(String coluna15x) {
+        this.coluna15x = coluna15x;
+    }
+
+    public String getColuna16x() {
+        return coluna16x;
+    }
+
+    public void setColuna16x(String coluna16x) {
+        this.coluna16x = coluna16x;
+    }
+
+    public String getColuna17x() {
+        return coluna17x;
+    }
+
+    public void setColuna17x(String coluna17x) {
+        this.coluna17x = coluna17x;
+    }
+
+    public String getColuna18x() {
+        return coluna18x;
+    }
+
+    public void setColuna18x(String coluna18x) {
+        this.coluna18x = coluna18x;
+    }
+
+    public String getColuna19x() {
+        return coluna19x;
+    }
+
+    public void setColuna19x(String coluna19x) {
+        this.coluna19x = coluna19x;
+    }
+
+    public String getColuna20x() {
+        return coluna20x;
+    }
+
+    public void setColuna20x(String coluna20x) {
+        this.coluna20x = coluna20x;
+    }
+
+    public String getColuna21x() {
+        return coluna21x;
+    }
+
+    public void setColuna21x(String coluna21x) {
+        this.coluna21x = coluna21x;
+    }
+
+    public String getColuna22x() {
+        return coluna22x;
+    }
+
+    public void setColuna22x(String coluna22x) {
+        this.coluna22x = coluna22x;
+    }
+
+    public String getColuna23x() {
+        return coluna23x;
+    }
+
+    public void setColuna23x(String coluna23x) {
+        this.coluna23x = coluna23x;
+    }
+
+    public String getColuna24x() {
+        return coluna24x;
+    }
+
+    public void setColuna24x(String coluna24x) {
+        this.coluna24x = coluna24x;
+    }
+
+    public String getColuna25x() {
+        return coluna25x;
+    }
+
+    public void setColuna25x(String coluna25x) {
+        this.coluna25x = coluna25x;
+    }
+
+    public String getColuna26x() {
+        return coluna26x;
+    }
+
+    public void setColuna26x(String coluna26x) {
+        this.coluna26x = coluna26x;
+    }
+
+    public String getColuna27x() {
+        return coluna27x;
+    }
+
+    public void setColuna27x(String coluna27x) {
+        this.coluna27x = coluna27x;
+    }
+
+    public String getColuna28x() {
+        return coluna28x;
+    }
+
+    public void setColuna28x(String coluna28x) {
+        this.coluna28x = coluna28x;
+    }
+
+    public String getColuna29x() {
+        return coluna29x;
+    }
+
+    public void setColuna29x(String coluna29x) {
+        this.coluna29x = coluna29x;
+    }
+
+    public String getColuna30x() {
+        return coluna30x;
+    }
+
+    public void setColuna30x(String coluna30x) {
+        this.coluna30x = coluna30x;
+    }
+
+    public String getColuna31x() {
+        return coluna31x;
+    }
+
+    public void setColuna31x(String coluna31x) {
+        this.coluna31x = coluna31x;
+    }
+
+    public String getColuna32x() {
+        return coluna32x;
+    }
+
+    public void setColuna32x(String coluna32x) {
+        this.coluna32x = coluna32x;
     }
 }

@@ -7,67 +7,61 @@ import com.eschantal.emdias.service.FluxoCaixaService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Map;
+
+import static com.eschantal.emdias.domain.dto.fluxocaixa.RelatorioFluxoCaixa.*;
 
 @Service
 public class FluxoCaixaServiceImpl implements FluxoCaixaService {
-    public static final String ID_SALDOINICIAL = "1";
-    public static final String DESCRICAO_SALDO_INICIAL = "Saldo Inicial";
     public static final Double IN = 0D;
-    public static final String ID_SALDOFINAL = "2";
-    public static final String DESCRICAO_SALDO_FINAL = "Saldo Final";
     private final MovementBankRepository movementBankRepository;
     private RelatorioFluxoCaixa relatorioFluxoCaixa;
 
     public FluxoCaixaServiceImpl(MovementBankRepository movementBankRepository) {
         this.movementBankRepository = movementBankRepository;
     }
-
     @Override
     public RelatorioFluxoCaixa gerarFluxoCaixa(Long workSpaceId, ZonedDateTime dataInicial, ZonedDateTime dataFinal) {
-        return this.gerarSaldoInicial(workSpaceId, dataInicial)
+        return this.gerarSaldoInicial(workSpaceId, dataInicial,dataFinal)
             .processarLinhas(workSpaceId, dataInicial, dataFinal)
-            .processarSaldos()
+            .processarSaldos(dataInicial,dataFinal)
             .getRelatorioFluxoCaixa();
     }
-
     @Override
     public RelatorioFluxoCaixa getRelatorioFluxoCaixa() {
         return relatorioFluxoCaixa;
     }
-
     @Override
     public FluxoCaixaService processarLinhas(Long workspaceId, ZonedDateTime dataInicial, ZonedDateTime dataFinal) {
         this.movementBankRepository.findByWorkspaceAndIntervaloData(workspaceId, dataInicial, dataFinal)
             .ifPresent(this::processarLista);
         return this;
     }
+    public void gerarSaldosDia(LocalDate pday , Double valorTotalDia) {
+        BigDecimal valorSaldoInicial = this.relatorioFluxoCaixa.pegarValorDiaConta(ID_SALDOINICIAL,pday);
 
-    public FluxoCaixaService processarSaldos() {
-        LinhaFluxoCaixa linhaSaldoInicial = this.relatorioFluxoCaixa.getLinhaFluxoCaixaSet().get(ID_SALDOINICIAL);
+
+        this.relatorioFluxoCaixa.getLinhaFluxoCaixaSet().get(ID_SALDOFINAL)
+            .put(pday,valorSaldoInicial.add(new BigDecimal(valorTotalDia)));
+        this.relatorioFluxoCaixa.getLinhaFluxoCaixaSet().get(ID_SALDOINICIAL)
+            .put(pday.plusDays(1),valorSaldoInicial.add(new BigDecimal(valorTotalDia)));
+   }
+   public FluxoCaixaService processarSaldos(ZonedDateTime dataInicial,ZonedDateTime dataFinal) {
+        Map<LocalDate, Double> mtotalDias =  this.relatorioFluxoCaixa.getSumAllDays();
+        LocalDate day = dataInicial.toLocalDate();
         LinhaFluxoCaixa linhaSaldoFinal = LinhaFluxoCaixaBuilder.umaLinhaFluxoCaixaDTO(ID_SALDOFINAL, DESCRICAO_SALDO_FINAL).build();
-        this.relatorioFluxoCaixa
-            .getSumAllDays()
-            .forEach((day, valor) -> {
-                if (valor != null ) {
-                    CelulaFluxoCaixa tmp = linhaSaldoFinal.pegaDiaMaisProximo(day);
-                    if (!linhaSaldoInicial.getMapDias().containsKey(day) &&
-                        tmp != null ) {
-                        linhaSaldoInicial.getMapDias().put(day,
-                           tmp);
-                    }
-                    if (linhaSaldoInicial.getMapDias().containsKey(day))
-                    linhaSaldoFinal.add(day, linhaSaldoInicial.getMapDias()
-                        .get(day)
-                        .getValor().doubleValue() + valor);
-                }
-            });
-        this.getRelatorioFluxoCaixa().getLinhaFluxoCaixaSet().put(ID_SALDOINICIAL, linhaSaldoInicial);
         this.getRelatorioFluxoCaixa().getLinhaFluxoCaixaSet().put(ID_SALDOFINAL, linhaSaldoFinal);
+        while (day.isBefore(dataFinal.toLocalDate()) || day.isEqual(dataFinal.toLocalDate())) {
+            Double valor = new Double(0);
+            if (mtotalDias.containsKey(day))  valor = mtotalDias.get(day);
+            gerarSaldosDia(day,valor);
+           day = day.plusDays(1);
+        }
         return this;
     }
-
     public void processarLista(List<MovementBank> movementBankList) {
         movementBankList
             .stream()
@@ -75,9 +69,8 @@ public class FluxoCaixaServiceImpl implements FluxoCaixaService {
                 , movementBank.getMovementDate(),
                 movementBank.getMovementValue()));
     }
-
-    public FluxoCaixaService gerarSaldoInicial(Long workSpaceId, ZonedDateTime dataInicial) {
-        relatorioFluxoCaixa = RelatorioFluxoCaixaBuilder.umRelatorioFluxoCaixa("Fluxo de Caixa")
+    public FluxoCaixaService gerarSaldoInicial(Long workSpaceId, ZonedDateTime dataInicial,ZonedDateTime dataFinal) {
+        relatorioFluxoCaixa = RelatorioFluxoCaixaBuilder.umRelatorioFluxoCaixa("Fluxo de Caixa",dataInicial.toLocalDate(),dataFinal.toLocalDate())
             .build();
         relatorioFluxoCaixa.getLinhaFluxoCaixaSet()
             .put(ID_SALDOINICIAL, LinhaFluxoCaixaBuilder.umaLinhaFluxoCaixaDTO(ID_SALDOINICIAL, DESCRICAO_SALDO_INICIAL)

@@ -1,6 +1,8 @@
 package com.praticasolucoes.emdias.gateway.security;
 
+import com.praticasolucoes.emdias.gateway.domain.LoginWorkSpace;
 import com.praticasolucoes.emdias.gateway.domain.User;
+import com.praticasolucoes.emdias.gateway.domain.WorkSpace;
 import com.praticasolucoes.emdias.gateway.repository.LoginWorkSpaceRepository;
 import com.praticasolucoes.emdias.gateway.repository.UserRepository;
 import java.util.*;
@@ -63,13 +65,18 @@ public class DomainUserDetailsService implements ReactiveUserDetailsService {
         if (!user.isActivated()) {
             throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
         }
+        List<WorkSpace> workSpaceList = new ArrayList<>();
+        loginWorkSpaceRepository.findByLogin(user.getLogin())
+            .flatMap(loginWorkSpace -> workSpaceRepository.findById(loginWorkSpace.getIdWorkSpace())
+                .map(workSpace -> workSpaceList.add(workSpace)));
+
         List<GrantedAuthority> grantedAuthorities = user
             .getAuthorities()
             .stream()
             .map(authority -> new SimpleGrantedAuthority(authority.getName()))
             .collect(Collectors.toList());
-
-
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), grantedAuthorities);
+        UserComWorkSpace userx = new UserComWorkSpace(user.getLogin(), user.getPassword(), grantedAuthorities);
+        userx.setWorkSpaces(workSpaceList);
+        return userx;
     }
 }

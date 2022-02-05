@@ -1,6 +1,7 @@
 package com.eschantal.emdias.domain.dto.fluxocaixa;
 
 import com.eschantal.emdias.domain.NaturePlan;
+import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ public class RelatorioFluxoCaixaTest {
 
     @BeforeEach
     public void init() {
-        relatorioFluxoCaixa = new RelatorioFluxoCaixa("isso é um teste");
+        relatorioFluxoCaixa = new RelatorioFluxoCaixa("isso é um teste", ZonedDateTime.now().toLocalDate(), ZonedDateTime.now().toLocalDate());
 
     }
 

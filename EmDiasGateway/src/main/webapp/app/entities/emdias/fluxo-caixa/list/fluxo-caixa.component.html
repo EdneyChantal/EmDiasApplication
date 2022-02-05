@@ -1,0 +1,102 @@
+<div>
+  <h2 id="page-heading" data-cy="WorkSpaceHeading">
+    <span>Fluxo Caixa</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Carregar</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="!fluxoCaixa">
+    <span>Não há dados para o fluxo de Caixa</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="fluxoCaixa && fluxoCaixa.linhaFluxoCaixaMesDTOSet">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+      <tr>
+        <th scope="col"><span>{{buscaCabecalhoItem('id')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('descricao')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna1x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna2x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna3x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna4x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna5x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna6x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna7x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna8x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna9x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna10x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna11x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna12x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna13x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna14x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna15x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna16x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna17x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna18x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna19x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna20x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna21x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna22x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna23x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna24x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna25x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna26x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna27x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna28x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna29x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna30x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna31x')}}</span></th>
+        <th scope="col"><span>{{buscaCabecalhoItem('coluna32x')}}</span></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let linha of fluxoCaixa.linhaFluxoCaixaMesDTOSet" data-cy="entityTable">
+        <td>{{linha.id}}</td>
+        <td>{{ linha.descricao }}</td>
+        <td>{{ linha.coluna1x }}</td>
+        <td>{{ linha.coluna2x }}</td>
+        <td>{{ linha.coluna3x }}</td>
+        <td>{{ linha.coluna4x }}</td>
+        <td>{{ linha.coluna5x }}</td>
+        <td>{{ linha.coluna6x }}</td>
+        <td>{{ linha.coluna7x }}</td>
+        <td>{{ linha.coluna8x }}</td>
+        <td>{{ linha.coluna9x }}</td>
+        <td>{{ linha.coluna10x }}</td>
+        <td>{{ linha.coluna11x }}</td>
+        <td>{{ linha.coluna12x }}</td>
+        <td>{{ linha.coluna13x }}</td>
+        <td>{{ linha.coluna14x }}</td>
+        <td>{{ linha.coluna15x }}</td>
+        <td>{{ linha.coluna16x }}</td>
+        <td>{{ linha.coluna17x }}</td>
+        <td>{{ linha.coluna18x }}</td>
+        <td>{{ linha.coluna19x }}</td>
+        <td>{{ linha.coluna20x }}</td>
+        <td>{{ linha.coluna21x }}</td>
+        <td>{{ linha.coluna22x }}</td>
+        <td>{{ linha.coluna23x }}</td>
+        <td>{{ linha.coluna24x }}</td>
+        <td>{{ linha.coluna25x }}</td>
+        <td>{{ linha.coluna26x }}</td>
+        <td>{{ linha.coluna27x }}</td>
+        <td>{{ linha.coluna28x }}</td>
+        <td>{{ linha.coluna29x }}</td>
+        <td>{{ linha.coluna30x }}</td>
+        <td>{{ linha.coluna31x }}</td>
+        <td>{{ linha.coluna32x }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

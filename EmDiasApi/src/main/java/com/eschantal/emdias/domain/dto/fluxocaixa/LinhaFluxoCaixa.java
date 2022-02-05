@@ -27,6 +27,9 @@ public class LinhaFluxoCaixa implements Serializable,Comparable<LinhaFluxoCaixa>
         if (valor!=null)  return this.add(dia,BigDecimal.valueOf(valor.doubleValue()));
         return this;
     }
+    public void put(LocalDate dia , BigDecimal valor) {
+        this.getMapDias().put(dia,CelulaFluxoCaixaBuilder.umaCelulaFluxoCaixaDTO(dia).withValor(valor).build());0
+0 1   }
     public LinhaFluxoCaixa add(LocalDate  dia , BigDecimal valor){
         if (!this.getMapDias().containsKey(dia)) {
             this.getMapDias().put(dia, CelulaFluxoCaixaBuilder

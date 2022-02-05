@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -53,16 +54,16 @@ public class RelatorioFluxoCaixaDTO {
         this.dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
         configuracaoColunas = new ArrayList<>();
         linhaFluxoCaixaMesDTOSet = new TreeSet<>();
-        fieldColumnsValues = this.relatorioFluxoCaixa
-            .getSumAllDays()
-            .keySet();
+        fieldColumnsValues = this.relatorioFluxoCaixa.pegarTodosOsDias();
+
         keyLinhas = relatorioFluxoCaixa.getLinhaFluxoCaixaSet().keySet();
         keyLinhas
             .stream()
-            .forEach(this::operacao);
+            .forEach(this::popularLinha);
 
         configuracaoColunas.add(new typeColumun("Id","id"));
         configuracaoColunas.add(new typeColumun("Descrição","descricao"));
+        configuracaoColunas.add(new typeColumun("Total","coluna32x"));
         configuracaoColunas.addAll(fieldColumnsValues
             .stream()
             .map(this::popularConfiguracaoColunas)
@@ -75,13 +76,13 @@ public class RelatorioFluxoCaixaDTO {
             Arrays.stream(dto.getDeclaredFields())
             .sequential()
             .filter(method -> method.getName().indexOf(
-                String.format("coluna%d",dia.getDayOfMonth() )
+                String.format("coluna%dx",dia.getDayOfMonth() )
             )!=-1)
             .findFirst()
             .orElseGet(null);
         return new typeColumun(dia.format(dateFormatter),nomeColuna.getName());
     }
-    public void processarDia(LocalDate dia) {
+    public void popularLinhaDia(LocalDate dia) {
         CelulaFluxoCaixa celulaFluxoCaixa =
             Optional.ofNullable(this.relatorioFluxoCaixa
                     .getLinhaFluxoCaixaSet()
@@ -93,7 +94,7 @@ public class RelatorioFluxoCaixaDTO {
         Arrays.stream(dto.getDeclaredMethods())
             .sequential()
             .filter(method -> method.getName().indexOf(
-                String.format("setColuna%d",dia.getDayOfMonth() )
+                String.format("setColuna%dx",dia.getDayOfMonth() )
             )!=-1)
             .forEach(method -> {
                 try {
@@ -131,7 +132,7 @@ public class RelatorioFluxoCaixaDTO {
             });
     }
     @JsonIgnore
-    public void operacao(String keyLinha) {
+    public void popularLinha(String keyLinha) {
         linhaFluxoCaixaMesDTO = new LinhaFluxoCaixaMesDTO(keyLinha,this
             .relatorioFluxoCaixa
             .getLinhaFluxoCaixaSet()
@@ -140,9 +141,24 @@ public class RelatorioFluxoCaixaDTO {
         zeraColunas();
         this.fieldColumnsValues
             .stream()
-            .forEach(this::processarDia);
+            .forEach(this::popularLinhaDia);
+
+        if (!keyLinha.equals("1") && !keyLinha.equals("2")) {
+            this.totalizarLinhaParaDTO(keyLinha);
+        }
         this.linhaFluxoCaixaMesDTOSet.add(linhaFluxoCaixaMesDTO);
     }
+    @JsonIgnore
+    public void totalizarLinhaParaDTO(String keyLinha){
+        CelulaFluxoCaixa celulaFluxoCaixa = this.relatorioFluxoCaixa
+            .getLinhaFluxoCaixaSet()
+            .get(keyLinha)
+            .getMapDias()
+            .values()
+            .stream()
+            .reduce(new CelulaFluxoCaixa(ZonedDateTime.now().toLocalDate()),(tot, celula)->tot.add(celula.getValor()));
+        linhaFluxoCaixaMesDTO.setColuna32x(NumberFormat.getCurrencyInstance().format(celulaFluxoCaixa.getValor()));
+   }
 
     public Set<LinhaFluxoCaixaMesDTO> getLinhaFluxoCaixaMesDTOSet() {
         return linhaFluxoCaixaMesDTOSet;
