@@ -97,8 +97,8 @@ jhipster:
         url: http://localhost:8180/hazelcast-mancenter
   # CORS is disabled by default on microservices, as you should access them through a gateway.
   # If you want to enable it, please uncomment the configuration below.
-  # cors:
-  #     allowed-origins: "*"
+  #cors:
+  #    allowed-origins: 'http://localhost:8100,http://localhost:9000,http://localhost:4200,http://localhost:8080'
   #     allowed-methods: "*"
   #     allowed-headers: "*"
   #     exposed-headers: "Authorization,Link,X-Total-Count"

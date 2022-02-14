@@ -27,7 +27,7 @@ export class AppComponent {
   }
 
   initTranslate() {
-    const enLang = 'en';
+    const enLang = 'pt-br';
 
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang(enLang);

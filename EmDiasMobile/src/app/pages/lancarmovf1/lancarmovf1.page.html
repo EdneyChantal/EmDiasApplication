@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Escolha a Conta Bancária</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item *ngFor="let conta of contasBancaria;index as i" button  routerLink="{{'/tabs/home/lancarmovf2/'+ conta.id}}" class="ion-activated">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon> 
+      <ion-label>{{conta?.nomeDaContaBancaria}}</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

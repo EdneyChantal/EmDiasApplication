@@ -2,15 +2,15 @@
   "BACK_BUTTON_TEXT": "Voltar",
 
   "NAME": "Nome",
-  "FIRST_NAME": "First Name",
-  "LAST_NAME": "Last Name",
+  "FIRST_NAME": "Primeiro Nome",
+  "LAST_NAME": "Ultimo Nome",
   "EMAIL": "Email",
   "USERNAME": "Nome de Usuário",
   "PASSWORD": "Senha",
   "REMEMBER_ME": "Remember Me",
   "LOGIN": "Entrar",
   "SIGNUP": "Cadastre-se",
-  "NO_ACCOUNT_MESSAGE": "Don't have an account yet?",
+  "NO_ACCOUNT_MESSAGE": "Não tem conta ainda?",
 
   "TAB1_TITLE": "Itens",
   "TAB2_TITLE": "Busca",
@@ -44,7 +44,7 @@
 
   "SETTINGS_PAGE_PROFILE": "Editar Perfil",
 
-  "WELCOME_TITLE": "Bem-vindo",
+  "WELCOME_TITLE": "EmDias Financas Pessoais",
   "LOGOUT_TITLE": "Logout",
 
   "LOGIN_TITLE": "Entrar",

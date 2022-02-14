@@ -6,8 +6,9 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserRouteAccessService } from 'src/app/services/auth/user-route-access.service';
 import { HomePage } from './home.page';
+import { HomePageRoutingModule } from './home.router.module';
 
-const routes: Routes = [
+/*const routes: Routes = [
   {
     path: '',
     component: HomePage,
@@ -16,10 +17,10 @@ const routes: Routes = [
     },
     canActivate: [UserRouteAccessService],
   },
-];
+];*/
 
 @NgModule({
-  imports: [IonicModule, CommonModule, FormsModule, TranslateModule, RouterModule.forChild(routes)],
+  imports: [IonicModule, CommonModule, FormsModule, TranslateModule, HomePageRoutingModule],
   declarations: [HomePage],
 })
 export class HomePageModule {}

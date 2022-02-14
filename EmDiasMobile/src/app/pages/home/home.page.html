@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar>
     <ion-title> {{ 'WELCOME_TITLE' | translate }}, {{account?.firstName}} </ion-title>
     <ion-buttons slot="end">
@@ -14,4 +14,61 @@
   <p>{{ 'WELCOME_INTRO' | translate }}</p>
 
   <span class="hipster"></span>
-</ion-content>
+</ion-content> -->
+
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button  routerLink="/tabs/home/lancarmovf1">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Lancar Movimentos</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Outbox</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="heart" slot="start"></ion-icon>
+        <ion-label>Favorites</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="archive" slot="start"></ion-icon>
+        <ion-label>Archived</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="trash" slot="start"></ion-icon>
+        <ion-label>Trash</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="warning" slot="start"></ion-icon>
+        <ion-label>Spam</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <span class="hipster"></span>
+      <ion-title>{{account?.firstName}} </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="logout()" id="logout">
+          {{ 'LOGOUT_TITLE' | translate }}
+          <ion-icon slot="end" name="log-out"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+</div>
