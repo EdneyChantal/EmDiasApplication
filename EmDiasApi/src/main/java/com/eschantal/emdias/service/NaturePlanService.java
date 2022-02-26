@@ -33,6 +33,7 @@ public interface NaturePlanService {
      * @return the entity.
      */
     Optional<NaturePlan> findOne(Long id);
+    List<NaturePlan> buscarTodosdoWorkspace(Long idWorkSpace);
 
     /**
      * Delete the "id" naturePlan.

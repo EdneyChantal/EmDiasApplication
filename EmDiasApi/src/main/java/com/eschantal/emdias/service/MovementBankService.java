@@ -48,4 +48,5 @@ public interface MovementBankService {
     boolean filtraNaturezaResumo(NaturezaResumo naturezaResumo) ;
     void atualizaProjetoNaturezaPeloNaturezaResumo(NaturezaResumo naturezaResumo,Projeto projeto);
     void atualizaProjetoPeloRealizado(FiltroMovimentoBancario filtroMovimentoBancario);
+    Double pegarSaldo(Long id);
 }

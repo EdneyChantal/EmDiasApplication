@@ -92,6 +92,20 @@ public class MovementBankServiceImpl implements MovementBankService {
     }
 
     @Override
+    public Double pegarSaldo(Long id) {
+
+        Optional<AccountBank> optionalAccountBank = this.accountBankRepository.findById(id);
+        Optional<Double> result = this.movementBankRepository.totalContaAteAData(id, ZonedDateTime.now());
+
+        double value = 0;
+        value = (optionalAccountBank.isPresent() ? optionalAccountBank.get().getValorInicial() : 0);
+        value += (result.isPresent() ? result.get() : 0);
+
+
+        return (value);
+    }
+
+    @Override
     public void atualizaProjetoNaturezaPeloNaturezaResumo(NaturezaResumo naturezaResumo, Projeto projeto) {
         if ((naturezaResumo != null) && naturezaResumo.getNaturePlan() != null && projeto != null) {
             ProjetoNatureza projetoNatureza = this.projetoNaturezaRepository.findByIdProjetoIdNaturePlan(projeto.getId(), naturezaResumo.getNaturePlan().getId(), naturezaResumo.getDia());

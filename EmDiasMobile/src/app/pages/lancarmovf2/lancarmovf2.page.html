@@ -8,5 +8,37 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+      <ion-item>
+        <ion-label *ngIf="this.saldoConta"> Saldo: {{ this.saldoConta  | currency }}</ion-label>
+      </ion-item>
+      <ion-item>
+       <ion-button id="open-modal" (click)="toogleOpenModelData()">Data</ion-button>
+        <ion-modal [isOpen]="openModelData"> 
+        <ng-template>
+          <ion-content>
+           <ion-datetime></ion-datetime>
+           <ion-button (click)="toogleOpenModelData()">Voltar</ion-button>
+          </ion-content>
+        </ng-template>
+        </ion-modal>
+      </ion-item>
 
+
+          <ion-item>
+            <ion-label position="floating">Classificação:</ion-label>
+            <ion-select placeholder="Select One" interface="action-sheet">
+              <ion-select-option *ngFor="let nat of naturePlans;index as i;"  value="{{nat.id}}">{{ nat.descNaturePlan + " " + nat.typeNaturePlan}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Passworkd</ion-label>
+            <ion-input type="password"  name="password"></ion-input>
+          </ion-item>
+          <ion-row class="ion-padding">
+            <ion-col>
+              <ion-button expand="block" type="submit" color="primary" id="login">Salvar</ion-button>
+            </ion-col>
+          </ion-row>
+  </ion-list>
 </ion-content>

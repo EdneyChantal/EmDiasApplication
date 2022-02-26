@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link NaturePlan}.
@@ -48,6 +49,13 @@ public class NaturePlanServiceImpl implements NaturePlanService {
         return naturePlanRepository.findById(id);
     }
 
+    @Override
+    public List<NaturePlan> buscarTodosdoWorkspace(Long idWorkSpace) {
+        return naturePlanRepository.findByWorkSpaceId(idWorkSpace)
+            .stream()
+            .filter(nat->nat.getNaturePlanFather()!=null)
+            .collect(Collectors.toList());
+    }
     @Override
     public void delete(Long id) {
         log.debug("Request to delete NaturePlan : {}", id);

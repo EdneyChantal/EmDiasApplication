@@ -103,7 +103,12 @@ public class MovementBankResource {
         log.debug("REST request to get all MovementBanks");
         return this.movementBankService.findByFiltroNatureza(filtroMovimentoBancario);
     }
-
+    @GetMapping("/movement-banks/{id}/saldo")
+    public ResponseEntity<Double> getSaldo(@PathVariable Long id) {
+        log.debug("REST requisitando busca do saldo : {}", id);
+        return ok()
+            .body(this.movementBankService.pegarSaldo(id));
+    }
 
     @PutMapping("/total-ate-a-data")
     public ResponseEntity<Double> getTotalAteAData(@RequestBody FiltroMovimentoBancario filtroMovimentoBancario) {

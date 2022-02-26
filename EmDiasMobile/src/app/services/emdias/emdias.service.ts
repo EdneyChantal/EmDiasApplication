@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class EmdiasService {
-  public static API_URL = /*nvironment.apiUrl.replace('api','services') */'http://localhost:8080/services' + '/emdias/api';
+  public static API_URL = environment.apiUrl.replace('api','services') + '/emdias/api';
 
   constructor(public http: HttpClient) { }
   getAccountBanks(): Observable<ContaBancaria[]>{
@@ -17,6 +17,11 @@ export class EmdiasService {
   getAccountBank(id:string): Observable<ContaBancaria>{
     return this.http.get<ContaBancaria>(EmdiasService.API_URL + '/' + 'account-banks/' + id );
   }
+  getSaldoConta(id:string): Observable<number>{
+    return this.http.get<number>(EmdiasService.API_URL + '/' + 'movement-banks/' + id + '/saldo');
+  }
+ 
+ 
   post(endpoint: string, body: any, reqOpts?: any) {
     return this.http.post(EmdiasService.API_URL + '/' + endpoint, body, reqOpts);
   }

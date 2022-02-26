@@ -101,6 +101,15 @@ public class NaturePlanResource {
         return ResponseUtil.wrapOrNotFound(naturePlan);
     }
 
+    @GetMapping("/nature-plans/workspace/{id}")
+    public List<NaturePlan> getNaturePlansfromWorkSpace(@PathVariable Long id) {
+        log.debug("REST request to get NaturePlans with workspace: {}", id);
+        return naturePlanService.buscarTodosdoWorkspace(id);
+
+    }
+
+
+
     /**
      * {@code DELETE  /nature-plans/:id} : delete the "id" naturePlan.
      *
