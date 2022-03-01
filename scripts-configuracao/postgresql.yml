@@ -16,7 +16,7 @@ services:
             container_name: postgres-emdias
             image: postgres
             volumes:
-                - /home/eschantal/desenvolvimento/projetos/praticasolucoes/EmDiasApplication/filedatabase:/filedatabase
+                - /home/edneychantal/desenvolvimento/projetos/praticasolucoes/EmDiasApplication/filedatabase:/filedatabase
             environment:
                 - DB_NAME=emdias
                 - POSTGRES_USER=emdias

@@ -5,6 +5,8 @@ import { NaturePlanService } from 'src/app/services/natureplan/natureplanservice
 import { ContaBancaria } from 'src/model/contabancaria.model';
 import { MovementBank } from 'src/model/movementbank.model';
 import { NaturePlan } from 'src/model/naturePlan.model';
+import { format, utcToZonedTime } from 'date-fns-tz';
+import { formatISO } from 'date-fns';  
 
 @Component({
   selector: 'app-lancarmovf2',
@@ -12,9 +14,11 @@ import { NaturePlan } from 'src/model/naturePlan.model';
   styleUrls: ['./lancarmovf2.page.scss'],
 })
 export class Lancarmovf2Page implements OnInit {
+  userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   idconta:string;
   contaBancaria:ContaBancaria;
-  movementBank:MovementBank=null;
+  movementBank:MovementBank={};
+  datachoose:any =  formatISO(new Date());
   saldoConta:number; 
   naturePlans:NaturePlan[];
   openModelData:boolean=false;

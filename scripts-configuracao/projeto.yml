@@ -1,12 +1,13 @@
-version: '2'
+version: '2.2'
 services:
     jhipster-registry:
             container_name: jhipster-registry-emdias
             image: jhipster/jhipster-registry:v6.3.0
+            network_mode: host
             volumes:
                 - ./central-server-config:/central-config
             environment:
-                - _JAVA_OPTIONS=-Xmx512m -Xms256m
+                - JAVA_OPTIONS=-Xmx512m -Xms256m
                 - SPRING_PROFILES_ACTIVE=dev,swagger
                 - SPRING_SECURITY_USER_PASSWORD=admin
                 - JHIPSTER_REGISTRY_PASSWORD=admin
@@ -17,5 +18,43 @@ services:
        # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_PATHS=central-config
             ports:
                  - 8761:8761
-
+    emdiasapi:
+            container_name: emdiasapi
+            image: emdiasapi
+            network_mode: host
+            depends_on:
+                - jhipster-registry-emdias
+            links:
+                - jhipster-registry-emdias:jhipster-registry
+            environment:
+                - SPRING_PROFILES_ACTIVE=dev
+                #- spring.datasource.url=jdbc:postgresql://localhost:5432/emdias
+                #- spring.datasource.username=emdias
+                #- spring.datasource.password=emdias
+                - JAVA_OPTS=-Xms128m -Xmx256m
+                #- EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:admin@jhipster-registry:8761/eureka/
+                #- SPRING_CLOUD_CONFIG_URI=http://admin:admin@jhipster-registry:8761/config
+                - JHIPSTER_SLEEP=45
+            ports:
+                - 8081:8081
+#    emdiasgateway:
+#            container_name: emdiasgateway
+#            image: emdiasgateway:0.0.1-SNAPSHOT
+#            network_mode: host
+#            depends_on:
+#                - jhipster-registry-emdias
+#            links:
+#                - jhipster-registry-emdias:jhipster-registry
+#            environment:
+#                - SPRING_PROFILES_ACTIVE=dev
+                #- spring.datasource.url=jdbc:postgresql://localhost:5432/emdias
+                #- spring.datasource.username=emdias
+                #- spring.datasource.password=emdias
+#                - JAVA_OPTS=-Xms128m -Xmx256m
+                #- EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:admin@localhost:8761/eureka/
+                #- SPRING_CLOUD_CONFIG_URI=http://admin:admin@localhost:8761/config
+#                - JHIPSTER_SLEEP=30
+#            ports:
+                - 8080:8080                
+                
 
