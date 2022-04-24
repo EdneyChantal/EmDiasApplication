@@ -3,13 +3,13 @@ import { NaturePlan } from "./naturePlan.model";
 
 export class MovementBank {
    constructor(
-      id?:number,
-      accountBank?:ContaBancaria,
-      naturePlan?:NaturePlan,
-      movementDate?:Date,
-      movementValue?:number,
-      history?:string,
-      number_doc?:string,
-      accid?:string 
+      public id?:number,
+      public accountBank?:ContaBancaria,
+      public naturePlan?:NaturePlan,
+      public movementDate?:Date,
+      public movementValue?:number,
+      public history?:string,
+      public number_doc?:string,
+      public accid?:string 
    ) {}
 }

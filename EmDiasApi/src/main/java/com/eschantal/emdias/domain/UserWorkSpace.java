@@ -24,12 +24,12 @@ public class UserWorkSpace implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="idworkspace")
-    @JsonIgnoreProperties(value = "idworkspace", allowSetters = true)
+    @JoinColumns(@JoinColumn(name="id_workspace",referencedColumnName = "id_workspace"))
+    @JsonIgnoreProperties(value = "id_workspace", allowSetters = true)
     private WorkSpace workSpace;
 
     @ManyToOne
-    @JoinColumn(name="login",referencedColumnName = "id")
+    @JoinColumns(@JoinColumn(name="login",referencedColumnName = "id"))
     private JhiUser user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

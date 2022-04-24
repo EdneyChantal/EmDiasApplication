@@ -3,7 +3,7 @@ package com.eschantal.emdias.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
+import java.util.Objects;
 
 
 @Entity
@@ -35,10 +35,21 @@ public class WorkSpace implements Serializable {
     }
 
     public WorkSpace nome(String nome) {
-        nome = nome;
+        this.nome = nome;
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WorkSpace workSpace = (WorkSpace) o;
+        if (this.id==null) return false ;
+        return Objects.equals(id, workSpace.id);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

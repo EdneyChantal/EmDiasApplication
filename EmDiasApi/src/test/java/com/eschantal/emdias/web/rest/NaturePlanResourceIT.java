@@ -35,6 +35,7 @@ public class NaturePlanResourceIT {
     private static final String DEFAULT_DESC_NATURE_PLAN = "AAAAAAAAAA";
     private static final String UPDATED_DESC_NATURE_PLAN = "BBBBBBBBBB";
 
+
     private static final TypeNaturePlan DEFAULT_TYPE_NATURE_PLAN = TypeNaturePlan.R;
     private static final TypeNaturePlan UPDATED_TYPE_NATURE_PLAN = TypeNaturePlan.D;
 

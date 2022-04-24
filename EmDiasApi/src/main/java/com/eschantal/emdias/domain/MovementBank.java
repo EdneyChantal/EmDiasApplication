@@ -3,6 +3,7 @@ package com.eschantal.emdias.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tbmovementbank")
@@ -108,5 +109,19 @@ public class MovementBank  implements Serializable {
     public MovementBank accid(String accid) {
         this.accid = accid;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovementBank that = (MovementBank) o;
+        if (this.id==null) return false ;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

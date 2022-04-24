@@ -3,6 +3,7 @@ package com.eschantal.emdias.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tbnatureplan")
@@ -83,5 +84,19 @@ public class NaturePlan  implements Serializable {
     public NaturePlan naturePlanFather(NaturePlan naturePlanFather) {
         this.naturePlanFather = naturePlanFather;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NaturePlan that = (NaturePlan) o;
+        if (id==null) return false ;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
